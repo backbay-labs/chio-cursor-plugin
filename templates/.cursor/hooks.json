@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "hooks": {
+    "afterFileEdit": [
+      {
+        "command": "node ./.chio/hooks/composer.mjs",
+        "timeout": 15,
+        "failClosed": true,
+        "matcher": "Write"
+      }
+    ],
+    "beforeReadFile": [
+      {
+        "command": "node ./.chio/hooks/composer.mjs",
+        "timeout": 10,
+        "failClosed": true,
+        "matcher": "Read"
+      }
+    ],
+    "beforeShellExecution": [
+      {
+        "command": "node ./.chio/hooks/shell.mjs",
+        "timeout": 10,
+        "failClosed": true,
+        "matcher": "Shell"
+      }
+    ],
+    "beforeMCPExecution": [
+      {
+        "command": "node ./.chio/hooks/tool.mjs",
+        "timeout": 15,
+        "failClosed": true
+      }
+    ]
+  }
+}

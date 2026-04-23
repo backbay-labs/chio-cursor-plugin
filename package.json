@@ -1,0 +1,116 @@
+{
+  "name": "chio-cursor",
+  "displayName": "Chio for Cursor",
+  "description": "Bond Composer, the Agent tab, inline AI, and every mounted MCP server to a Chio policy. Every patch, shell call, and PR lands with a signed receipt.",
+  "version": "0.2.0",
+  "publisher": "chio",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bb-connor/chio-cursor-plugin.git"
+  },
+  "engines": {
+    "vscode": "^1.90.0",
+    "node": ">=20"
+  },
+  "categories": ["Other", "Linters", "AI"],
+  "keywords": ["chio", "cursor", "mcp", "receipts", "policy"],
+  "main": "./dist/extension.js",
+  "activationEvents": [
+    "onStartupFinished",
+    "workspaceContains:.chio/policy.yaml",
+    "workspaceContains:.cursor/settings.json",
+    "workspaceContains:.cursor/hooks.json"
+  ],
+  "contributes": {
+    "commands": [
+      { "command": "chio.init",          "title": "Chio: Initialize workspace (/chio-init)", "category": "Chio" },
+      { "command": "chio.bond",          "title": "Chio: Bond workspace",              "category": "Chio" },
+      { "command": "chio.attachMcp",     "title": "Chio: Attach MCP server",           "category": "Chio" },
+      { "command": "chio.guards",        "title": "Chio: Show guard pipeline",         "category": "Chio" },
+      { "command": "chio.receipts",      "title": "Chio: Stream receipts",             "category": "Chio" },
+      { "command": "chio.attenuatePr",   "title": "Chio: Attenuate scope for PR",      "category": "Chio" },
+      { "command": "chio.prEvidence",    "title": "Chio: Export PR evidence bundle",   "category": "Chio" },
+      { "command": "chio.export",        "title": "Chio: Export evidence bundle",      "category": "Chio" },
+      { "command": "chio.revoke",        "title": "Chio: Revoke bond",                 "category": "Chio" },
+      { "command": "chio.openPolicy",    "title": "Chio: Open policy.yaml",            "category": "Chio" }
+    ],
+    "views": {
+      "chio": [
+        { "id": "chio.sidebar", "name": "Chio", "type": "webview" }
+      ]
+    },
+    "viewsContainers": {
+      "activitybar": [
+        { "id": "chio", "title": "Chio", "icon": "$(shield)" }
+      ]
+    },
+    "configuration": {
+      "title": "Chio",
+      "properties": {
+        "chio.policy": {
+          "type": "string",
+          "default": "./.chio/policy.yaml",
+          "description": "Path to the Chio policy file (relative to workspace root)."
+        },
+        "chio.bond": {
+          "type": "string",
+          "enum": ["on-workspace-open", "manual", "off"],
+          "default": "on-workspace-open",
+          "description": "When to bond the workspace to Chio."
+        },
+        "chio.composer.require": {
+          "type": "string",
+          "enum": ["allow", "preview", "block"],
+          "default": "preview",
+          "description": "Default Composer patch verdict when the daemon is unreachable. 'preview' fails closed (deny with reason); 'allow' fails open; 'block' denies every patch."
+        },
+        "chio.agent.tools": {
+          "type": "array",
+          "items": { "type": "string" },
+          "default": ["fs", "shell", "fetch"],
+          "description": "Tool names the Agent tab is permitted to request."
+        },
+        "chio.receipts.sink": {
+          "type": "string",
+          "default": "",
+          "description": "Optional OTLP sink for receipts (e.g. otlp://collector.int:4317)."
+        },
+        "chio.trust.url": {
+          "type": "string",
+          "default": "http://127.0.0.1:8940",
+          "description": "chio trust-control URL (default: 127.0.0.1:8940)."
+        },
+        "chio.mcp.url": {
+          "type": "string",
+          "default": "http://127.0.0.1:8931",
+          "description": "chio MCP edge URL (default: 127.0.0.1:8931)."
+        },
+        "chio.daemon.url": {
+          "type": "string",
+          "default": "http://127.0.0.1:8940",
+          "description": "Legacy alias for chio.trust.url."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "build": "node esbuild.config.mjs",
+    "watch": "node esbuild.config.mjs --watch",
+    "typecheck": "tsc --noEmit",
+    "test": "node --experimental-strip-types --test ./test/*.test.ts ./test/*.test.mjs",
+    "package": "vsce package",
+    "vscode:prepublish": "npm run build",
+    "prepack": "node ./scripts/prep-publish.mjs && npm run build",
+    "postpack": "node ./scripts/restore-publish.mjs"
+  },
+  "dependencies": {
+    "@chio/bridge": "file:../chio-bridge"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/vscode": "^1.90.0",
+    "esbuild": "^0.24.0",
+    "typescript": "~5.7.0"
+  }
+}

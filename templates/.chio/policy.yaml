@@ -1,0 +1,69 @@
+hushspec: "0.1.0"
+name: backend
+
+# Every key here is a first-class chio-policy HushSpec rule
+# (arc/crates/chio-policy/src/models.rs#Rules). This file parses through
+# @chio/bridge lintPolicy() with zero errors.
+rules:
+  path_allowlist:
+    enabled: true
+    write:
+      - ./src/**
+      - ./tests/**
+      - ./docs/**
+  forbidden_paths:
+    enabled: true
+    patterns:
+      - ./billing/**
+      - "**/.env"
+      - "**/.env.*"
+      - "**/*.pem"
+      - "**/id_rsa"
+      - "**/id_ed25519"
+  shell_commands:
+    enabled: true
+    default: block
+    allow:
+      - npm test
+      - npm run build
+      - tsc --noEmit
+      - eslint .
+      - git status
+      - git diff*
+      - bun test
+      - bun run build
+    deny:
+      - rm -rf *
+      - curl *
+      - wget *
+  patch_integrity:
+    enabled: true
+    max_files: 40
+    max_additions: 2000
+    max_deletions: 2000
+  secret_patterns:
+    enabled: true
+  egress:
+    enabled: true
+    default: block
+    allow:
+      - https://registry.npmjs.org
+      - https://github.com
+  tool_access:
+    enabled: true
+    default: block
+    allow:
+      - fs.read
+      - fs.write
+      - shell.exec
+
+# `chio` extension carries settings that don't map to a first-class chio
+# rule yet. chio-policy accepts this block as an opaque passthrough;
+# chio-bridge interprets it downstream.
+extensions:
+  chio:
+    version: "0.1.0"
+    budget:
+      minutes: 5
+    approval:
+      forbidden_path_override: human

@@ -1,0 +1,81 @@
+name: release
+
+# SLSA L3 + Sigstore provenance + reproducible build for chio.chio-cursor (VSIX).
+#
+# Publishes to VS Code Marketplace when `vsce-publish=true` AND `dry-run=false`.
+# Otherwise, only produces the .vsix + provenance artefacts (downloadable from
+# the Release page) so a human can sideload / double-check before pushing.
+#
+# Secrets referenced:
+#   VSCE_PAT   — Personal Access Token for the `backbay` publisher on VS Code Marketplace.
+#
+# Placeholders:
+#   owner/chio-ci-actions — swap to your GH org before pushing.
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+  workflow_dispatch:
+    inputs:
+      tag:
+        required: false
+        default: "v0.0.0-dev"
+      dry-run:
+        required: false
+        default: "true"
+      vsce-publish:
+        description: "If 'true', run vsce publish; otherwise only produce .vsix."
+        required: false
+        default: "false"
+
+permissions:
+  contents: read
+  id-token: write       # keyless Sigstore
+  attestations: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    outputs:
+      artifact-name: ${{ steps.hash.outputs.artifact-name }}
+      hashes: ${{ steps.hash.outputs.hashes }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Build + package + (optionally) publish VSIX
+        id: publish
+        uses: owner/chio-ci-actions/publish-chio@v0.1.0
+        with:
+          artifact-type: vsix
+          package-name: "chio.chio-cursor"
+          tag: ${{ github.event.inputs.tag || github.ref_name }}
+          dry-run: ${{ github.event.inputs.dry-run || 'false' }}
+          vsce-publish: ${{ github.event.inputs.vsce-publish || 'false' }}
+        env:
+          VSCE_PAT: ${{ secrets.VSCE_PAT }}
+
+      - name: Compute subjects
+        id: hash
+        run: |
+          set -euo pipefail
+          name="$(basename "${{ steps.publish.outputs.artifact-path }}")"
+          sha="${{ steps.publish.outputs.artifact-sha256 }}"
+          echo "hashes=$(printf '%s  %s\n' "$sha" "$name" | base64 -w0)" >> "$GITHUB_OUTPUT"
+          echo "artifact-name=$name" >> "$GITHUB_OUTPUT"
+
+  provenance:
+    needs: [build]
+    # VSIX isn't a first-class generator target; use the generic one.
+    permissions:
+      id-token: write
+      contents: read
+      actions: read
+    uses: slsa-framework/slsa-github-generator/.github/workflows/generator_generic_slsa3.yml@v2.0.0
+    with:
+      base64-subjects: ${{ needs.build.outputs.hashes }}
+      upload-assets: true
+      provenance-name: "${{ needs.build.outputs.artifact-name }}.intoto.jsonl"

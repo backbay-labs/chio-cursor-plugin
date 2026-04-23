@@ -1,0 +1,9 @@
+{
+  "chio.policy": "./.chio/policy.yaml",
+  "chio.bond": "on-workspace-open",
+  "chio.composer.require": "preview",
+  "chio.agent.tools": ["fs", "shell", "fetch"],
+  "chio.trust.url": "http://127.0.0.1:8940",
+  "chio.mcp.url": "http://127.0.0.1:8931",
+  "chio.receipts.sink": ""
+}

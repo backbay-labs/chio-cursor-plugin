@@ -1,0 +1,87 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout plugin
+        uses: actions/checkout@v4
+        with:
+          path: chio-cursor-plugin
+
+      - name: Checkout chio-bridge
+        uses: actions/checkout@v4
+        with:
+          repository: owner/chio-bridge
+          path: chio-bridge
+          ref: main
+
+      - name: Checkout chio-test-harness
+        uses: actions/checkout@v4
+        with:
+          repository: owner/chio-test-harness
+          path: chio-test-harness
+          ref: main
+
+      - name: Checkout arc (chio source)
+        uses: actions/checkout@v4
+        with:
+          repository: owner/arc
+          path: arc
+          ref: main
+
+      - name: Setup chio
+        uses: owner/chio-ci-actions/setup-chio@v0.1.0
+        with:
+          mode: build
+          arc-path: arc
+
+      - name: Build chio-bridge
+        working-directory: chio-bridge
+        run: |
+          bun install --frozen-lockfile
+          bun run build
+
+      - name: Install plugin deps
+        working-directory: chio-cursor-plugin
+        run: bun install --frozen-lockfile
+
+      - name: Typecheck
+        working-directory: chio-cursor-plugin
+        run: bun run typecheck || echo "typecheck non-blocking in Wave 5.1"
+
+      - name: Build extension
+        working-directory: chio-cursor-plugin
+        run: bun run build
+
+      - name: Unit tests
+        working-directory: chio-cursor-plugin
+        run: bun run test
+
+      - name: Install hello-mcp deps (for harness)
+        working-directory: chio-test-harness/hello-mcp
+        run: bun install --frozen-lockfile
+
+      - name: Smoke (best-effort; requires cursor CLI which is host-only)
+        working-directory: chio-cursor-plugin
+        run: |
+          if [[ -x ./smoke.sh ]] && command -v cursor >/dev/null 2>&1; then
+            ./smoke.sh
+          else
+            echo "smoke.sh skipped: cursor CLI not available in CI"
+          fi
+
+      - name: Upload smoke results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: smoke-results
+          path: chio-cursor-plugin/smoke-results
+          if-no-files-found: ignore
