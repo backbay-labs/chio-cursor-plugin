@@ -112,6 +112,10 @@ Do not publish a protected-mode acceptance claim until the gate ledger is comple
 
 ## Restricted gateway candidate progress
 
+The following table records the earlier candidate. Its allow-default OS profile
+and bootstrap bearer configuration have been superseded; these results do not
+accept the current boundary.
+
 `bin/chio-cursor-protected.mjs` creates a new temporary profile/data/workspace,
 uses the packaged `dist/gateway.mjs`, denies native Read/Write/Shell/WebFetch,
 blocks unsupported generic tools and delegation, and permits only the four
@@ -146,3 +150,74 @@ Evidence: [fenced gateway discovery](../evidence/20260909/protected-gateway-disc
 The preliminary VSIX SHA256 was
 `80b5a55157e8229d7c4324317bd58d0c0dcf9284118284fdb52840ea704db778`.
 It must be replaced and requalified after the shared gateway recovery fix.
+
+## Process boundary repair
+
+The read-only review in `evidence/final/BOUNDARY-REVIEW.md` demonstrated that the
+earlier Cursor and Hermes profiles could read runtime bootstrap bearers and
+cross-host operator preparation files, write journals, and contact the kernel.
+Private same-UID modes were insufficient to establish process isolation.
+
+The current Cursor launcher uses a default-deny Seatbelt profile and requires a
+bounded, session-scoped kernel credential. It copies only the execution and
+scope fields needed by the gateway. Reads are restricted to the exact 443-file
+Cursor runtime lock, explicit Node libraries, narrow OS paths, own scoped config,
+and own state. Broad `/System` access is absent because that path includes the
+Data-volume alias. Writes to control files and hardlinks are denied. Node and
+the shell needed for hooks can execute; other executables are denied, and the
+same process boundary applies to descendants. Only the explicit kernel loopback
+TCP port is allowed. Kernel durable owner fences remain required because the
+host can mutate its own local journal.
+
+`test/protected-boundary.test.mjs` executes real macOS process probes and independent
+network observers. Its three cases passed with zero skips on the qualification
+machine: own state/config work; operator direct/alias/symlink reads, control
+writes, hardlinks, unapproved execution, and unrelated TCP fail. These are
+component/process-boundary results, not real-model I02-I07 acceptance.
+
+The actual pinned Cursor CLI approved the single gateway and discovered exactly
+four tools under this new profile using the aggregate pre-ACK kernel on port
+58486. Kernel binary SHA-256:
+`d0b87623cb3dd227f79cd3178b32bb04e35b48ddcb9dab63c6598d79b8e13b66`.
+The first attempt exposed an OpenSSL config dependency because the MCP child
+does not inherit all host environment fields. Setting the immutable MCP
+`OPENSSL_CONF=/dev/null` fixed discovery without expanding filesystem access.
+The exact retained discovery profile also passed a read-only probe: own scoped
+config readable; earlier operator preparation file, Data alias, and another host
+config denied with `EPERM`. Raw records are in
+`evidence/final/default-deny-host-discovery.txt` and
+`evidence/final/default-deny-real-profile-probe.json`. These pre-ACK runtime
+results require a final scoped bridge/kernel/artifact rerun before delivery.
+
+Protected `--prompt` is disabled while the Cursor agent protocol remains
+unqualified. The installed host's documented `--endpoint` routes to
+`https://api2.cursor.sh` by default. Its shipped `agent.v1.AgentService` supports
+Run, RunSSE and RunPoll. AgentRunRequest includes `can_create_cloud_subagents`;
+the protocol includes web fetch/search and other action variants whose execution
+boundary still needs verification. A
+fixed-destination generic proxy would not demonstrate complete mediation of
+those actions. The resolving work requires designated authentication, a bounded
+operator relay with verified streaming behavior, and real-host evidence that
+unsupported hosted actions cannot escape the protected boundary. No synthetic
+provider or direct API call is being counted as that evidence.
+
+## Parent HTTP boundary repair
+
+The earlier default-deny probe still placed its scoped kernel credential and
+journal inside the guest. The current launcher removes both: the parent starts
+the bundled HTTP gateway, and Cursor receives only an ephemeral route token.
+The SBPL permits only that parent port, not the kernel. Journal access is no
+longer allowed. The actual pinned CLI successfully approved the HTTP MCP server
+and discovered all four configured tools. No protected resource operation or
+authenticated model request was performed by this discovery test.
+
+The component suite passes 32 cases without skips, including actual macOS
+process/descendant probes with independent positive/negative TCP observations.
+Build and typecheck pass. The former kernel and local-journal permissions in
+earlier sections are historical and do not describe this candidate. The
+previous boundary review is preserved for its exact source identities.
+
+Upstream HTTP URL, headers and environment interpolation were rechecked against
+[official Cursor MCP documentation](https://cursor.com/docs/mcp). This contract
+does not establish the safety of AgentService hosted actions. Protected prompt
+mode still refuses before launch, and I01-I08 acceptance remains unresolved.

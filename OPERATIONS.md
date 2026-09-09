@@ -31,25 +31,11 @@ and OS/resource isolation, then test the full action inventory.
 
 ## Real CLI probe
 
-The pinned official CLI archive and SHA256 are in the acceptance record. Extract it
-in a disposable directory without running its home-directory installer. Set
-`CURSOR_CONFIG_DIR` to an empty isolated directory. Supply designated authentication
-with the supported `CURSOR_API_KEY` environment variable or `agent login` in that
-profile; do not copy credentials from normal profiles. Do not include the key in
-commands, logs, commits, or evidence bundles.
-
-```sh
-CURSOR_CONFIG_DIR=/absolute/disposable/profile agent status
-CURSOR_CONFIG_DIR=/absolute/disposable/profile agent --print --trust \
-  --workspace /absolute/disposable/workspace --sandbox enabled \
-  --output-format json \
-  'Create useful-work.txt with the text chio cursor useful work, then read it.'
-```
-
-The current retained probe stopped at authentication. No real allowed/denied tool
-case is marked passed. After credentials are available, capture each host tool
-request and observe effects independently, including negative-control observers.
-Do not treat `--sandbox enabled` alone as proof of the required resource boundary.
+Use the restricted launcher below. `CURSOR_CONFIG_DIR` by itself does not isolate
+user MCP discovery: the pinned host also reads the normal home. The earlier
+useful-work attempt stopped at authentication and is historical evidence, not
+an installation procedure for protected work. No real model allowed/denied case
+is marked passed. Do not copy credentials from normal profiles.
 
 ## Upgrade and recovery
 
@@ -77,16 +63,21 @@ that boundary. No removal command deletes the normal home-directory profile.
 
 ## Restricted macOS CLI candidate
 
-The candidate artifact includes `bin/chio-cursor-protected.mjs` and the bundled
-`dist/gateway.mjs`. This launcher is the proposed protected CLI route. It exposes
-only the gateway's four filesystem tools: read, write, edit, and list. Shell,
+The candidate artifact includes `bin/chio-cursor-protected.mjs`, its boundary
+module and runtime hash lock, and the bundled `dist/gateway-http.mjs`. Its current
+executable mode is kernel tool discovery. It exposes only the gateway's four
+filesystem tools: read, write, edit, and list. Shell,
 native filesystem/context, native web tools, and delegation are denied. GUI,
 Tab, cloud, persist, resume, extra plugins, and arbitrary MCP definitions are not
 exposed by the launcher. Authenticated verification of those denials is still open.
 
 Use the pinned Cursor CLI extracted outside the normal home, Node 22+ installed
-outside the normal home, and the operator-created private gateway JSON for the
-qualified kernel instance. The gateway capability must be scoped to the intended
+outside the normal home, and an operator-created private gateway JSON containing
+`sessionCredential` metadata from the kernel's session-credential exchange.
+Original bootstrap/admin bearer configurations are rejected. This requires the
+compatible shared bridge and kernel that enforce scoped session credentials and
+durable owner uncertainty fences; the public CLI 0.1.0 is insufficient. The
+gateway capability must be scoped to the intended
 principal, session, tools, and resources. Its executor must own the resource; never
 mount its Docker volume or expose the Docker socket inside the agent environment.
 
@@ -95,35 +86,82 @@ node bin/chio-cursor-protected.mjs \
   --agent /absolute/extracted/cursor-agent \
   --gateway-config /absolute/private/cursor-gateway.json \
   --probe
-
-node bin/chio-cursor-protected.mjs \
-  --agent /absolute/extracted/cursor-agent \
-  --gateway-config /absolute/private/cursor-gateway.json \
-  --prompt 'Use chio to write /workspace/cursor-useful.txt, then read it.'
 ```
 
 Each invocation creates a new private temporary state directory and prints its
-location. It does not change normal profiles. The macOS OS sandbox denies normal
-home reads/writes and outbound UNIX sockets, including the Docker socket. It also
-prevents writes to generated enforcement files. The CLI itself is configured with
+location. It does not change normal profiles. The macOS OS sandbox denies by
+default. It permits reads of the 443 hash-pinned Cursor archive files, exact Node
+runtime libraries, narrow immutable OS paths, its own generated control files
+and profile/data. The kernel credential and journal stay in the trusted parent
+process. It permits writes only in its own mutable state; generated enforcement
+files remain immutable. Its only TCP route is the ephemeral parent gateway. Hardlinks,
+operator/cross-host config reads, Data-volume aliases, unrelated network ports,
+and UNIX sockets are denied. The direct kernel TCP port is unreachable.
+The CLI itself is configured with
 native permission denials and only a single MCP server. `agent mcp enable chio`
 approves that exact server using the supported procedure; `--force` is never used.
 
 This OS boundary is necessary: the pinned CLI ignores `CURSOR_CONFIG_DIR` for
 user-level MCP discovery and otherwise reads `~/.cursor/mcp.json`. The launcher
-uses the file credential store and passes only the designated `CURSOR_API_KEY`
-authentication value, not other task credentials. It preserves gateway journals
+uses the file credential store and passes no model, operator, or normal-profile
+credentials to the host. The guest receives only an ephemeral parent-gateway
+token, which cannot initialize new kernel authority or access administrative
+routes. It preserves gateway journals
 and temporary state for inspection. Logs must not include the private gateway
 JSON or credentials.
 
-The real CLI discovers all four tools using this mode. The real useful-work prompt
-currently stops at authentication. Independent OS probes reject a normal-home
-marker read and direct Docker socket access; those are boundary component checks,
-not authenticated Cursor I03 results. Keep the source/artifact hash, state path,
-raw host output, and independent observer output for each attempt.
+The earlier OS profile was superseded after it permitted reading bootstrap
+bearers from `/tmp`. The current default-deny profile also completed real Cursor
+MCP approval and discovery of all four tools using a delegated session config.
+That discovery used the aggregate kernel candidate before its ACK marker and
+must be repeated with the final artifact set.
+The current component test executes actual sandboxed processes: scoped config
+read and private state write succeed; operator reads, aliases, symlink escapes,
+control writes, hardlinks, and an unapproved executable fail with `EPERM`.
+Independent network observers see the allowed port once and the unrelated port
+zero times. These checks are not authenticated Cursor I03 acceptance.
+An additional read-only probe under the exact retained real-discovery profile
+reads its own scoped configuration but receives `EPERM` for the prior operator
+preparation file, its Data-volume alias, and another host's configuration.
+
+`--prompt` deliberately refuses before host startup. Cursor's supported
+`--endpoint` option can route its agent protocol through an operator service, but
+its `agent.v1.AgentService/Run` route is bidirectional and includes cloud-agent
+and web-action fields. Forwarding that route unchanged would give an untrusted
+process a remote action path. A bounded relay must preserve real authenticated
+host behavior and establish prevention for hosted effects before protected model
+execution is enabled. No such authenticated contract has yet been qualified.
+Designated Cursor authentication is also still missing. This candidate therefore
+cannot satisfy useful-work acceptance yet and must not be published as accepted.
+
+The launcher checks the exact CLI archive using `bin/cursor-runtime-lock.json`.
+An upgrade with changed runtime bytes requires an intentional lock update and
+host/process requalification. It does not grant an entire installation directory
+read access merely because a new file appeared there. Use a dedicated private
+journal directory containing only gateway records; do not put operator configs
+inside it or inside a writable profile.
 
 An interrupted launch is not retried. For gateway unknown outcomes, inspect its
-journal and the actual resource before issuing a new request. Session restart and
+journal, the kernel's durable owner fence, and the actual resource before issuing
+a new request. Deleting client state does not reconcile the kernel. Session restart and
 resume semantics still require acceptance testing. Removal consists of stopping
 the isolated host, revoking its capability, preserving required evidence/journals,
 and then removing only that invocation's printed disposable directory when safe.
+
+### Parent-owned HTTP discovery candidate
+
+The current discovery launcher uses Cursor's documented HTTP MCP `url` and
+`headers` configuration with environment interpolation. See
+[Cursor MCP documentation](https://cursor.com/docs/mcp). The guest never starts
+or reads the kernel bridge configuration and cannot reach the kernel port or
+read/write the operation journal. Parent exit closes the gateway route.
+The launcher preserves the private journal and uses bounded child shutdown.
+
+Build with `npm ci`, `npm run build`, `npm test`, and `npm run pack:release --
+/absolute/output`. Install the resulting archive with `npm install --offline
+--ignore-scripts /absolute/output/chio-cursor-0.3.0.tgz` in a new directory.
+The archive bundles its runtime dependencies. The CLI host must separately be
+installed from the pinned public archive described in the acceptance record.
+Run `bin/chio-cursor-protected.mjs --probe` with a new operator-prepared session
+as shown above. This validates discovery only; it does not enable protected
+model execution or establish any full acceptance gate.

@@ -34,6 +34,12 @@ if (watch) {
     logLevel: "info",
   });
   await build({
+    entryPoints: [path.join(path.dirname(require.resolve("@chio/bridge/package.json")), "dist/gateway-http.js")],
+    bundle: true, outfile: "dist/gateway-http.mjs", platform: "node", target: "node22", format: "esm",
+    banner: { js: "import { createRequire } from 'node:module'; const require = createRequire(import.meta.url);" },
+    logLevel: "info",
+  });
+  await build({
     entryPoints: ["pretooluse", "composer", "shell", "tool"].map(name => `hooks-src/${name}.mjs`),
     bundle: true,
     outdir: "dist/hooks",

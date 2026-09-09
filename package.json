@@ -167,7 +167,7 @@
     "pack:release": "node scripts/pack-release.mjs"
   },
   "dependencies": {
-    "@chio/bridge": "file:vendor/chio-bridge-0.3.0-68b5c4663844.tgz"
+    "@chio/bridge": "file:vendor/chio-bridge-0.3.0-7d9e34f7408a.tgz"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",

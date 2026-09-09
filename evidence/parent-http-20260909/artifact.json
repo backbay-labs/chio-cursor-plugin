@@ -1,0 +1,11 @@
+{
+  "artifact": "/tmp/chio-cursor-parent-http-package-r2-20260909/chio-cursor-0.3.0.tgz",
+  "sha256": "d4b9f71aa73300396d28957e6e75111682274ee617056e23ace88527ae38cc4f",
+  "kernelSha256": "33dd1dea21a4ca5ecddeab4f30f6b06b0b90c513f0987aef552b0633d9da1e25",
+  "bridgeSha256": "7d9e34f7408a316e35125982a23faaecfd2f31f4da6b50ca8eab287c2c918f67",
+  "host": "2026.09.08-6caf4ff",
+  "hostArchiveSha256": "9c456cc432adc476202a2b09c21a10944fdf484b3ca55dcbf939bbc8ce30dcbe",
+  "tests": 32,
+  "skips": 0,
+  "claim": "packaged discovery and actual retained OS profile only; no authenticated host effect acceptance"
+}

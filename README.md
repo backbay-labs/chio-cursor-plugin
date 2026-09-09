@@ -2,8 +2,9 @@
 
 This integration is an **unaccepted candidate** for the six-host Chio program.
 The current branch repairs pre-action policy checks and installation packaging.
-A restricted macOS CLI launcher adds an OS boundary and a kernel execution
-gateway, but authenticated end-to-end acceptance remains unresolved. Do not use
+A restricted macOS CLI launcher adds a default-deny process boundary and kernel
+tool discovery. Protected model execution is disabled pending designated
+authentication and qualification of a bounded Cursor AgentService relay. Do not use
 its status indicator or hook responses as proof that protected effects are mediated.
 
 The VS Code extension provides commands and receipt inspection. Cursor executes
@@ -18,8 +19,9 @@ responses. `failClosed: true` is set on every definition. The CLI operation is a
 policy evaluation: host-owned execution after an allow response remains a separate
 step. It does not establish capability, budget, approval, or result enforcement.
 
-Use the restricted launcher in [OPERATIONS.md](OPERATIONS.md) for the proposed
-protected CLI mode. The hooks described above remain policy-check diagnostics.
+Use the restricted launcher in [OPERATIONS.md](OPERATIONS.md) for the current
+kernel-discovery probe. It requires a scoped kernel session credential; bootstrap
+bearers are rejected. The hooks described above remain policy-check diagnostics.
 
 Read [the acceptance record](docs/acceptance-20260909.md) for exact versions,
 coverage, evidence, failures, and the remaining delivery gates. Installation,
@@ -65,3 +67,9 @@ See the authoritative [Cursor hooks contract](https://cursor.com/docs/hooks) and
 [CLI configuration](https://cursor.com/docs/cli/reference/configuration). Real host
 hook invocation and effect prevention remain unresolved without an authenticated
 isolated Cursor profile and the required resource isolation.
+
+The current probe keeps the Chio bridge, kernel credential and durable journal
+in its parent process. Cursor sees a single HTTP MCP endpoint with an ephemeral
+token. Its actual CLI discovers the four filesystem tools in this mode.
+Authenticated model work remains disabled pending the isolated credentials and
+bounded hosted-protocol qualification described in OPERATIONS.md.
