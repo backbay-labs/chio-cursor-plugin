@@ -1,0 +1,12 @@
+{
+  "extension_discovery_empty": true,
+  "only_chio_hook_entries_removed": true,
+  "unrelated_hook_preserved": true,
+  "generated_hooks_removed": [
+    "pretooluse",
+    "composer",
+    "shell",
+    "tool"
+  ],
+  "policy_preserved": true
+}

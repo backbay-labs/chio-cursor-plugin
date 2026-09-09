@@ -1,0 +1,2 @@
+77f1fbb356eb982b14c848221de8c3e5966d2f9e0ec03e8ca6b339b76620060a  /tmp/chio-staged-packaging/chio-cursor-0.3.0.vsix
+1a39edb2d07c8c45cd1a8c7730862dec5191ba55078bccdaec2248897c8de17e  /tmp/chio-staged-packaging/chio-cursor-0.3.0.tgz

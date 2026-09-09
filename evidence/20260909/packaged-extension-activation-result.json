@@ -1,0 +1,41 @@
+{
+  "extension": "chio.chio-cursor",
+  "version": "0.3.0",
+  "isActive": true,
+  "commands": [
+    "chio.sidebar.open",
+    "chio.sidebar.focus",
+    "chio.sidebar.resetViewLocation",
+    "chio.sidebar.toggleVisibility",
+    "chio.sidebar.removeView",
+    "chio.init",
+    "chio.bond",
+    "chio.attachMcp",
+    "chio.guards",
+    "chio.receipts",
+    "chio.attenuatePr",
+    "chio.prEvidence",
+    "chio.export",
+    "chio.revoke",
+    "chio.openPolicy"
+  ],
+  "unrelatedHookPreserved": true,
+  "copied": [
+    {
+      "name": "pretooluse",
+      "bytes": 367916
+    },
+    {
+      "name": "composer",
+      "bytes": 367939
+    },
+    {
+      "name": "shell",
+      "bytes": 367921
+    },
+    {
+      "name": "tool",
+      "bytes": 367918
+    }
+  ]
+}
