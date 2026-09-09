@@ -1,8 +1,8 @@
 {
   "name": "chio-cursor",
   "displayName": "Chio for Cursor",
-  "description": "Bond Composer, the Agent tab, inline AI, and every mounted MCP server to a Chio policy. Every patch, shell call, and PR lands with a signed receipt.",
-  "version": "0.2.0",
+  "description": "Candidate Cursor pre-action policy checks and Chio receipt inspection. Full protected-mode acceptance remains unresolved.",
+  "version": "0.3.0",
   "publisher": "chio",
   "license": "Apache-2.0",
   "repository": {
@@ -11,10 +11,20 @@
   },
   "engines": {
     "vscode": "^1.90.0",
-    "node": ">=20"
+    "node": ">=22"
   },
-  "categories": ["Other", "Linters", "AI"],
-  "keywords": ["chio", "cursor", "mcp", "receipts", "policy"],
+  "categories": [
+    "Other",
+    "Linters",
+    "AI"
+  ],
+  "keywords": [
+    "chio",
+    "cursor",
+    "mcp",
+    "receipts",
+    "policy"
+  ],
   "main": "./dist/extension.js",
   "activationEvents": [
     "onStartupFinished",
@@ -24,25 +34,73 @@
   ],
   "contributes": {
     "commands": [
-      { "command": "chio.init",          "title": "Chio: Initialize workspace (/chio-init)", "category": "Chio" },
-      { "command": "chio.bond",          "title": "Chio: Bond workspace",              "category": "Chio" },
-      { "command": "chio.attachMcp",     "title": "Chio: Attach MCP server",           "category": "Chio" },
-      { "command": "chio.guards",        "title": "Chio: Show guard pipeline",         "category": "Chio" },
-      { "command": "chio.receipts",      "title": "Chio: Stream receipts",             "category": "Chio" },
-      { "command": "chio.attenuatePr",   "title": "Chio: Attenuate scope for PR",      "category": "Chio" },
-      { "command": "chio.prEvidence",    "title": "Chio: Export PR evidence bundle",   "category": "Chio" },
-      { "command": "chio.export",        "title": "Chio: Export evidence bundle",      "category": "Chio" },
-      { "command": "chio.revoke",        "title": "Chio: Revoke bond",                 "category": "Chio" },
-      { "command": "chio.openPolicy",    "title": "Chio: Open policy.yaml",            "category": "Chio" }
+      {
+        "command": "chio.init",
+        "title": "Chio: Initialize workspace (/chio-init)",
+        "category": "Chio"
+      },
+      {
+        "command": "chio.bond",
+        "title": "Chio: Bond workspace",
+        "category": "Chio"
+      },
+      {
+        "command": "chio.attachMcp",
+        "title": "Chio: Attach MCP server",
+        "category": "Chio"
+      },
+      {
+        "command": "chio.guards",
+        "title": "Chio: Show guard pipeline",
+        "category": "Chio"
+      },
+      {
+        "command": "chio.receipts",
+        "title": "Chio: Stream receipts",
+        "category": "Chio"
+      },
+      {
+        "command": "chio.attenuatePr",
+        "title": "Chio: Attenuate scope for PR",
+        "category": "Chio"
+      },
+      {
+        "command": "chio.prEvidence",
+        "title": "Chio: Export PR evidence bundle",
+        "category": "Chio"
+      },
+      {
+        "command": "chio.export",
+        "title": "Chio: Export evidence bundle",
+        "category": "Chio"
+      },
+      {
+        "command": "chio.revoke",
+        "title": "Chio: Revoke bond",
+        "category": "Chio"
+      },
+      {
+        "command": "chio.openPolicy",
+        "title": "Chio: Open policy.yaml",
+        "category": "Chio"
+      }
     ],
     "views": {
       "chio": [
-        { "id": "chio.sidebar", "name": "Chio", "type": "webview" }
+        {
+          "id": "chio.sidebar",
+          "name": "Chio",
+          "type": "webview"
+        }
       ]
     },
     "viewsContainers": {
       "activitybar": [
-        { "id": "chio", "title": "Chio", "icon": "$(shield)" }
+        {
+          "id": "chio",
+          "title": "Chio",
+          "icon": "$(shield)"
+        }
       ]
     },
     "configuration": {
@@ -55,20 +113,24 @@
         },
         "chio.bond": {
           "type": "string",
-          "enum": ["on-workspace-open", "manual", "off"],
+          "enum": [
+            "on-workspace-open",
+            "manual",
+            "off"
+          ],
           "default": "on-workspace-open",
           "description": "When to bond the workspace to Chio."
         },
-        "chio.composer.require": {
-          "type": "string",
-          "enum": ["allow", "preview", "block"],
-          "default": "preview",
-          "description": "Default Composer patch verdict when the daemon is unreachable. 'preview' fails closed (deny with reason); 'allow' fails open; 'block' denies every patch."
-        },
         "chio.agent.tools": {
           "type": "array",
-          "items": { "type": "string" },
-          "default": ["fs", "shell", "fetch"],
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            "fs",
+            "shell",
+            "fetch"
+          ],
           "description": "Tool names the Agent tab is permitted to request."
         },
         "chio.receipts.sink": {
@@ -99,18 +161,31 @@
     "watch": "node esbuild.config.mjs --watch",
     "typecheck": "tsc --noEmit",
     "test": "node --experimental-strip-types --test ./test/*.test.ts ./test/*.test.mjs",
-    "package": "vsce package",
+    "package": "node scripts/pack-vsix.mjs",
     "vscode:prepublish": "npm run build",
-    "prepack": "node ./scripts/prep-publish.mjs && npm run build",
-    "postpack": "node ./scripts/restore-publish.mjs"
+    "prepack": "node -e \"throw new Error('Use npm run pack:release for a self-contained staged artifact')\"",
+    "pack:release": "node scripts/pack-release.mjs"
   },
   "dependencies": {
-    "@chio/bridge": "file:../chio-bridge"
+    "@chio/bridge": "file:vendor/chio-bridge-0.3.0-68b5c4663844.tgz"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
     "@types/vscode": "^1.90.0",
     "esbuild": "^0.24.0",
-    "typescript": "~5.7.0"
+    "typescript": "~5.7.0",
+    "@vscode/vsce": "3.9.2"
+  },
+  "files": [
+    "dist",
+    "templates",
+    "README.md",
+    "OPERATIONS.md",
+    "LICENSE",
+    "vendor",
+    "bin"
+  ],
+  "bin": {
+    "chio-cursor-protected": "./bin/chio-cursor-protected.mjs"
   }
 }
