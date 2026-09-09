@@ -1,0 +1,8 @@
+Chio Cursor candidate state: /private/var/folders/jy/95wms_mn265f0bpj_v6wc4zh0000gn/T/chio-cursor-protected-9rihof
+----- Native stack trace -----
+
+ 1: 0x100f960e8 node::(anonymous namespace)::DefaultAbortHandler(char const*, char const*) [/private/tmp/chio-cursor-20260909/host/node]
+ 2: 0x103461dd0 node::InitializeOncePerProcessInternal(std::__1::vector<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>>> const&, node::ProcessInitializationFlags::Flags) (.cold.1) [/private/tmp/chio-cursor-20260909/host/node]
+ 3: 0x100f51cb4 node::InitializeOncePerProcessInternal(std::__1::vector<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>>> const&, node::ProcessInitializationFlags::Flags) [/private/tmp/chio-cursor-20260909/host/node]
+ 4: 0x100f52bac node::Start(int, char**) [/private/tmp/chio-cursor-20260909/host/node]
+ 5: 0x18893bda4 start [/usr/lib/dyld]

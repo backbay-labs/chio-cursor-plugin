@@ -1,0 +1,14 @@
+2026-09-09T15:22:40.188375Z  WARN chio_kernel::kernel: guard denied request_id=check-001 reason=guard denied the request: guard "guard-pipeline" error (fail-closed): guard denied the request: guard "forbidden-path" denied the request
+{
+  "params": {
+    "content": "forbidden",
+    "path": "src/.env"
+  },
+  "policy_hash": "1beffc3cb152d7f7f2a026170aca3453bd7cbba375007edf7012309e37b8f177",
+  "policy_source_hash": "2035cbcaae2c9771c7b2430712eaf59f7c3fc0f5e3fea0817df72562db4ad8c7",
+  "reason": "guard denied the request: guard \"guard-pipeline\" error (fail-closed): guard denied the request: guard \"forbidden-path\" denied the request",
+  "receipt_id": "rcpt-01a086c3-96bc-7b12-a2cd-e4dce7cfecfd",
+  "server": "*",
+  "tool": "Write",
+  "verdict": "DENY"
+}

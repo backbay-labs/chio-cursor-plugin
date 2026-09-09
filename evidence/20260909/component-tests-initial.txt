@@ -1,0 +1,23 @@
+(node:8920) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/connor/Medica/backbay/standalone/chio-cursor-plugin/.worktrees/required-agent-integrations-20260909/test/hooks-config.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Users/connor/Medica/backbay/standalone/chio-cursor-plugin/.worktrees/required-agent-integrations-20260909/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ upgrades Chio hooks while preserving other providers and configuration (1.581791ms)
+✔ refuses unsupported or malformed existing configuration (0.24625ms)
+✔ preToolUse: no local allow when operator policy or kernel binary is missing (433.794875ms)
+✔ beforeReadFile: no local allow when operator policy or kernel binary is missing (227.681584ms)
+✔ beforeTabFileRead: no local allow when operator policy or kernel binary is missing (223.014333ms)
+✔ beforeShellExecution: no local allow when operator policy or kernel binary is missing (229.333208ms)
+✔ beforeMCPExecution: no local allow when operator policy or kernel binary is missing (234.831708ms)
+✔ missing tool, empty stdin and malformed JSON fail closed (291.903ms)
+✔ post-write notifications are rejected instead of masquerading as prevention (115.006208ms)
+✔ tool and caller payload is preserved, MCP uses authoritative server-name field (1.148209ms)
+✔ template covers pre-action tool/read/Tab/shell/MCP events without matchers (0.873125ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1878.69625

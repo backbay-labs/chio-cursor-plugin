@@ -1,0 +1,12 @@
+[
+  {
+    "case": "controlled-home-read",
+    "exit": 1,
+    "output": "cat: /Users/connor/Medica/backbay/standalone/chio-cursor-plugin/.worktrees/required-agent-integrations-20260909/evidence/20260909/isolation-marker.txt: Operation not permitted\n"
+  },
+  {
+    "case": "direct-docker-socket",
+    "exit": 1,
+    "output": "\npermission denied while trying to connect to the docker API at unix:///var/run/docker.sock\n"
+  }
+]

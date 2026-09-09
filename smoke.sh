@@ -1,4 +1,9 @@
 #!/usr/bin/env bash
+# Historical direct-hook diagnostics. This does not run a real Cursor agent.
+if [[ "${CHIO_LEGACY_HOOK_SMOKE:-}" != "1" ]]; then
+  echo "Legacy direct-hook smoke is not host acceptance. See OPERATIONS.md." >&2
+  exit 2
+fi
 # smoke.sh — live smoke for chio-cursor-plugin against real chio daemon.
 #
 # Owns trust=8946, mcp=8937. Idempotent. Exits 0 on full pass.

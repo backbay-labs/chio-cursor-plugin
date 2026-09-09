@@ -1,95 +1,67 @@
 # Chio for Cursor
 
-Your IDE for the internet of agents. Bond Composer, the Agent tab, inline AI, and every mounted MCP server to a Chio policy you own — enforcement runs as a native Cursor hook, not as a VS Code edit listener.
+This integration is an **unaccepted candidate** for the six-host Chio program.
+The current branch repairs pre-action policy checks and installation packaging.
+A restricted macOS CLI launcher adds an OS boundary and a kernel execution
+gateway, but authenticated end-to-end acceptance remains unresolved. Do not use
+its status indicator or hook responses as proof that protected effects are mediated.
 
-## Architecture
+The VS Code extension provides commands and receipt inspection. Cursor executes
+separate hook processes before native tools, reads, shell commands, and MCP calls.
+Native file writes use `preToolUse`; `afterFileEdit` cannot prevent a write that
+already happened. Hooks use the CLI evaluation path only, because older bridge
+versions executed MCP tools from their daemon `check()` path.
 
-Cursor exposes two independent plug-in surfaces:
+Every hook requires an operator-selected absolute `CHIO_BIN` and `CHIO_POLICY`.
+Missing or invalid inputs, unavailable CLI, and non-allow decisions produce deny
+responses. `failClosed: true` is set on every definition. The CLI operation is a
+policy evaluation: host-owned execution after an allow response remains a separate
+step. It does not establish capability, budget, approval, or result enforcement.
 
-1. **VS Code extension surface** — status bar, sidebar, command palette. This package's `src/extension.ts`.
-2. **Cursor hooks surface** — stdin/stdout scripts at `.cursor/hooks.json` that Cursor invokes for every Composer edit, shell command, and MCP tool call. This is the real enforcement path; it fires even when the VS Code event model does not (Composer's multi-file apply bypasses `onWillSaveTextDocument`).
+Use the restricted launcher in [OPERATIONS.md](OPERATIONS.md) for the proposed
+protected CLI mode. The hooks described above remain policy-check diagnostics.
 
-Chio uses both:
+Read [the acceptance record](docs/acceptance-20260909.md) for exact versions,
+coverage, evidence, failures, and the remaining delivery gates. Installation,
+recovery, and removal instructions are in [OPERATIONS.md](OPERATIONS.md).
 
-- The **extension** gives you observability and ergonomics — bond indicator, sidebar, palette commands, `/chio-init` scaffolding.
-- The **hook scripts** at `.chio/hooks/{composer,shell,tool}.mjs` do the real enforcement. They read stdin, call `@chio/bridge` into chio, and emit `{permission: "deny"}` with exit 2 to block.
+## Build and component checks
 
-Docs: <https://cursor.com/docs/agent/hooks>
+Use Node 22 or newer. Dependency artifacts and a lockfile must accompany the
+candidate; a successful build must not require a private sibling checkout.
 
-## Install
-
-```
-# Cursor → Extensions → search: chio
-```
-
-Then run `Chio: Initialize workspace` (or `/chio-init`) once per repo. That writes:
-
-```
-.chio/policy.yaml           # HushSpec 0.1.0; parsed + linted by @chio/bridge
-.chio/hooks/composer.mjs    # afterFileEdit + beforeReadFile
-.chio/hooks/shell.mjs       # beforeShellExecution
-.chio/hooks/tool.mjs        # beforeMCPExecution
-.chio/hooks/_lib.mjs        # shared stdio plumbing
-.cursor/hooks.json          # registers the scripts
-.cursor/settings.json       # chio.* defaults
-```
-
-## What each hook enforces
-
-| Cursor event           | Script         | Enforcement                                                  |
-|------------------------|----------------|--------------------------------------------------------------|
-| `afterFileEdit`        | composer.mjs   | `forbidden_paths`, `path_allowlist.write`, `patch_integrity`, real secret scan |
-| `beforeReadFile`       | composer.mjs   | secret scan on file contents before they enter context        |
-| `beforeShellExecution` | shell.mjs      | `shell_commands.allow` / `shell_commands.deny`                |
-| `beforeMCPExecution`   | tool.mjs       | `ChioBridge.check` against chio's 7-guard pipeline            |
-
-All hooks fail **closed**: any crash, timeout, or policy-load failure denies.
-
-## `.chio/` conventions
-
-Policy lives in `.chio/` in your repo, committed and team-shared:
-
-- `.chio/policy.yaml` — `path_allowlist`, `forbidden_paths`, `shell_commands`, `patch_integrity`, `secret_patterns`, `egress`, `tool_access`. Only first-class HushSpec 0.1.0 rule keys are accepted; `extensions.chio` carries chio-only passthrough config.
-- `.chio/hooks/` — the versioned hook scripts (above).
-- `.chio/branches/<branch>.yaml` — per-PR attenuation deltas (signed on issue by chio).
-- `.chio/evidence/pr-<branch>.bundle.json` — signed PR evidence bundles; every receipt is verified locally before the file is written.
-
-CI runs the same guard pipeline via `chio check` on PRs. Every PR Cursor creates has a signed evidence bundle attached via `gh pr edit` (or, when `gh` is unavailable, a markdown companion with `chio evidence verify` instructions).
-
-## Palette / chat commands
-
-- `/chio-init` — scaffold `.chio/` + `.cursor/hooks.json`
-- `/chio-bond` — bond the workspace (mints an AgentPassport, attenuates the capability)
-- `/chio-attach-mcp` — discover MCP servers on the mesh, attenuate them, register in `.cursor/mcp.json`
-- `/chio-guards` — render the active rule pipeline (reads the live policy, not a hard-coded list)
-- `/chio-receipts` — stream receipts from the chio trust plane
-- `/chio-attenuate-pr` — tighten the current capability for this branch (`path:`, `tool:`, `budget:`)
-- `/chio-pr-evidence` — build + verify + attach the PR evidence bundle
-- `/chio-export` — ad-hoc evidence export
-- `/chio-revoke` — revoke the bond through the lifecycle registry
-
-## Runtime
-
-Talks to:
-
-- `http://127.0.0.1:8940` — chio trust-control plane (`chio trust serve`)
-- `http://127.0.0.1:8931` — chio MCP edge (`chio mcp serve-http`)
-
-Override with `chio.trust.url` and `chio.mcp.url`. Auth via `CHIO_TOKEN` env var (the same token `chio trust serve` was started with).
-
-## Developing
-
-```
-npm install
-npm run build     # esbuild → dist/extension.js
-npm test          # secrets + patch + hooks E2E
+```sh
+npm ci
 npm run typecheck
+npm test
+npm run build
+npm run package
 ```
 
-See `VERIFY.md` for build/test output.
+`dist/hooks/*.mjs` are self-contained bundles copied by `Chio: Initialize workspace`.
+They do not load packages from the agent workspace. Initialization preserves other
+providers' hooks and backs up the previous configuration before writing an upgrade.
+Existing malformed hook configuration is rejected without replacement.
 
-## CI
+Direct hook tests are component tests. The old `smoke.sh` directly invokes hooks
+and is retained only as historical diagnostic material; it does not run a Cursor
+agent acceptance session.
 
-[![ci](https://github.com/owner/chio-cursor-plugin/actions/workflows/ci.yml/badge.svg)](https://github.com/owner/chio-cursor-plugin/actions/workflows/ci.yml)
+## Candidate hook coverage
 
-Workflow: [`.github/workflows/ci.yml`](.github/workflows/ci.yml). Runs lint/typecheck (non-blocking in Wave 5.1), unit tests, and a chio-backed smoke pass. Swap `owner/...` once the GitHub org is live.
+| Event | Script | Action |
+| --- | --- | --- |
+| `preToolUse` | `pretooluse.mjs` | Evaluate the full tool request before execution |
+| `beforeReadFile` | `composer.mjs` | Evaluate Agent context reads |
+| `beforeTabFileRead` | `composer.mjs` | Evaluate Tab context reads |
+| `beforeShellExecution` | `shell.mjs` | Evaluate complete shell command and working directory |
+| `beforeMCPExecution` | `tool.mjs` | Evaluate tool input and `mcp_server_name` |
+
+The full host payload is retained in the request as `cursor_request` for evaluation.
+It is host-supplied metadata, not authenticated identity. The selected CLI's mapping
+of tool names and policy fields must be qualified for each supported workflow.
+
+See the authoritative [Cursor hooks contract](https://cursor.com/docs/hooks) and
+[CLI configuration](https://cursor.com/docs/cli/reference/configuration). Real host
+hook invocation and effect prevention remain unresolved without an authenticated
+isolated Cursor profile and the required resource isolation.

@@ -1,0 +1,1 @@
+cat: /Users/connor/Medica/backbay/standalone/chio-cursor-plugin/.worktrees/required-agent-integrations-20260909/evidence/20260909/isolation-marker.txt: Operation not permitted
