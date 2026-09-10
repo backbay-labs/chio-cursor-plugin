@@ -1,0 +1,51 @@
+{
+  "kind": "offline installation with empty cache and blocked entry; no authenticated Run",
+  "sourceCommit": "cb39b30d45c9743bd373c2e794e3925bf670291b",
+  "artifact": "/tmp/chio-cursor-agent-admission-candidate-20260909/chio-cursor-0.3.0.tgz",
+  "sha256": "3bf370db52da7e5b6811ede6e74c5b3d197b96666b80e78c186d441feb4cde4a",
+  "fixture": "/var/folders/jy/95wms_mn265f0bpj_v6wc4zh0000gn/T/chio-cursor-final-admission-tgz-aw7jz7ci",
+  "cacheInitiallyEmpty": true,
+  "normalProfileUsed": false,
+  "authenticatedRunPerformed": false,
+  "commands": [
+    {
+      "argv": [
+        "npm",
+        "install",
+        "--offline",
+        "--ignore-scripts",
+        "--no-audit",
+        "--no-fund",
+        "/tmp/chio-cursor-agent-admission-candidate-20260909/chio-cursor-0.3.0.tgz"
+      ],
+      "exitCode": 0,
+      "stdout": "\nadded 1 package in 2s\n",
+      "stderr": "npm notice\nnpm notice New minor version of npm available! 11.8.0 -> 11.19.1\nnpm notice Changelog: https://github.com/npm/cli/releases/tag/v11.19.1\nnpm notice To update run: npm install -g npm@11.19.1\nnpm notice\n"
+    },
+    {
+      "argv": [
+        "node",
+        "/var/folders/jy/95wms_mn265f0bpj_v6wc4zh0000gn/T/chio-cursor-final-admission-tgz-aw7jz7ci/consumer/node_modules/chio-cursor/bin/chio-cursor-protected.mjs",
+        "--help"
+      ],
+      "exitCode": 0,
+      "stdout": "Usage: node bin/chio-cursor-protected.mjs --agent /absolute/cursor-agent --gateway-config /absolute/private.json [--probe | --prompt \"task\"]\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "node",
+        "/var/folders/jy/95wms_mn265f0bpj_v6wc4zh0000gn/T/chio-cursor-final-admission-tgz-aw7jz7ci/consumer/node_modules/chio-cursor/bin/chio-cursor-protected.mjs",
+        "--agent",
+        "/nonexistent-cursor-fixture/cursor-agent",
+        "--gateway-config",
+        "/nonexistent-cursor-fixture/operator.json",
+        "--prompt",
+        "fixture only"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "Chio Cursor launch failed: Cursor server-owned action prevention has no qualified capability-disallow contract; authenticated Run remains disabled\n"
+    }
+  ]
+}

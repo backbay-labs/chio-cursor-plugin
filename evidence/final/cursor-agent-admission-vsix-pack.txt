@@ -1,0 +1,60 @@
+
+> chio-cursor@0.3.0 package
+> node scripts/pack-vsix.mjs --out /tmp/chio-cursor-agent-admission-candidate-20260909/chio-cursor-0.3.0.vsix
+
+
+> chio-cursor@0.3.0 build
+> node esbuild.config.mjs
+
+
+  dist/extension.js      200.7kb
+  dist/extension.js.map  626.2kb
+
+⚡ Done in 38ms
+
+  dist/gateway.mjs  56.6kb
+
+⚡ Done in 6ms
+
+  dist/gateway-http.mjs  63.4kb
+
+⚡ Done in 6ms
+
+  dist/hooks/composer.mjs    393.5kb
+  dist/hooks/shell.mjs       393.5kb
+  dist/hooks/tool.mjs        393.5kb
+  dist/hooks/pretooluse.mjs  393.5kb
+
+⚡ Done in 21ms
+ INFO  Files included in the VSIX:
+chio-cursor-0.3.0.vsix
+├─ [Content_Types].xml 
+├─ extension.vsixmanifest 
+└─ extension/
+   ├─ LICENSE.txt [0.73 KB]
+   ├─ OPERATIONS.md [11.3 KB]
+   ├─ package.json [5.58 KB]
+   ├─ readme.md [3.86 KB]
+   ├─ bin/
+   │  ├─ chio-cursor-protected.mjs [8.54 KB]
+   │  ├─ cursor-agent-admission.mjs [9.45 KB]
+   │  ├─ cursor-protobuf.mjs [1.93 KB]
+   │  ├─ cursor-runtime-lock.json [52.81 KB]
+   │  └─ protected-boundary.mjs [8.54 KB]
+   ├─ dist/
+   │  ├─ extension.js [200.65 KB]
+   │  ├─ gateway-http.mjs [63.38 KB]
+   │  ├─ gateway.mjs [56.61 KB]
+   │  └─ hooks/ (4 files) [1.54 MB]
+   ├─ docs/
+   │  └─ acceptance-20260909.md [18.32 KB]
+   ├─ evidence/
+   │  └─ 20260909/ (26 files) [14.39 KB]
+   └─ templates/
+      ├─ .chio/ (1 file) [1.12 KB]
+      └─ .cursor/ (2 files) [0.82 KB]
+
+=> Run vsce ls --tree to see all included files.
+
+ DONE  Packaged: /tmp/chio-cursor-agent-admission-candidate-20260909/chio-cursor-0.3.0.vsix (48 files, 485.06 KB)
+{"artifact":"/tmp/chio-cursor-agent-admission-candidate-20260909/chio-cursor-0.3.0.vsix","sha256":"e2a8023475fea4ceb9464423e548a1aed0129872fe0d6d75f48bea32e98517f4","dependencies":"bundled JavaScript only"}
