@@ -1,0 +1,57 @@
+{
+  "sourceCommit": "16c213afec93d63aeea7112681084f4336f3766a",
+  "testedModuleSha256": "24ae2d108d14c5f4f959be3282f75b8bb4dcb89af6936324b300317775beeb11",
+  "hostedRunId": 34447190158,
+  "hostedJobId": 102774457676,
+  "archives": [
+    {
+      "label": "current-ci-tgz",
+      "path": "/tmp/chio-cursor-macos-boundary-20260910/source-package/chio-cursor-0.3.0.tgz",
+      "archiveSha256": "bfbc3a39ae273780b77563106a9dea1298b70375a2abcbf40ac0013665078364",
+      "member": "package/bin/protected-boundary.mjs",
+      "memberSha256": "24ae2d108d14c5f4f959be3282f75b8bb4dcb89af6936324b300317775beeb11",
+      "matchesTestedSourceBytes": true,
+      "suppliedChecksumMatches": true
+    },
+    {
+      "label": "current-ci-vsix",
+      "path": "/tmp/chio-cursor-macos-boundary-20260910/source-package/chio-cursor.vsix",
+      "archiveSha256": "54d1f8339fef5d5f3aa9e428aa84d2eb5e1833fc4aa865ce9557e53042140b07",
+      "member": "extension/bin/protected-boundary.mjs",
+      "memberSha256": "24ae2d108d14c5f4f959be3282f75b8bb4dcb89af6936324b300317775beeb11",
+      "matchesTestedSourceBytes": true,
+      "suppliedChecksumMatches": true
+    },
+    {
+      "label": "retained-candidate-tgz",
+      "path": "/tmp/chio-cursor-agent-admission-candidate-20260909/chio-cursor-0.3.0.tgz",
+      "archiveSha256": "3bf370db52da7e5b6811ede6e74c5b3d197b96666b80e78c186d441feb4cde4a",
+      "member": "package/bin/protected-boundary.mjs",
+      "memberSha256": "24ae2d108d14c5f4f959be3282f75b8bb4dcb89af6936324b300317775beeb11",
+      "matchesTestedSourceBytes": true,
+      "suppliedChecksumMatches": true
+    },
+    {
+      "label": "retained-candidate-vsix",
+      "path": "/tmp/chio-cursor-agent-admission-candidate-20260909/chio-cursor-0.3.0.vsix",
+      "archiveSha256": "e2a8023475fea4ceb9464423e548a1aed0129872fe0d6d75f48bea32e98517f4",
+      "member": "extension/bin/protected-boundary.mjs",
+      "memberSha256": "24ae2d108d14c5f4f959be3282f75b8bb4dcb89af6936324b300317775beeb11",
+      "matchesTestedSourceBytes": true,
+      "suppliedChecksumMatches": true
+    }
+  ],
+  "previousResultSourceComparison": {
+    "test/protected-boundary.test.mjs": {
+      "previousRecordedSource": "cb39b30d45c9743bd373c2e794e3925bf670291b",
+      "previousSha256": "0e089c86b396a17b4fe51d461072542bf28a9be2661dc4c9ef149f245f7ae4d6",
+      "matchesCurrentBytes": true
+    },
+    "bin/protected-boundary.mjs": {
+      "previousRecordedSource": "cb39b30d45c9743bd373c2e794e3925bf670291b",
+      "previousSha256": "24ae2d108d14c5f4f959be3282f75b8bb4dcb89af6936324b300317775beeb11",
+      "matchesCurrentBytes": true
+    }
+  },
+  "scope": "only the tested bin/protected-boundary.mjs bytes are bound to these archives; not acceptance of other package code or a Cursor host session"
+}
