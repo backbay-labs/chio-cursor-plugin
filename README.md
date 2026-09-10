@@ -1,79 +1,194 @@
-# Chio for Cursor
+<p align="center">
+  <picture>
+    <source media="(max-width: 600px)" srcset="docs/assets/readme-hero-mobile.png" />
+    <img src="docs/assets/readme-hero.png" alt="Chio for Cursor: workspace policy checks and receipt inspection" width="960" />
+  </picture>
+</p>
 
-This integration is an **unaccepted candidate** for the six-host Chio program.
-The current branch repairs pre-action policy checks and installation packaging.
-A restricted macOS CLI launcher adds a default-deny process boundary and kernel
-tool discovery. The designated isolated Cursor subscription is authenticated.
-Protected model execution remains disabled because prevention of unsupported
-server-owned messaging, agent management and PR mutations is unverified. A
-Cursor-enforced restriction and a qualified bounded AgentService relay are still
-required. Do not use its status indicator or hook responses as proof that
-protected effects are mediated.
+<p align="center">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-Apache--2.0-blue?style=flat-square" alt="License: Apache-2.0" /></a>
+  <img src="https://img.shields.io/badge/Node.js-22%2B-43853d?style=flat-square" alt="Node.js 22 or newer" />
+</p>
 
-The VS Code extension provides commands and receipt inspection. Cursor executes
-separate hook processes before native tools, reads, shell commands, and MCP calls.
-Native file writes use `preToolUse`; `afterFileEdit` cannot prevent a write that
-already happened. Hooks use the CLI evaluation path only, because older bridge
-versions executed MCP tools from their daemon `check()` path.
+<p align="center">
+  <strong>Put policy and receipts in your editor.</strong>
+</p>
 
-Every hook requires an operator-selected absolute `CHIO_BIN` and `CHIO_POLICY`.
-Missing or invalid inputs, unavailable CLI, and non-allow decisions produce deny
-responses. `failClosed: true` is set on every definition. The CLI operation is a
-policy evaluation: host-owned execution after an allow response remains a separate
-step. It does not establish capability, budget, approval, or result enforcement.
+<p align="center">
+  <a href="#install-from-source">Install</a>&nbsp;&nbsp;&middot;&nbsp;&nbsp;
+  <a href="#in-cursor">In Cursor</a>&nbsp;&nbsp;&middot;&nbsp;&nbsp;
+  <a href="#kernel-discovery">Kernel discovery</a>&nbsp;&nbsp;&middot;&nbsp;&nbsp;
+  <a href="#architecture">Architecture</a>&nbsp;&nbsp;&middot;&nbsp;&nbsp;
+  <a href="#development">Development</a>&nbsp;&nbsp;&middot;&nbsp;&nbsp;
+  <a href="#documentation">Documentation</a>
+</p>
 
-Use the restricted launcher in [OPERATIONS.md](OPERATIONS.md) for the current
-kernel-discovery probe. It requires a scoped kernel session credential; bootstrap
-bearers are rejected. The hooks described above remain policy-check diagnostics.
+---
 
-Read [the acceptance record](docs/acceptance-20260909.md) for exact versions,
-coverage, evidence, failures, and the remaining delivery gates. Installation,
-recovery, and removal instructions are in [OPERATIONS.md](OPERATIONS.md).
+Chio for Cursor brings [Chio](https://github.com/backbay-labs/chio) workspace
+setup, pre-action policy checks and receipt inspection into the editor. Review
+your guard configuration, inspect receipts from your Chio deployment and export
+evidence through the command palette. A separate macOS launcher provides
+isolated discovery of four filesystem tools through a Chio kernel gateway.
 
-## Build and component checks
+> **Current scope:** The extension and discovery launcher are integration
+> candidates. Protected model execution is deliberately disabled: `--prompt`
+> refuses before Cursor starts. Prevention of unsupported server-owned actions
+> remains unverified. See the [acceptance record](docs/acceptance-20260909.md).
 
-Use Node 22 or newer. Dependency artifacts and a lockfile must accompany the
-candidate; a successful build must not require a private sibling checkout.
+## Install from source
+
+Use Node.js 22 or newer, npm, and Cursor with its `cursor` shell command installed.
+The repository includes its pinned bridge dependency under `vendor/`; no private
+sibling checkout is required.
 
 ```sh
-npm ci
-npm run typecheck
-npm test
-npm run build
+git clone https://github.com/backbay-labs/chio-cursor-plugin.git
+cd chio-cursor-plugin
+npm ci --ignore-scripts --no-audit --no-fund
 npm run package
 ```
 
-`dist/hooks/*.mjs` are self-contained bundles copied by `Chio: Initialize workspace`.
-They do not load packages from the agent workspace. Initialization preserves other
-providers' hooks and backs up the previous configuration before writing an upgrade.
-Existing malformed hook configuration is rejected without replacement.
+Packaging builds the extension and hook bundles, then writes
+`artifacts/chio-cursor-0.3.0.vsix` and its SHA256 file. Install that VSIX into an
+isolated preview profile, replacing the two directory placeholders below:
 
-Direct hook tests are component tests. The old `smoke.sh` directly invokes hooks
-and is retained only as historical diagnostic material; it does not run a Cursor
-agent acceptance session.
+```sh
+cursor \
+  --user-data-dir /absolute/disposable/cursor-data \
+  --extensions-dir /absolute/disposable/cursor-extensions \
+  --install-extension ./artifacts/chio-cursor-0.3.0.vsix
+```
 
-## Candidate hook coverage
+Use those same profile arguments when opening Cursor. Before opening a disposable
+workspace, set `chio.bond` to `manual` in that profile's settings so you choose
+when to connect it to Chio. The [operations guide](OPERATIONS.md) covers profile
+setup, upgrades, recovery and removal.
 
-| Event | Script | Action |
-| --- | --- | --- |
-| `preToolUse` | `pretooluse.mjs` | Evaluate the full tool request before execution |
-| `beforeReadFile` | `composer.mjs` | Evaluate Agent context reads |
-| `beforeTabFileRead` | `composer.mjs` | Evaluate Tab context reads |
-| `beforeShellExecution` | `shell.mjs` | Evaluate complete shell command and working directory |
-| `beforeMCPExecution` | `tool.mjs` | Evaluate tool input and `mcp_server_name` |
+## In Cursor
 
-The full host payload is retained in the request as `cursor_request` for evaluation.
-It is host-supplied metadata, not authenticated identity. The selected CLI's mapping
-of tool names and policy fields must be qualified for each supported workflow.
+Open the command palette and search for **Chio**. Start with **Initialize
+workspace**, then **Open policy.yaml** and **Show guard pipeline**.
+Initialization creates a policy when one is absent, copies four self-contained
+hook bundles into `.chio/hooks/`, and registers them in `.cursor/hooks.json`.
+It preserves other providers' hooks and backs up existing hook configuration
+before an upgrade. Malformed hook configuration is rejected without replacement.
 
-See the authoritative [Cursor hooks contract](https://cursor.com/docs/hooks) and
-[CLI configuration](https://cursor.com/docs/cli/reference/configuration). Real host
-hook invocation and effect prevention remain unresolved. Authentication has been
-verified; the missing server-action enforcement boundary is recorded in the
-[contract recheck](evidence/final/contract-recheck-20260910/README.md).
+| Command | What it does |
+| --- | --- |
+| **Initialize workspace** | Create the policy and bundled hook configuration. |
+| **Open policy.yaml** | Open the file selected by `chio.policy`. |
+| **Show guard pipeline** | Display configured rules and policy lint findings. |
+| **Stream receipts** | Fetch recent receipts and poll for updates. |
+| **Export evidence bundle** | Save an evidence bundle for a selected time window. |
 
-The current probe keeps the Chio bridge, kernel credential and durable journal
-in its parent process. Cursor sees a single HTTP MCP endpoint with an ephemeral
-token. Its actual CLI discovers the four filesystem tools in this mode.
-Authenticated model work remains disabled pending the server-action restriction
-and bounded hosted-protocol qualification described in OPERATIONS.md.
+Receipt and control commands use the configured Chio services. Set
+`chio.trust.url` and `chio.mcp.url` for your deployment; its authentication and
+receipt-store configuration must also be available to the extension. The palette
+also exposes bonding, MCP attachment, PR scope attenuation and revocation controls.
+Their presence does not establish that Cursor's native actions are mediated.
+
+### Configure the policy hooks
+
+Choose absolute, operator-owned `CHIO_BIN` and `CHIO_POLICY` paths and launch
+Cursor with those environment variables. `chio.policy` selects the file shown
+by the editor commands; the hook processes require the explicit environment
+paths. Missing configuration, an unavailable CLI or a non-allow decision
+produces a denial response.
+
+The bundled hooks evaluate native tool requests through `preToolUse`, file and
+Tab reads through `beforeReadFile` and `beforeTabFileRead`, shell requests through
+`beforeShellExecution`, and MCP requests through `beforeMCPExecution`. Every
+registration sets `failClosed: true`.
+
+These are CLI policy evaluations. Cursor owns execution after a hook returns;
+a successful policy check or status indicator is not proof of complete mediation.
+The write check uses `preToolUse`; `afterFileEdit` cannot prevent an earlier write.
+
+## Kernel discovery
+
+The separate `chio-cursor-protected` launcher runs a pinned Cursor CLI inside a
+macOS process sandbox. Its current usable mode is `--probe`, which discovers:
+
+```text
+read_text_file · write_file · edit_file · list_directory
+```
+
+Prepare an operator-owned gateway configuration with a compatible Chio kernel,
+a live scoped session credential and a dedicated private journal. Extract the
+pinned Cursor host and install Node outside the normal home directory. Exact
+prerequisites and configuration requirements are in
+[Restricted macOS CLI candidate](OPERATIONS.md#restricted-macos-cli-candidate).
+
+After building this checkout:
+
+```sh
+node bin/chio-cursor-protected.mjs \
+  --agent /absolute/extracted/cursor-agent \
+  --gateway-config /absolute/private/cursor-gateway.json \
+  --probe
+```
+
+The probe lists the gateway's tool inventory. It does not perform a model-driven
+filesystem workflow. The trusted parent keeps the kernel credential and journal;
+the Cursor process receives only an ephemeral gateway token. Bootstrap/admin
+bearer configurations are rejected.
+
+Protected `--prompt` execution remains closed pending a verified pre-dispatch
+restriction for unsupported remote actions and qualification of the bounded
+AgentService relay. Authentication has been verified separately and does not
+resolve that boundary. The [contract investigation](evidence/final/CURSOR-AGENT-SERVICE-CONTRACT.md)
+records the exact missing contract and current upstream findings.
+
+## Architecture
+
+```mermaid
+flowchart LR
+  Editor["Cursor extension"] --> Services["Configured Chio services<br/>Receipts and control"]
+  Hooks["Cursor pre-action hooks"] --> Policy["Chio CLI<br/>Policy evaluation"]
+  Host["Isolated Cursor CLI<br/>Discovery probe"] --> Gateway["Trusted parent<br/>HTTP gateway"]
+  Gateway --> Kernel["Chio kernel<br/>Filesystem tool inventory"]
+```
+
+The extension provides workspace setup and inspection. Hooks run as separate
+processes. The discovery launcher adds a distinct process boundary around the
+CLI and routes discovery through its parent-owned gateway. None of these paths
+currently constitutes accepted protected model execution.
+
+## Development
+
+With the locked dependencies installed:
+
+```sh
+npm run typecheck
+npm run build
+npm test
+```
+
+Build before running tests: the hook tests exercise the generated bundles.
+`npm run watch` rebuilds the extension during development. To create a
+self-contained npm archive alongside the VSIX:
+
+```sh
+npm run pack:release -- ./artifacts
+```
+
+Use the staged packaging command; ordinary `npm pack` is intentionally refused.
+The [release guide](docs/RELEASE-QUALIFICATION.md) describes the remaining
+artifact and publication gates.
+
+Component tests cover policy handling, hook configuration, packaging entry
+refusal and process isolation. The macOS sandbox test skips on other operating
+systems. [Retained macOS results](evidence/final/macos-boundary-20260910/README.md)
+are recorded separately from Linux CI. Neither component tests nor the historical
+`smoke.sh` establish real-host acceptance.
+
+## Documentation
+
+- [Operations](OPERATIONS.md): configuration, isolated profiles, discovery, upgrade and recovery.
+- [Integration acceptance](docs/acceptance-20260909.md): exact versions, supported scope and open gates.
+- [Server-action contract](evidence/final/CURSOR-AGENT-SERVICE-CONTRACT.md): why protected execution is still disabled.
+- [Release qualification](docs/RELEASE-QUALIFICATION.md): package and publication requirements.
+- [Chio kernel](https://github.com/backbay-labs/chio): protocol, runtime and SDKs.
+
+[Apache-2.0](LICENSE)

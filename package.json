@@ -210,7 +210,8 @@
     "evidence/20260909/protected-useful-work-observer.txt",
     "evidence/20260909/protected-useful-work.txt",
     "evidence/20260909/vsix-discovery-preliminary.txt",
-    "evidence/20260909/vsix-install-preliminary.txt"
+    "evidence/20260909/vsix-install-preliminary.txt",
+    "docs/assets"
   ],
   "bin": {
     "chio-cursor-protected": "./bin/chio-cursor-protected.mjs"
