@@ -1,0 +1,49 @@
+{
+  "sourceCommit": "16c213afec93d63aeea7112681084f4336f3766a",
+  "sourceTree": "14b90b8e9e7257f39f21ee635eef9da43fae2aee",
+  "sourceDirtyBefore": false,
+  "command": [
+    "/tmp/chio-node22-toolchain-20260910/node-v22.19.0-darwin-arm64/bin/node",
+    "--test",
+    "--test-reporter=tap",
+    "test/protected-boundary.test.mjs"
+  ],
+  "cwd": "/Users/connor/Medica/backbay/standalone/chio-cursor-plugin/.worktrees/cursor-macos-boundary-20260910",
+  "environment": {
+    "HOME": "/tmp/chio-cursor-macos-boundary-20260910/profile",
+    "PATH": "/tmp/chio-node22-toolchain-20260910/node-v22.19.0-darwin-arm64/bin:/usr/bin:/bin",
+    "TMPDIR": "/tmp/chio-cursor-macos-boundary-20260910/tmp",
+    "OPENSSL_CONF": "/dev/null",
+    "LANG": "en_US.UTF-8",
+    "LC_ALL": "C",
+    "TZ": "UTC"
+  },
+  "startedAt": "2026-09-10T08:23:03.471921+00:00",
+  "finishedAt": "2026-09-10T08:23:04.319823+00:00",
+  "exitCode": 0,
+  "nodeVersion": "v22.19.0",
+  "nodeSha256": "0d005c18e095027ca8f9fe1cc1126f767ee4ad7b004f4d6fb781ec4228a7c5d1",
+  "os": {
+    "system": "Darwin",
+    "architecture": "arm64",
+    "release": "25.4.0",
+    "swVers": "ProductName:\t\tmacOS\nProductVersion:\t\t26.4\nBuildVersion:\t\t25E246\n"
+  },
+  "sourceFileSha256Before": {
+    "test/protected-boundary.test.mjs": "0e089c86b396a17b4fe51d461072542bf28a9be2661dc4c9ef149f245f7ae4d6",
+    "bin/protected-boundary.mjs": "24ae2d108d14c5f4f959be3282f75b8bb4dcb89af6936324b300317775beeb11",
+    "package.json": "0fe8ae40a26681d47ed529ebfe9a7bba9f889b24959a3bc752bb4478da7dae22",
+    "package-lock.json": "0cbb755a5e45796a915edfc577a078b67ec96f779cfac4faade422bd010be682",
+    ".github/workflows/ci.yml": "0bad196671861b082001cdaff50d9c8d275cbdba0f15052d033a0d40faa314ac"
+  },
+  "sourceFileSha256After": {
+    "test/protected-boundary.test.mjs": "0e089c86b396a17b4fe51d461072542bf28a9be2661dc4c9ef149f245f7ae4d6",
+    "bin/protected-boundary.mjs": "24ae2d108d14c5f4f959be3282f75b8bb4dcb89af6936324b300317775beeb11",
+    "package.json": "0fe8ae40a26681d47ed529ebfe9a7bba9f889b24959a3bc752bb4478da7dae22",
+    "package-lock.json": "0cbb755a5e45796a915edfc577a078b67ec96f779cfac4faade422bd010be682",
+    ".github/workflows/ci.yml": "0bad196671861b082001cdaff50d9c8d275cbdba0f15052d033a0d40faa314ac"
+  },
+  "stdoutSha256": "8612b32d6013daf65a2f1254799bb25984e1586c74f2cd03631aa7ae78153cf8",
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "classification": "actual macOS boundary component execution; no Cursor agent, provider request or Chio kernel used"
+}

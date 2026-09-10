@@ -1,0 +1,3 @@
+Chio Cursor candidate state: /private/var/folders/jy/95wms_mn265f0bpj_v6wc4zh0000gn/T/chio-cursor-protected-7mP1m5
+✓ Enabled and approved MCP server: chio
+Error: Authentication required. Please run 'agent login' first, or set CURSOR_API_KEY environment variable.

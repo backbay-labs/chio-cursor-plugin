@@ -1,0 +1,51 @@
+{
+  "sourceCommit": "16c213afec93d63aeea7112681084f4336f3766a",
+  "test": "test/protected-boundary.test.mjs",
+  "counts": {
+    "tests": 3,
+    "pass": 3,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "observations": {
+    "facts": {
+      "scopedConfig": "allowed",
+      "operatorConfig": "EPERM",
+      "journalRead": "EPERM",
+      "journalWrite": "EPERM",
+      "dataVolumeAlias": "EPERM",
+      "symlinkEscape": "EPERM",
+      "controlWrite": "EPERM",
+      "aliasControlWrite": "EPERM",
+      "policyWrite": "EPERM",
+      "hardlink": "EPERM",
+      "privateStateWrite": "allowed",
+      "descendant": {
+        "status": 0,
+        "stdout": "EPERM"
+      },
+      "unapprovedExecutable": "EPERM",
+      "network": {
+        "allowed": 200,
+        "forbidden": "blocked"
+      }
+    },
+    "independentNetworkObservers": {
+      "allowed": 1,
+      "forbidden": 0
+    }
+  },
+  "hostedLinuxCounts": {
+    "tests": 33,
+    "pass": 32,
+    "fail": 0,
+    "skipped": 1
+  },
+  "hostedSkip": "actual macOS process boundary blocks operator reads, aliases, links, writes and unrelated network",
+  "hostedSkipReason": "skip: process.platform !== 'darwin'",
+  "hostedRun": 34447190158,
+  "hostedJob": 102774457676,
+  "classification": "local component evidence fulfills the platform-specific execution gap; hosted Linux skip remains recorded as skipped; Cursor I01-I08 acceptance remains unresolved"
+}

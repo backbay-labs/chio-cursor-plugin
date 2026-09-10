@@ -1,0 +1,38 @@
+{
+  "passed": true,
+  "policySha256": "8839c5838eba365c42819659fea95a041b4ffd8f1ed400dd649a832a9ca41063",
+  "retainedCursorState": "/private/var/folders/jy/95wms_mn265f0bpj_v6wc4zh0000gn/T/chio-cursor-protected-hpHQG0",
+  "configurationSha256": "2221bc9d36b96b6ec2bdd10d0d515518cc53582fb169f2b468d5cee2bf0df77c",
+  "direct": {
+    "status": 0,
+    "stderr": "",
+    "facts": {
+      "operatorConfig": "EPERM",
+      "journalRead": "EPERM",
+      "journalWrite": "EPERM",
+      "controlWrite": "EPERM",
+      "privateStateWrite": "allowed",
+      "network": {
+        "parent": "allowed",
+        "kernel": "blocked"
+      }
+    }
+  },
+  "descendant": {
+    "status": 0,
+    "stderr": "",
+    "facts": {
+      "operatorConfig": "EPERM",
+      "journalRead": "EPERM",
+      "journalWrite": "EPERM",
+      "controlWrite": "EPERM",
+      "privateStateWrite": "allowed",
+      "network": {
+        "parent": "allowed",
+        "kernel": "blocked"
+      }
+    }
+  },
+  "independentParentConnections": 2,
+  "claim": "actual retained host profile probes, not authenticated model acceptance"
+}

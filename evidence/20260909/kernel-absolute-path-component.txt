@@ -1,0 +1,14 @@
+2026-09-09T15:30:57.944397Z  WARN chio_kernel::kernel: guard denied request_id=check-001 reason=guard denied the request: guard "guard-pipeline" error (fail-closed): guard denied the request: guard "path-allowlist" denied the request
+{
+  "params": {
+    "content": "export const answer = 42;",
+    "path": "/Users/connor/Medica/backbay/standalone/chio-cursor-plugin/.worktrees/required-agent-integrations-20260909/src/example.ts"
+  },
+  "policy_hash": "7f9245bfdfeced9e1925747bad91fa7f13ee3dbaeae2652cb45d51959f7aee80",
+  "policy_source_hash": "2524af23c71590250d45746d6af5cd31403c2e76c76e76f4ef1b9c84a7732a1e",
+  "reason": "guard denied the request: guard \"guard-pipeline\" error (fail-closed): guard denied the request: guard \"path-allowlist\" denied the request",
+  "receipt_id": "rcpt-01a086cb-2f20-7480-bb77-7a30d819acab",
+  "server": "*",
+  "tool": "Write",
+  "verdict": "DENY"
+}

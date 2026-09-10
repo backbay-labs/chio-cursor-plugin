@@ -1,8 +1,8 @@
 /**
  * Thin wrapper around `@chio/bridge` + local state for the VS Code
  * extension. Holds the live `ChioBridge`, the active passport, and
- * the snapshot that drives the status bar + sidebar. Every enforcement
- * path is delegated to the bridge (i.e. to arc), never stubbed.
+ * the snapshot that drives the status bar + sidebar. Local patch diagnostics
+ * are not an enforcement decision or evidence of an observed effect.
  */
 import * as vscode from "vscode";
 import {
@@ -12,7 +12,7 @@ import {
   type BondStatus,
   type McpServerInfo,
   type AttenuationDelta,
-  type ArcReceipt,
+  type ChioReceipt,
 } from "@chio/bridge";
 
 import { checkPatch, type PatchCheckInput, type PatchCheckResult } from "./patch.ts";
@@ -121,7 +121,7 @@ export class ChioClient {
     }
   }
 
-  /** Real patch-integrity check. */
+  /** Local patch diagnostics, not authorization to execute. */
   checkPatch(input: PatchCheckInput): Promise<PatchCheckResult> {
     return checkPatch(input);
   }
@@ -148,12 +148,12 @@ export class ChioClient {
     return anyTok.id ?? capabilityId;
   }
 
-  async recentReceipts(since: Date, limit = 100): Promise<ArcReceipt[]> {
+  async recentReceipts(since: Date, limit = 100): Promise<ChioReceipt[]> {
     const b = this.ensureBridge();
     return b.receipts({ since, limit });
   }
 
-  async verifyReceipt(r: ArcReceipt): Promise<boolean> {
+  async verifyReceipt(r: ChioReceipt): Promise<boolean> {
     const b = this.ensureBridge();
     return b.verifyReceipt(r);
   }

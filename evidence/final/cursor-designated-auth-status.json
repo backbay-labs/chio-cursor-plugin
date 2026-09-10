@@ -1,0 +1,12 @@
+{
+  "argv": [
+    "/tmp/chio-cursor-20260909/host/cursor-agent",
+    "status"
+  ],
+  "exitCode": 0,
+  "authenticated": true,
+  "scope": "status only; no Run sent",
+  "nativeCacheCopied": false,
+  "credentialValuesRetained": false,
+  "rawOutputOmitted": "native status may include account identity"
+}

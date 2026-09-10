@@ -1,0 +1,35 @@
+{
+  "status": "NOT ACCEPTED",
+  "sourceCommit": "cb39b30d45c9743bd373c2e794e3925bf670291b",
+  "pluginVersion": "0.3.0",
+  "bridgeArchive": "vendor/chio-bridge-0.3.0-7d9e34f7408a.tgz",
+  "bridgeArchiveSha256": "7d9e34f7408a316e35125982a23faaecfd2f31f4da6b50ca8eab287c2c918f67",
+  "kernelExercisedInThisSlice": false,
+  "hostVersion": "2026.09.08-6caf4ff",
+  "hostIndexSha256": "f7875cfc3bd084d5105c579f1dd21aa77561d72bc2a528cdb70219636186bc79",
+  "realHostAuthentication": "status confirmed; native cache stays operator-only",
+  "protectedRunForwarded": false,
+  "tests": {
+    "protocolFixtures": 22,
+    "components": 33,
+    "skips": 0,
+    "typecheck": "pass"
+  },
+  "artifacts": [
+    {
+      "kind": "offline installation with empty cache and blocked entry; no authenticated Run",
+      "sourceCommit": "cb39b30d45c9743bd373c2e794e3925bf670291b",
+      "artifact": "/tmp/chio-cursor-agent-admission-candidate-20260909/chio-cursor-0.3.0.tgz",
+      "sha256": "3bf370db52da7e5b6811ede6e74c5b3d197b96666b80e78c186d441feb4cde4a",
+      "fixture": "/var/folders/jy/95wms_mn265f0bpj_v6wc4zh0000gn/T/chio-cursor-final-admission-tgz-aw7jz7ci"
+    },
+    {
+      "kind": "isolated install/list/forced-reinstall/removal; GUI activation and version migration unverified",
+      "sourceCommit": "cb39b30d45c9743bd373c2e794e3925bf670291b",
+      "artifact": "/tmp/chio-cursor-agent-admission-candidate-20260909/chio-cursor-0.3.0.vsix",
+      "sha256": "e2a8023475fea4ceb9464423e548a1aed0129872fe0d6d75f48bea32e98517f4",
+      "fixture": "/var/folders/jy/95wms_mn265f0bpj_v6wc4zh0000gn/T/chio-cursor-final-admission-vsix-lp1i6uly"
+    }
+  ],
+  "remaining": "Upstream server pre-effect capability restriction, then bounded authenticated duplex relay and real-host I01-I08; none accepted by these component or installation checks."
+}

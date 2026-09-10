@@ -1,44 +1,41 @@
 hushspec: "0.1.0"
-name: backend
+name: cursor-candidate
 
-# Every key here is a first-class chio-policy HushSpec rule
-# (arc/crates/chio-policy/src/models.rs#Rules). This file parses through
-# @chio/bridge lintPolicy() with zero errors.
+# Policy evaluation only. Resource confinement and runtime authority are separate
+# unresolved gates. Copy this policy outside the agent workspace and qualify its
+# paths/tool names against the selected kernel before using protected resources.
 rules:
   path_allowlist:
     enabled: true
+    read:
+      - src/**
+      - tests/**
+      - docs/**
     write:
-      - ./src/**
-      - ./tests/**
-      - ./docs/**
+      - src/**
+      - tests/**
+      - docs/**
+    patch:
+      - src/**
+      - tests/**
+      - docs/**
   forbidden_paths:
     enabled: true
     patterns:
-      - ./billing/**
       - "**/.env"
       - "**/.env.*"
       - "**/*.pem"
       - "**/id_rsa"
       - "**/id_ed25519"
+      - "**/.chio/**"
+      - "**/.cursor/**"
   shell_commands:
     enabled: true
-    default: block
-    allow:
-      - npm test
-      - npm run build
-      - tsc --noEmit
-      - eslint .
-      - git status
-      - git diff*
-      - bun test
-      - bun run build
-    deny:
-      - rm -rf *
-      - curl *
-      - wget *
+    forbidden_patterns:
+      - '(?i)\brm\s+(-[^\s]*[rf][^\s]*\s+)+'
+      - '(?i)\b(curl|wget|nc|ssh)\b'
   patch_integrity:
     enabled: true
-    max_files: 40
     max_additions: 2000
     max_deletions: 2000
   secret_patterns:
@@ -46,24 +43,12 @@ rules:
   egress:
     enabled: true
     default: block
-    allow:
-      - https://registry.npmjs.org
-      - https://github.com
   tool_access:
     enabled: true
     default: block
     allow:
-      - fs.read
-      - fs.write
-      - shell.exec
-
-# `chio` extension carries settings that don't map to a first-class chio
-# rule yet. chio-policy accepts this block as an opaque passthrough;
-# chio-bridge interprets it downstream.
-extensions:
-  chio:
-    version: "0.1.0"
-    budget:
-      minutes: 5
-    approval:
-      forbidden_path_override: human
+      - Read
+      - TabRead
+      - Write
+      - Edit
+      - Shell

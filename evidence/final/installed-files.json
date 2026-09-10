@@ -1,0 +1,13 @@
+{
+  "packaged_acceptance_record": true,
+  "packaged_baseline_evidence": true,
+  "runtime_files_equal_verified_source_build": {
+    "bin/chio-cursor-protected.mjs": "522c4fc545797f8e74db99a1de47b70d1e1e3237842f1ca1c08d9dd527ee8acf",
+    "dist/gateway.mjs": "4cd2aae3db63ba8ee90a9ddb8646b2baaede1b15e7f7e5ed0f89f6611f8afdb9",
+    "dist/extension.js": "c81432fc759043e91e110fd61b7672c2028229186ddfad51c3102da2a5f25721",
+    "dist/hooks/pretooluse.mjs": "a9ca6a9f2e5c77fc605a901b7f803e400aea07f99ff5d65b042a255e75f16141",
+    "dist/hooks/composer.mjs": "80913b3da2d4a561db18f721d33a761522f1167334bc491a3bbf96537a915494",
+    "dist/hooks/shell.mjs": "8c21e599f63aa523df427e9eee33f054a82993a679d5c03a28cec32120ac767d",
+    "dist/hooks/tool.mjs": "43a4e6a5e870daddd7a42cf4619650164360d8ea86db2e34c343710df6e64326"
+  }
+}

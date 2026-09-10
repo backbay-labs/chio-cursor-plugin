@@ -1,0 +1,33 @@
+{
+  "hostVersion": "2026.09.08-6caf4ff",
+  "indexSha256": "f7875cfc3bd084d5105c579f1dd21aa77561d72bc2a528cdb70219636186bc79",
+  "source": "shipped official CLI archive, retained isolated extraction",
+  "observations": [
+    {
+      "key": "typeName:\"agent.v1.AgentService\"",
+      "offset": 2047151,
+      "excerpt": "service_pb.js\");const g={typeName:\"agent.v1.AgentService\",methods:{run:{name:\"Run\",I:h.KS,O:h.Oy,kind:a.I.BiDiStreaming},runSSE:{name:\"RunSSE\",I:i.$r,O:h.Oy,kind:a.I.ServerStreaming},runPoll:{name:\"RunPoll\",I:i.hD,O:i.xy,kind:a.I.ServerStreaming},nameAgent:{name:\"NameAgent\",I:h.Il,O:h.mw,kind:a.I.Unary},updateConversationMetadata:{name:\"UpdateConversationMetadata\",I:h.vw,O:h.HJ,kind:a.I.Unary},createTranscriptOverview:{name:\"CreateTranscriptOverview\",I:h.BU,O:h.Hi,kind:a.I.Unary},getUsableModels:{name:\"GetUsableModels\",I:h.KD,O:h.sY,kind:a.I.Unary},getDefaultModelForCli:{name:\"GetDefaultModelForCli\",I:h.Tu,O:h.pe,kind"
+    },
+    {
+      "key": "typeName=\"agent.v1.AgentRunRequest\"",
+      "offset": 6151151,
+      "excerpt": ",e,t)}}qi.runtime=r.C,qi.typeName=\"agent.v1.AgentRunRequest\",qi.fields=r.C.util.newFieldList((()=>[{no:1,name:\"conversation_state\",kind:\"message\",T:Li},{no:2,name:\"action\",kind:\"message\",T:is},{no:3,name:\"model_details\",kind:\"message\",T:ji},{no:9,name:\"requested_model\",kind:\"message\",T:Qr.G4,opt:!0},{no:4,name:\"mcp_tools\",kind:\"message\",T:Jr.Or},{no:5,name:\"conversation_id\",kind:\"scalar\",T:9,opt:!0},{no:6,name:\"mcp_file_system_options\",kind:\"message\",T:Jr.Is,opt:!0},{no:7,name:\"skill_options\",kind:\"message\",T:Sr.uw,opt:!0},{no:8,name:\"custom_system_prompt\",kind:\"scalar\",T:9,opt:!0},{no:10,name:\"suggest_next_prompt\",ki"
+    },
+    {
+      "key": "name:\"can_create_cloud_subagents\"",
+      "offset": 6152437,
+      "excerpt": "T:Mi,repeated:!0},{no:21,name:\"can_create_cloud_subagents\",kind:\"scalar\",T:8,opt:!0},{no:22,name:\"suppress_subagent_progress_update_tool\",kind:\"scalar\",T:8,opt:!0},{no:23,name:\"client_supports_send_to_user"
+    },
+    {
+      "key": "name:\"web_search_tool_call\"",
+      "offset": 6083149,
+      "excerpt": ".Ih,oneof:\"tool\"},{no:18,name:\"web_search_tool_call\",kind:\"message\",T:se.pn,oneof:\"tool\"},{no:19,name:\"task_tool_call\",kind:\"message\",T:Gr,oneof:\"tool\"},{no:20,name:\"list_mcp_resources_tool_call\",kind:\"mes"
+    },
+    {
+      "key": "name:\"web_fetch_tool_call\"",
+      "offset": 6084399,
+      "excerpt": ":Ne,oneof:\"tool\"},{no:37,name:\"web_fetch_tool_call\",kind:\"message\",T:De.fd,oneof:\"tool\"},{no:38,name:\"report_bugfix_results_tool_call\",kind:\"message\",T:xe.U_,oneof:\"tool\"},{no:39,name:\"ai_attribution_tool_"
+    }
+  ],
+  "limit": "Protocol fields and services exist in the shipped host. No authenticated capture, backend behavior or hosted-effect prevention was established. --endpoint support was independently observed through the real --help command."
+}

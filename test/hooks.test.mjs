@@ -1,157 +1,77 @@
-import { test } from "node:test";
-import * as assert from "node:assert/strict";
-import { spawn } from "node:child_process";
-import * as fs from "node:fs/promises";
-import * as path from "node:path";
-import * as os from "node:os";
-import { fileURLToPath } from "node:url";
+import { test } from 'node:test';
+import * as assert from 'node:assert/strict';
+import { spawn } from 'node:child_process';
+import * as fs from 'node:fs/promises';
+import * as path from 'node:path';
+import * as os from 'node:os';
+import { fileURLToPath } from 'node:url';
+import { toToolCall } from '../hooks-src/_check.mjs';
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const HOOKS_DIR = path.resolve(__dirname, "..", "hooks-src");
-
-async function runHook(script, stdinJson, env = {}) {
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+async function runHook(script, input, env = {}) {
   return new Promise((resolve, reject) => {
-    const proc = spawn("node", [path.join(HOOKS_DIR, script)], {
-      stdio: ["pipe", "pipe", "pipe"],
-      env: { ...process.env, ...env },
+    const child = spawn(process.execPath, [path.join(root, 'hooks-src', script)], {
+      env: { ...process.env, CHIO_BIN: '', CHIO_POLICY: '', ...env }, stdio: ['pipe', 'pipe', 'pipe'],
     });
-    let out = "";
-    let err = "";
-    proc.stdout.on("data", (c) => (out += c.toString("utf8")));
-    proc.stderr.on("data", (c) => (err += c.toString("utf8")));
-    proc.on("error", reject);
-    proc.on("exit", (code) => {
-      let parsed = null;
-      try {
-        parsed = JSON.parse(out);
-      } catch {
-        parsed = null;
-      }
-      resolve({ code: code ?? -1, stdout: out, stderr: err, json: parsed });
-    });
-    proc.stdin.end(JSON.stringify(stdinJson));
+    let stdout = ''; let stderr = '';
+    child.stdout.on('data', value => { stdout += value; });
+    child.stderr.on('data', value => { stderr += value; });
+    child.on('error', reject);
+    child.on('close', code => resolve({ code, json: JSON.parse(stdout), stderr }));
+    child.stdin.end(typeof input === 'string' ? input : JSON.stringify(input));
   });
 }
 
-async function withWorkspace(body, run) {
-  const dir = await fs.mkdtemp(path.join(os.tmpdir(), "chio-hooks-"));
-  const policyPath = path.join(dir, ".chio", "policy.yaml");
-  await fs.mkdir(path.dirname(policyPath), { recursive: true });
-  await fs.writeFile(policyPath, body, "utf8");
-  try {
-    await run({ root: dir, policyPath });
-  } finally {
-    await fs.rm(dir, { recursive: true, force: true });
+const actions = [
+  ['pretooluse.mjs', { hook_event_name: 'preToolUse', tool_name: 'Write', tool_input: { path: '/tmp/protected', content: 'change' } }],
+  ['composer.mjs', { hook_event_name: 'beforeReadFile', file_path: '/tmp/private', content: 'private' }],
+  ['composer.mjs', { hook_event_name: 'beforeTabFileRead', file_path: '/tmp/private', content: 'private' }],
+  ['shell.mjs', { hook_event_name: 'beforeShellExecution', command: 'npm test; touch /tmp/protected', cwd: '/tmp' }],
+  ['tool.mjs', { hook_event_name: 'beforeMCPExecution', tool_name: 'write', tool_input: { path: '/tmp/protected' }, mcp_server_name: 'files' }],
+];
+
+for (const [script, input] of actions) {
+  test(`${input.hook_event_name}: no local allow when operator policy or kernel binary is missing`, async () => {
+    const dir = await fs.mkdtemp(path.join(os.tmpdir(), 'chio-cursor-unit-'));
+    try {
+      const policy = path.join(dir, 'policy.yaml');
+      await fs.writeFile(policy, 'hushspec: "0.1.0"\nname: allow-all\nrules:\n  shell_commands:\n    enabled: false\n');
+      const denied = await runHook(script, input, { CHIO_POLICY: policy });
+      assert.equal(denied.code, 2);
+      assert.equal(denied.json.permission, 'deny');
+      const absent = await runHook(script, input, { CHIO_POLICY: policy, CHIO_BIN: path.join(dir, 'absent') });
+      assert.equal(absent.code, 2);
+      assert.equal(absent.json.permission, 'deny');
+    } finally { await fs.rm(dir, { recursive: true, force: true }); }
+  });
+}
+
+test('missing tool, empty stdin and malformed JSON fail closed', async () => {
+  for (const input of [{ hook_event_name: 'preToolUse', tool_input: {} }, '', '{']) {
+    assert.equal((await runHook('pretooluse.mjs', input)).code, 2);
   }
-}
-
-test("composer hook: denies when policy is missing (fail-closed)", async () => {
-  const r = await runHook("composer.mjs", {
-    hook_event_name: "afterFileEdit",
-    file_path: "/nonexistent/x.ts",
-    edits: [{ old_string: "", new_string: "const x = 1;" }],
-    workspace_roots: ["/tmp/does-not-exist-" + Date.now()],
-  });
-  assert.equal(r.code, 2, `expected exit 2, got ${r.code}; stdout=${r.stdout}; stderr=${r.stderr}`);
-  assert.equal(r.json?.permission, "deny");
 });
 
-test("composer hook: denies on forbidden_paths", async () => {
-  const yaml = `hushspec: "0.1.0"\nname: t\nrules:\n  forbidden_paths:\n    patterns:\n      - "**/.env"\n`;
-  await withWorkspace(yaml, async ({ root }) => {
-    const r = await runHook("composer.mjs", {
-      hook_event_name: "afterFileEdit",
-      file_path: path.join(root, ".env"),
-      edits: [{ old_string: "", new_string: "FOO=bar" }],
-      workspace_roots: [root],
-    });
-    assert.equal(r.code, 2);
-    assert.equal(r.json?.permission, "deny");
-    assert.match(r.json?.agent_message ?? "", /forbidden_paths/);
-  });
+test('post-write notifications are rejected instead of masquerading as prevention', async () => {
+  const result = await runHook('composer.mjs', { hook_event_name: 'afterFileEdit', file_path: '/tmp/already-written', edits: [] });
+  assert.equal(result.code, 2);
+  assert.match(result.json.user_message, /unsupported event/);
 });
 
-test("composer hook: denies on embedded AKIA key", async () => {
-  const yaml = `hushspec: "0.1.0"\nname: t\nrules:\n  path_allowlist:\n    write:\n      - "**/*"\n`;
-  await withWorkspace(yaml, async ({ root }) => {
-    const r = await runHook("composer.mjs", {
-      hook_event_name: "afterFileEdit",
-      file_path: path.join(root, "src/leak.ts"),
-      edits: [{ old_string: "", new_string: "const k = 'AKIAIOSFODNN7EXAMPLE';" }],
-      workspace_roots: [root],
-    });
-    assert.equal(r.code, 2);
-    assert.equal(r.json?.permission, "deny");
-    assert.match(r.json?.agent_message ?? "", /secrets_scan/);
-  });
+test('tool and caller payload is preserved, MCP uses authoritative server-name field', () => {
+  const input = { hook_event_name: 'beforeMCPExecution', tool_name: 'write', tool_input: '{"path":"x"}', mcp_server_name: 'files', conversation_id: 'session', tool_use_id: 'call' };
+  const call = toToolCall(input, ['beforeMCPExecution']);
+  assert.equal(call.serverId, 'files');
+  assert.deepEqual(call.params, { path: 'x', cursor_request: input });
+  assert.throws(() => toToolCall({ ...input, mcp_server_name: undefined }, ['beforeMCPExecution']));
 });
 
-test("composer hook: allows clean edit inside allowlist", async () => {
-  const yaml = `hushspec: "0.1.0"\nname: t\nrules:\n  path_allowlist:\n    write:\n      - "**/*"\n`;
-  await withWorkspace(yaml, async ({ root }) => {
-    const r = await runHook("composer.mjs", {
-      hook_event_name: "afterFileEdit",
-      file_path: path.join(root, "src/ok.ts"),
-      edits: [{ old_string: "", new_string: "export const answer = 42;" }],
-      workspace_roots: [root],
-    });
-    assert.equal(r.code, 0, `stdout=${r.stdout}; stderr=${r.stderr}`);
-    assert.equal(r.json?.permission, "allow");
-  });
-});
-
-test("shell hook: denies when command not in allowlist", async () => {
-  const yaml =
-    `hushspec: "0.1.0"\nname: t\nrules:\n  shell_commands:\n    enabled: true\n    default: block\n    allow:\n      - "npm test"\n`;
-  await withWorkspace(yaml, async ({ root }) => {
-    const r = await runHook("shell.mjs", {
-      hook_event_name: "beforeShellExecution",
-      command: "rm -rf /",
-      cwd: root,
-      workspace_roots: [root],
-    });
-    assert.equal(r.code, 2);
-    assert.equal(r.json?.permission, "deny");
-  });
-});
-
-test("shell hook: allows allowlisted npm test", async () => {
-  const yaml =
-    `hushspec: "0.1.0"\nname: t\nrules:\n  shell_commands:\n    enabled: true\n    default: block\n    allow:\n      - "npm test"\n`;
-  await withWorkspace(yaml, async ({ root }) => {
-    const r = await runHook("shell.mjs", {
-      hook_event_name: "beforeShellExecution",
-      command: "npm test",
-      cwd: root,
-      workspace_roots: [root],
-    });
-    assert.equal(r.code, 0);
-    assert.equal(r.json?.permission, "allow");
-  });
-});
-
-test("shell hook: explicit deny rule wins", async () => {
-  const yaml =
-    `hushspec: "0.1.0"\nname: t\nrules:\n  shell_commands:\n    enabled: true\n    allow:\n      - "git *"\n    deny:\n      - "git push*"\n`;
-  await withWorkspace(yaml, async ({ root }) => {
-    const r = await runHook("shell.mjs", {
-      hook_event_name: "beforeShellExecution",
-      command: "git push origin main",
-      cwd: root,
-      workspace_roots: [root],
-    });
-    assert.equal(r.code, 2);
-    assert.equal(r.json?.permission, "deny");
-  });
-});
-
-test("tool hook: fails closed when no policy", async () => {
-  const r = await runHook("tool.mjs", {
-    hook_event_name: "beforeMCPExecution",
-    tool_name: "fs.read",
-    tool_input: { path: "/etc/passwd" },
-    workspace_roots: ["/tmp/no-workspace-" + Date.now()],
-  });
-  assert.equal(r.code, 2);
-  assert.equal(r.json?.permission, "deny");
+test('template covers pre-action tool/read/Tab/shell/MCP events without matchers', async () => {
+  const template = JSON.parse(await fs.readFile(path.join(root, 'templates/.cursor/hooks.json'), 'utf8'));
+  assert.equal(template.hooks.afterFileEdit, undefined);
+  for (const event of ['preToolUse', 'beforeReadFile', 'beforeTabFileRead', 'beforeShellExecution', 'beforeMCPExecution']) {
+    const [hook] = template.hooks[event];
+    assert.equal(hook.failClosed, true);
+    assert.equal(hook.matcher, undefined);
+  }
 });

@@ -25,7 +25,7 @@ export async function readStdinJson() {
     process.stdin.on("error", rejectP);
     process.stdin.on("end", () => {
       if (!buf.trim()) {
-        resolveP({});
+        rejectP(new Error("empty hook stdin"));
         return;
       }
       try {
@@ -80,17 +80,11 @@ export function denyPrompt(userMsg) {
  * Walk up from the first workspace root until we find `.chio/policy.yaml`.
  * Returns absolute path or null.
  */
-export function resolvePolicyPath(hookInput) {
-  const roots = Array.isArray(hookInput.workspace_roots) ? hookInput.workspace_roots : [];
-  for (const r of roots) {
-    const p = join(r, ".chio", "policy.yaml");
-    if (existsSync(p)) return p;
-  }
-  // Fallback: $CHIO_POLICY env.
-  if (process.env.CHIO_POLICY && existsSync(process.env.CHIO_POLICY)) {
-    return resolve(process.env.CHIO_POLICY);
-  }
-  return null;
+export function resolvePolicyPath(_hookInput) {
+  // Never accept policy selection from the agent-controlled workspace payload.
+  const configured = process.env.CHIO_POLICY;
+  if (!configured || !configured.startsWith("/") || !existsSync(configured)) return null;
+  return configured;
 }
 
 /**
@@ -120,9 +114,7 @@ export async function run(fn, { onError = "deny", shape = "permission" } = {}) {
   try {
     const input = await readStdinJson();
     await fn(input);
-    // If fn didn't call emit/allow/deny, default to allow so Cursor keeps moving.
-    if (shape === "prompt") allowPrompt();
-    else allow();
+    throw new Error("hook returned without a decision");
   } catch (err) {
     const msg = `chio hook error: ${err && err.message ? err.message : String(err)}`;
     if (onError === "allow") {

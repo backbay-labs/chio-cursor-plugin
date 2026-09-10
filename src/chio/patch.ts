@@ -1,9 +1,8 @@
 /**
- * Real patch-integrity validator.
+ * Local patch diagnostics. This is not the Cursor enforcement path.
  *
  * Loads the active `.chio/policy.yaml` through `ChioBridge.loadPolicy`
- * + `lintPolicy`, then enforces the four rule blocks the marketing
- * page promises:
+ * + `lintPolicy`, then reports on these local diagnostic rule blocks:
  *
  *   - `forbidden_paths.patterns`  (deny-if-match, first-priority)
  *   - `path_allowlist.write`       (must-match-one)
@@ -52,8 +51,8 @@ export interface PatchCheckResult {
 
 /**
  * Minimise leakage of internal policy structure at the call site: this
- * helper just runs the check and returns a result. The hook scripts
- * (`hooks-src/composer.mjs`) call this directly.
+ * helper just runs diagnostics and returns a result. Cursor pre-action hooks
+ * evaluate through the selected kernel CLI instead of calling this helper.
  */
 export async function checkPatch(input: PatchCheckInput): Promise<PatchCheckResult> {
   const reasons: string[] = [];

@@ -1,0 +1,53 @@
+
+> chio-cursor@0.3.0 test
+> node --experimental-strip-types --test ./test/*.test.ts ./test/*.test.mjs
+
+(node:15197) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/connor/Medica/backbay/standalone/chio-cursor-plugin/.worktrees/required-agent-integrations-20260909/test/hooks-config.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Users/connor/Medica/backbay/standalone/chio-cursor-plugin/.worktrees/required-agent-integrations-20260909/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ upgrades Chio hooks while preserving other providers and configuration (2.919666ms)
+✔ refuses unsupported or malformed existing configuration (0.185833ms)
+✔ preToolUse: no local allow when operator policy or kernel binary is missing (230.056625ms)
+✔ beforeReadFile: no local allow when operator policy or kernel binary is missing (255.6825ms)
+✔ beforeTabFileRead: no local allow when operator policy or kernel binary is missing (229.047875ms)
+✔ beforeShellExecution: no local allow when operator policy or kernel binary is missing (216.093416ms)
+✔ beforeMCPExecution: no local allow when operator policy or kernel binary is missing (221.36ms)
+✔ missing tool, empty stdin and malformed JSON fail closed (273.767375ms)
+✔ post-write notifications are rejected instead of masquerading as prevention (82.346834ms)
+✔ tool and caller payload is preserved, MCP uses authoritative server-name field (1.041041ms)
+✔ template covers pre-action tool/read/Tab/shell/MCP events without matchers (0.648417ms)
+(node:15199) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/connor/Medica/backbay/standalone/chio-cursor-plugin/.worktrees/required-agent-integrations-20260909/test/patch.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Users/connor/Medica/backbay/standalone/chio-cursor-plugin/.worktrees/required-agent-integrations-20260909/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ denies write to forbidden_paths (13.689041ms)
+✔ denies write outside path_allowlist.write (2.563875ms)
+✔ allows write inside allowlist (2.064083ms)
+✔ denies on max_files overflow (1.735458ms)
+✔ deny on embedded AWS key even if path is allowed (2.055333ms)
+✔ glob matcher handles ** correctly (0.145666ms)
+(node:15200) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/connor/Medica/backbay/standalone/chio-cursor-plugin/.worktrees/required-agent-integrations-20260909/test/secrets.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Users/connor/Medica/backbay/standalone/chio-cursor-plugin/.worktrees/required-agent-integrations-20260909/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ detects AWS access key id (1.475541ms)
+✔ detects GitHub PAT (ghp_ prefix) (0.861084ms)
+✔ detects Stripe live key (0.092667ms)
+✔ detects JWT-shaped tokens (0.067458ms)
+✔ detects PEM private key block (0.065167ms)
+✔ detects generic password literal with entropy (0.260625ms)
+✔ detects Google API key (0.069458ms)
+✔ detects Slack bot token (0.06425ms)
+✔ does not flag placeholder password values (0.075583ms)
+✔ does not flag low-entropy all-same-char value (0.243ms)
+✔ empty string returns empty list (1.06425ms)
+✔ ordinary prose returns empty list (0.066958ms)
+ℹ tests 29
+ℹ suites 0
+ℹ pass 29
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1651.787375

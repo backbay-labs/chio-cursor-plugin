@@ -1,0 +1,10 @@
+{
+  "before": {
+    "rows": []
+  },
+  "after": {
+    "rows": []
+  },
+  "hostExitCode": 0,
+  "discoveryOnly": true
+}

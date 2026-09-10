@@ -1,0 +1,2889 @@
+{
+  "host": "2026.09.08-6caf4ff",
+  "indexSha256": "f7875cfc3bd084d5105c579f1dd21aa77561d72bc2a528cdb70219636186bc79",
+  "method": "Reflection over hash-pinned generated message definitions; CLI entrypoint not executed",
+  "schema": {
+    "agent.v1.AgentClientMessage": [
+      {
+        "number": 1,
+        "name": "run_request",
+        "jsonName": "runRequest",
+        "kind": "message",
+        "type": "agent.v1.AgentRunRequest",
+        "oneof": "message",
+        "repeated": false
+      },
+      {
+        "number": 2,
+        "name": "exec_client_message",
+        "jsonName": "execClientMessage",
+        "kind": "message",
+        "type": "agent.v1.ExecClientMessage",
+        "oneof": "message",
+        "repeated": false
+      },
+      {
+        "number": 5,
+        "name": "exec_client_control_message",
+        "jsonName": "execClientControlMessage",
+        "kind": "message",
+        "type": "agent.v1.ExecClientControlMessage",
+        "oneof": "message",
+        "repeated": false
+      },
+      {
+        "number": 3,
+        "name": "kv_client_message",
+        "jsonName": "kvClientMessage",
+        "kind": "message",
+        "type": "agent.v1.KvClientMessage",
+        "oneof": "message",
+        "repeated": false
+      },
+      {
+        "number": 4,
+        "name": "conversation_action",
+        "jsonName": "conversationAction",
+        "kind": "message",
+        "type": "agent.v1.ConversationAction",
+        "oneof": "message",
+        "repeated": false
+      },
+      {
+        "number": 6,
+        "name": "interaction_response",
+        "jsonName": "interactionResponse",
+        "kind": "message",
+        "type": "agent.v1.InteractionResponse",
+        "oneof": "message",
+        "repeated": false
+      },
+      {
+        "number": 7,
+        "name": "client_heartbeat",
+        "jsonName": "clientHeartbeat",
+        "kind": "message",
+        "type": "agent.v1.ClientHeartbeat",
+        "oneof": "message",
+        "repeated": false
+      },
+      {
+        "number": 8,
+        "name": "prewarm_request",
+        "jsonName": "prewarmRequest",
+        "kind": "message",
+        "type": "agent.v1.PrewarmRequest",
+        "oneof": "message",
+        "repeated": false
+      }
+    ],
+    "agent.v1.AgentServerMessage": [
+      {
+        "number": 1,
+        "name": "interaction_update",
+        "jsonName": "interactionUpdate",
+        "kind": "message",
+        "type": "agent.v1.InteractionUpdate",
+        "oneof": "message",
+        "repeated": false
+      },
+      {
+        "number": 2,
+        "name": "exec_server_message",
+        "jsonName": "execServerMessage",
+        "kind": "message",
+        "type": "agent.v1.ExecServerMessage",
+        "oneof": "message",
+        "repeated": false
+      },
+      {
+        "number": 5,
+        "name": "exec_server_control_message",
+        "jsonName": "execServerControlMessage",
+        "kind": "message",
+        "type": "agent.v1.ExecServerControlMessage",
+        "oneof": "message",
+        "repeated": false
+      },
+      {
+        "number": 3,
+        "name": "conversation_checkpoint_update",
+        "jsonName": "conversationCheckpointUpdate",
+        "kind": "message",
+        "type": "agent.v1.ConversationStateStructure",
+        "oneof": "message",
+        "repeated": false
+      },
+      {
+        "number": 4,
+        "name": "kv_server_message",
+        "jsonName": "kvServerMessage",
+        "kind": "message",
+        "type": "agent.v1.KvServerMessage",
+        "oneof": "message",
+        "repeated": false
+      },
+      {
+        "number": 7,
+        "name": "interaction_query",
+        "jsonName": "interactionQuery",
+        "kind": "message",
+        "type": "agent.v1.InteractionQuery",
+        "oneof": "message",
+        "repeated": false
+      },
+      {
+        "number": 8,
+        "name": "ttft_breakdown",
+        "jsonName": "ttftBreakdown",
+        "kind": "message",
+        "type": "agent.v1.TtftBreakdown",
+        "repeated": false
+      }
+    ],
+    "agent.v1.AgentRunRequest": [
+      {
+        "number": 1,
+        "name": "conversation_state",
+        "jsonName": "conversationState",
+        "kind": "message",
+        "type": "agent.v1.ConversationStateStructure",
+        "repeated": false
+      },
+      {
+        "number": 2,
+        "name": "action",
+        "jsonName": "action",
+        "kind": "message",
+        "type": "agent.v1.ConversationAction",
+        "repeated": false
+      },
+      {
+        "number": 3,
+        "name": "model_details",
+        "jsonName": "modelDetails",
+        "kind": "message",
+        "type": "agent.v1.ModelDetails",
+        "repeated": false
+      },
+      {
+        "number": 9,
+        "name": "requested_model",
+        "jsonName": "requestedModel",
+        "kind": "message",
+        "type": "agent.v1.RequestedModel",
+        "repeated": false
+      },
+      {
+        "number": 4,
+        "name": "mcp_tools",
+        "jsonName": "mcpTools",
+        "kind": "message",
+        "type": "agent.v1.McpTools",
+        "repeated": false
+      },
+      {
+        "number": 5,
+        "name": "conversation_id",
+        "jsonName": "conversationId",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 6,
+        "name": "mcp_file_system_options",
+        "jsonName": "mcpFileSystemOptions",
+        "kind": "message",
+        "type": "agent.v1.McpFileSystemOptions",
+        "repeated": false
+      },
+      {
+        "number": 7,
+        "name": "skill_options",
+        "jsonName": "skillOptions",
+        "kind": "message",
+        "type": "agent.v1.SkillOptions",
+        "repeated": false
+      },
+      {
+        "number": 8,
+        "name": "custom_system_prompt",
+        "jsonName": "customSystemPrompt",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 10,
+        "name": "suggest_next_prompt",
+        "jsonName": "suggestNextPrompt",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 11,
+        "name": "subagent_type_name",
+        "jsonName": "subagentTypeName",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 12,
+        "name": "exclude_workspace_context",
+        "jsonName": "excludeWorkspaceContext",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 13,
+        "name": "harness",
+        "jsonName": "harness",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 14,
+        "name": "selected_subagent_models",
+        "jsonName": "selectedSubagentModels",
+        "kind": "message",
+        "type": "agent.v1.RequestedModel",
+        "repeated": true
+      },
+      {
+        "number": 15,
+        "name": "selected_subagent_model_details",
+        "jsonName": "selectedSubagentModelDetails",
+        "kind": "message",
+        "type": "agent.v1.ModelDetails",
+        "repeated": true
+      },
+      {
+        "number": 16,
+        "name": "conversation_group_id",
+        "jsonName": "conversationGroupId",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 17,
+        "name": "pre_fetched_blobs",
+        "jsonName": "preFetchedBlobs",
+        "kind": "message",
+        "type": "agent.v1.PreFetchedBlob",
+        "repeated": true
+      },
+      {
+        "number": 18,
+        "name": "dev_raw_model_slug",
+        "jsonName": "devRawModelSlug",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 19,
+        "name": "client_supports_inline_images",
+        "jsonName": "clientSupportsInlineImages",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 20,
+        "name": "subagent_model_overrides",
+        "jsonName": "subagentModelOverrides",
+        "kind": "message",
+        "type": "agent.v1.SubagentModelOverride",
+        "repeated": true
+      },
+      {
+        "number": 21,
+        "name": "can_create_cloud_subagents",
+        "jsonName": "canCreateCloudSubagents",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 22,
+        "name": "suppress_subagent_progress_update_tool",
+        "jsonName": "suppressSubagentProgressUpdateTool",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 23,
+        "name": "client_supports_send_to_user",
+        "jsonName": "clientSupportsSendToUser",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 24,
+        "name": "computer_use_coordinate_mode",
+        "jsonName": "computerUseCoordinateMode",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 25,
+        "name": "run_id",
+        "jsonName": "runId",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 26,
+        "name": "agent_session_id",
+        "jsonName": "agentSessionId",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 27,
+        "name": "client_supports_prompt_context_usage_rpc",
+        "jsonName": "clientSupportsPromptContextUsageRpc",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 28,
+        "name": "client_supports_routed_model_update",
+        "jsonName": "clientSupportsRoutedModelUpdate",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 29,
+        "name": "system_prompt_spec",
+        "jsonName": "systemPromptSpec",
+        "kind": "message",
+        "type": "agent.v1.SystemPromptSpec",
+        "repeated": false
+      },
+      {
+        "number": 30,
+        "name": "client_llm_gateway_credential",
+        "jsonName": "clientLlmGatewayCredential",
+        "kind": "message",
+        "type": "agent.v1.ClientLlmGatewayCredential",
+        "repeated": false
+      },
+      {
+        "number": 31,
+        "name": "client_supports_preview_card",
+        "jsonName": "clientSupportsPreviewCard",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 32,
+        "name": "started_as_new_project",
+        "jsonName": "startedAsNewProject",
+        "kind": "scalar",
+        "repeated": false
+      }
+    ],
+    "agent.v1.ConversationAction": [
+      {
+        "number": 1,
+        "name": "user_message_action",
+        "jsonName": "userMessageAction",
+        "kind": "message",
+        "type": "agent.v1.UserMessageAction",
+        "oneof": "action",
+        "repeated": false
+      },
+      {
+        "number": 2,
+        "name": "resume_action",
+        "jsonName": "resumeAction",
+        "kind": "message",
+        "type": "agent.v1.ResumeAction",
+        "oneof": "action",
+        "repeated": false
+      },
+      {
+        "number": 3,
+        "name": "cancel_action",
+        "jsonName": "cancelAction",
+        "kind": "message",
+        "type": "agent.v1.CancelAction",
+        "oneof": "action",
+        "repeated": false
+      },
+      {
+        "number": 4,
+        "name": "summarize_action",
+        "jsonName": "summarizeAction",
+        "kind": "message",
+        "type": "agent.v1.SummarizeAction",
+        "oneof": "action",
+        "repeated": false
+      },
+      {
+        "number": 5,
+        "name": "shell_command_action",
+        "jsonName": "shellCommandAction",
+        "kind": "message",
+        "type": "agent.v1.ShellCommandAction",
+        "oneof": "action",
+        "repeated": false
+      },
+      {
+        "number": 6,
+        "name": "start_plan_action",
+        "jsonName": "startPlanAction",
+        "kind": "message",
+        "type": "agent.v1.StartPlanAction",
+        "oneof": "action",
+        "repeated": false
+      },
+      {
+        "number": 7,
+        "name": "execute_plan_action",
+        "jsonName": "executePlanAction",
+        "kind": "message",
+        "type": "agent.v1.ExecutePlanAction",
+        "oneof": "action",
+        "repeated": false
+      },
+      {
+        "number": 8,
+        "name": "async_ask_question_completion_action",
+        "jsonName": "asyncAskQuestionCompletionAction",
+        "kind": "message",
+        "type": "agent.v1.AsyncAskQuestionCompletionAction",
+        "oneof": "action",
+        "repeated": false
+      },
+      {
+        "number": 10,
+        "name": "cancel_subagent_action",
+        "jsonName": "cancelSubagentAction",
+        "kind": "message",
+        "type": "agent.v1.CancelSubagentAction",
+        "oneof": "action",
+        "repeated": false
+      },
+      {
+        "number": 12,
+        "name": "background_task_completion_action",
+        "jsonName": "backgroundTaskCompletionAction",
+        "kind": "message",
+        "type": "agent.v1.BackgroundTaskCompletionAction",
+        "oneof": "action",
+        "repeated": false
+      },
+      {
+        "number": 13,
+        "name": "background_shell_action",
+        "jsonName": "backgroundShellAction",
+        "kind": "message",
+        "type": "agent.v1.BackgroundShellAction",
+        "oneof": "action",
+        "repeated": false
+      },
+      {
+        "number": 14,
+        "name": "background_subagent_action",
+        "jsonName": "backgroundSubagentAction",
+        "kind": "message",
+        "type": "agent.v1.BackgroundSubagentAction",
+        "oneof": "action",
+        "repeated": false
+      },
+      {
+        "number": 16,
+        "name": "subscription_notification_action",
+        "jsonName": "subscriptionNotificationAction",
+        "kind": "message",
+        "type": "agent.v1.SubscriptionNotificationAction",
+        "oneof": "action",
+        "repeated": false
+      },
+      {
+        "number": 18,
+        "name": "goal_continuation_action",
+        "jsonName": "goalContinuationAction",
+        "kind": "message",
+        "type": "agent.v1.GoalContinuationAction",
+        "oneof": "action",
+        "repeated": false
+      },
+      {
+        "number": 19,
+        "name": "inject_context_action",
+        "jsonName": "injectContextAction",
+        "kind": "message",
+        "type": "agent.v1.InjectContextAction",
+        "oneof": "action",
+        "repeated": false
+      },
+      {
+        "number": 11,
+        "name": "triggering_auth_id",
+        "jsonName": "triggeringAuthId",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 15,
+        "name": "triggering_user_info",
+        "jsonName": "triggeringUserInfo",
+        "kind": "message",
+        "type": "agent.v1.TriggeringUserInfo",
+        "repeated": false
+      },
+      {
+        "number": 17,
+        "name": "request_context_parts",
+        "jsonName": "requestContextParts",
+        "kind": "message",
+        "type": "agent.v1.RequestContextPartReferences",
+        "repeated": false
+      }
+    ],
+    "agent.v1.UserMessageAction": [
+      {
+        "number": 1,
+        "name": "user_message",
+        "jsonName": "userMessage",
+        "kind": "message",
+        "type": "agent.v1.UserMessage",
+        "repeated": false
+      },
+      {
+        "number": 2,
+        "name": "request_context",
+        "jsonName": "requestContext",
+        "kind": "message",
+        "type": "agent.v1.RequestContext",
+        "repeated": false
+      },
+      {
+        "number": 3,
+        "name": "send_to_interaction_listener",
+        "jsonName": "sendToInteractionListener",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 4,
+        "name": "prepend_user_messages",
+        "jsonName": "prependUserMessages",
+        "kind": "message",
+        "type": "agent.v1.UserMessage",
+        "repeated": true
+      },
+      {
+        "number": 6,
+        "name": "interrupted_pending_tool_call_resolutions",
+        "jsonName": "interruptedPendingToolCallResolutions",
+        "kind": "message",
+        "type": "agent.v1.InterruptedPendingToolCallResolutions",
+        "repeated": false
+      },
+      {
+        "number": 7,
+        "name": "conversation_history",
+        "jsonName": "conversationHistory",
+        "kind": "message",
+        "type": "agent.v1.ConversationHistory",
+        "repeated": false
+      }
+    ],
+    "agent.v1.UserMessage": [
+      {
+        "number": 1,
+        "name": "text",
+        "jsonName": "text",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 2,
+        "name": "message_id",
+        "jsonName": "messageId",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 3,
+        "name": "selected_context",
+        "jsonName": "selectedContext",
+        "kind": "message",
+        "type": "agent.v1.SelectedContext",
+        "repeated": false
+      },
+      {
+        "number": 4,
+        "name": "mode",
+        "jsonName": "mode",
+        "kind": "enum",
+        "type": "agent.v1.AgentMode",
+        "repeated": false
+      },
+      {
+        "number": 5,
+        "name": "is_simulated_msg",
+        "jsonName": "isSimulatedMsg",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 6,
+        "name": "best_of_n_group_id",
+        "jsonName": "bestOfNGroupId",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 7,
+        "name": "try_use_best_of_n_promotion",
+        "jsonName": "tryUseBestOfNPromotion",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 8,
+        "name": "rich_text",
+        "jsonName": "richText",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 9,
+        "name": "simulated_msg_reason",
+        "jsonName": "simulatedMsgReason",
+        "kind": "enum",
+        "type": "agent.v1.SimulatedMsgReason",
+        "repeated": false
+      },
+      {
+        "number": 10,
+        "name": "conversation_state_blob_id",
+        "jsonName": "conversationStateBlobId",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 11,
+        "name": "subagent_system_reminder",
+        "jsonName": "subagentSystemReminder",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 13,
+        "name": "triggering_user_info",
+        "jsonName": "triggeringUserInfo",
+        "kind": "message",
+        "type": "agent.v1.TriggeringUserInfo",
+        "repeated": false
+      },
+      {
+        "number": 14,
+        "name": "execute_plan_info",
+        "jsonName": "executePlanInfo",
+        "kind": "message",
+        "type": "agent.v1.ExecutePlanInfo",
+        "repeated": false
+      },
+      {
+        "number": 15,
+        "name": "simulated_message_metadata",
+        "jsonName": "simulatedMessageMetadata",
+        "kind": "message",
+        "type": "agent.v1.UserMessage.SimulatedMessageMetadata",
+        "repeated": false
+      },
+      {
+        "number": 16,
+        "name": "prompt_reference_id",
+        "jsonName": "promptReferenceId",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 17,
+        "name": "thread_id",
+        "jsonName": "threadId",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 18,
+        "name": "text_blob_id",
+        "jsonName": "textBlobId",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 19,
+        "name": "rich_text_blob_id",
+        "jsonName": "richTextBlobId",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 21,
+        "name": "hook_additional_contexts",
+        "jsonName": "hookAdditionalContexts",
+        "kind": "message",
+        "type": "agent.v1.HookAdditionalContext",
+        "repeated": true
+      },
+      {
+        "number": 22,
+        "name": "custom_mode_intent",
+        "jsonName": "customModeIntent",
+        "kind": "message",
+        "type": "agent.v1.CustomModeIntent",
+        "repeated": false
+      },
+      {
+        "number": 23,
+        "name": "project_details",
+        "jsonName": "projectDetails",
+        "kind": "message",
+        "type": "agent.v1.ProjectDetails",
+        "repeated": false
+      },
+      {
+        "number": 24,
+        "name": "turn_steer",
+        "jsonName": "turnSteer",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 25,
+        "name": "started_at_ms",
+        "jsonName": "startedAtMs",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 26,
+        "name": "completed_at_ms",
+        "jsonName": "completedAtMs",
+        "kind": "scalar",
+        "repeated": false
+      }
+    ],
+    "agent.v1.ConversationStateStructure": [
+      {
+        "number": 1,
+        "name": "root_prompt_messages_json",
+        "jsonName": "rootPromptMessagesJson",
+        "kind": "scalar",
+        "repeated": true
+      },
+      {
+        "number": 8,
+        "name": "turns",
+        "jsonName": "turns",
+        "kind": "scalar",
+        "repeated": true
+      },
+      {
+        "number": 3,
+        "name": "todos",
+        "jsonName": "todos",
+        "kind": "scalar",
+        "repeated": true
+      },
+      {
+        "number": 4,
+        "name": "pending_tool_calls",
+        "jsonName": "pendingToolCalls",
+        "kind": "scalar",
+        "repeated": true
+      },
+      {
+        "number": 5,
+        "name": "token_details",
+        "jsonName": "tokenDetails",
+        "kind": "message",
+        "type": "agent.v1.ConversationTokenDetails",
+        "repeated": false
+      },
+      {
+        "number": 6,
+        "name": "summary",
+        "jsonName": "summary",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 7,
+        "name": "plan",
+        "jsonName": "plan",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 9,
+        "name": "previous_workspace_uris",
+        "jsonName": "previousWorkspaceUris",
+        "kind": "scalar",
+        "repeated": true
+      },
+      {
+        "number": 10,
+        "name": "mode",
+        "jsonName": "mode",
+        "kind": "enum",
+        "type": "agent.v1.AgentMode",
+        "repeated": false
+      },
+      {
+        "number": 11,
+        "name": "summary_archive",
+        "jsonName": "summaryArchive",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 12,
+        "name": "file_states",
+        "jsonName": "fileStates",
+        "kind": "map",
+        "repeated": false
+      },
+      {
+        "number": 15,
+        "name": "file_states_v2",
+        "jsonName": "fileStatesV2",
+        "kind": "map",
+        "repeated": false
+      },
+      {
+        "number": 13,
+        "name": "summary_archives",
+        "jsonName": "summaryArchives",
+        "kind": "scalar",
+        "repeated": true
+      },
+      {
+        "number": 14,
+        "name": "turn_timings",
+        "jsonName": "turnTimings",
+        "kind": "message",
+        "type": "agent.v1.StepTiming",
+        "repeated": true
+      },
+      {
+        "number": 16,
+        "name": "subagent_states",
+        "jsonName": "subagentStates",
+        "kind": "map",
+        "repeated": false
+      },
+      {
+        "number": 17,
+        "name": "self_summary_count",
+        "jsonName": "selfSummaryCount",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 18,
+        "name": "read_paths",
+        "jsonName": "readPaths",
+        "kind": "scalar",
+        "repeated": true
+      },
+      {
+        "number": 19,
+        "name": "active_branch_name",
+        "jsonName": "activeBranchName",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 20,
+        "name": "plans",
+        "jsonName": "plans",
+        "kind": "map",
+        "repeated": false
+      },
+      {
+        "number": 21,
+        "name": "tracked_git_repo_branches",
+        "jsonName": "trackedGitRepoBranches",
+        "kind": "message",
+        "type": "agent.v1.TrackedGitRepo",
+        "repeated": true
+      },
+      {
+        "number": 22,
+        "name": "agent_type",
+        "jsonName": "agentType",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 23,
+        "name": "communicate_update_history",
+        "jsonName": "communicateUpdateHistory",
+        "kind": "message",
+        "type": "agent.v1.CommunicateUpdateHistoryEntry",
+        "repeated": true
+      },
+      {
+        "number": 24,
+        "name": "subagent_threads",
+        "jsonName": "subagentThreads",
+        "kind": "map",
+        "repeated": false
+      },
+      {
+        "number": 25,
+        "name": "communicate_update_final_summary",
+        "jsonName": "communicateUpdateFinalSummary",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 28,
+        "name": "communicate_update_completed_subtitle",
+        "jsonName": "communicateUpdateCompletedSubtitle",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 29,
+        "name": "communicate_update_states_by_parent_tool_call_id",
+        "jsonName": "communicateUpdateStatesByParentToolCallId",
+        "kind": "map",
+        "repeated": false
+      },
+      {
+        "number": 30,
+        "name": "subagent_runs_by_parent_tool_call_id",
+        "jsonName": "subagentRunsByParentToolCallId",
+        "kind": "map",
+        "repeated": false
+      },
+      {
+        "number": 26,
+        "name": "conversation_started_timestamp_ms",
+        "jsonName": "conversationStartedTimestampMs",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 27,
+        "name": "conversation_started_time_zone",
+        "jsonName": "conversationStartedTimeZone",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 31,
+        "name": "subagent_state_refs",
+        "jsonName": "subagentStateRefs",
+        "kind": "map",
+        "repeated": false
+      },
+      {
+        "number": 32,
+        "name": "goal_state",
+        "jsonName": "goalState",
+        "kind": "message",
+        "type": "agent.v1.GoalState",
+        "repeated": false
+      },
+      {
+        "number": 33,
+        "name": "is_root_project_conversation",
+        "jsonName": "isRootProjectConversation",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 34,
+        "name": "completed_ask_question_tool_call_ids",
+        "jsonName": "completedAskQuestionToolCallIds",
+        "kind": "scalar",
+        "repeated": true
+      },
+      {
+        "number": 35,
+        "name": "durable_skill_blocks",
+        "jsonName": "durableSkillBlocks",
+        "kind": "scalar",
+        "repeated": true
+      },
+      {
+        "number": 36,
+        "name": "durable_custom_mode_id",
+        "jsonName": "durableCustomModeId",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 37,
+        "name": "message_count_at_last_compaction",
+        "jsonName": "messageCountAtLastCompaction",
+        "kind": "scalar",
+        "repeated": false
+      }
+    ],
+    "agent.v1.RequestContext": [
+      {
+        "number": 2,
+        "name": "rules",
+        "jsonName": "rules",
+        "kind": "message",
+        "type": "agent.v1.CursorRule",
+        "repeated": true
+      },
+      {
+        "number": 4,
+        "name": "env",
+        "jsonName": "env",
+        "kind": "message",
+        "type": "agent.v1.RequestContextEnv",
+        "repeated": false
+      },
+      {
+        "number": 6,
+        "name": "repository_info",
+        "jsonName": "repositoryInfo",
+        "kind": "message",
+        "type": "agent.v1.RepositoryIndexingInfo",
+        "repeated": true
+      },
+      {
+        "number": 7,
+        "name": "tools",
+        "jsonName": "tools",
+        "kind": "message",
+        "type": "agent.v1.McpToolDefinition",
+        "repeated": true
+      },
+      {
+        "number": 8,
+        "name": "conversation_notes_listing",
+        "jsonName": "conversationNotesListing",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 9,
+        "name": "shared_notes_listing",
+        "jsonName": "sharedNotesListing",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 11,
+        "name": "git_repos",
+        "jsonName": "gitRepos",
+        "kind": "message",
+        "type": "agent.v1.GitRepoInfo",
+        "repeated": true
+      },
+      {
+        "number": 13,
+        "name": "project_layouts",
+        "jsonName": "projectLayouts",
+        "kind": "message",
+        "type": "agent.v1.LsDirectoryTreeNode",
+        "repeated": true
+      },
+      {
+        "number": 14,
+        "name": "mcp_instructions",
+        "jsonName": "mcpInstructions",
+        "kind": "message",
+        "type": "agent.v1.McpInstructions",
+        "repeated": true
+      },
+      {
+        "number": 15,
+        "name": "debug_mode_config",
+        "jsonName": "debugModeConfig",
+        "kind": "message",
+        "type": "agent.v1.DebugModeConfig",
+        "repeated": false
+      },
+      {
+        "number": 16,
+        "name": "cloud_rule",
+        "jsonName": "cloudRule",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 17,
+        "name": "web_search_enabled",
+        "jsonName": "webSearchEnabled",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 18,
+        "name": "skill_options",
+        "jsonName": "skillOptions",
+        "kind": "message",
+        "type": "agent.v1.SkillOptions",
+        "repeated": false
+      },
+      {
+        "number": 19,
+        "name": "repository_info_should_query_prod",
+        "jsonName": "repositoryInfoShouldQueryProd",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 20,
+        "name": "file_contents",
+        "jsonName": "fileContents",
+        "kind": "map",
+        "repeated": false
+      },
+      {
+        "number": 21,
+        "name": "user_intent_summary",
+        "jsonName": "userIntentSummary",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 22,
+        "name": "custom_subagents",
+        "jsonName": "customSubagents",
+        "kind": "message",
+        "type": "agent.v1.CustomSubagent",
+        "repeated": true
+      },
+      {
+        "number": 23,
+        "name": "mcp_file_system_options",
+        "jsonName": "mcpFileSystemOptions",
+        "kind": "message",
+        "type": "agent.v1.McpFileSystemOptions",
+        "repeated": false
+      },
+      {
+        "number": 24,
+        "name": "web_fetch_enabled",
+        "jsonName": "webFetchEnabled",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 25,
+        "name": "hooks_additional_context",
+        "jsonName": "hooksAdditionalContext",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 26,
+        "name": "commit_attribution_message",
+        "jsonName": "commitAttributionMessage",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 27,
+        "name": "pr_attribution_message",
+        "jsonName": "prAttributionMessage",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 28,
+        "name": "hooks_config",
+        "jsonName": "hooksConfig",
+        "kind": "message",
+        "type": "agent.v1.HooksConfigInfo",
+        "repeated": false
+      },
+      {
+        "number": 29,
+        "name": "agent_skills",
+        "jsonName": "agentSkills",
+        "kind": "message",
+        "type": "agent.v1.AgentSkill",
+        "repeated": true
+      },
+      {
+        "number": 30,
+        "name": "precomputed_human_changes",
+        "jsonName": "precomputedHumanChanges",
+        "kind": "message",
+        "type": "agent.v1.PrecomputedHumanChange",
+        "repeated": true
+      },
+      {
+        "number": 31,
+        "name": "recently_added_plugin",
+        "jsonName": "recentlyAddedPlugin",
+        "kind": "message",
+        "type": "agent.v1.RecentlyAddedPlugin",
+        "repeated": false
+      },
+      {
+        "number": 32,
+        "name": "supports_mcp_auth",
+        "jsonName": "supportsMcpAuth",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 33,
+        "name": "git_repo_info_complete",
+        "jsonName": "gitRepoInfoComplete",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 34,
+        "name": "mcp_meta_tool_options",
+        "jsonName": "mcpMetaToolOptions",
+        "kind": "message",
+        "type": "agent.v1.McpMetaToolOptions",
+        "repeated": false
+      },
+      {
+        "number": 35,
+        "name": "read_lints_enabled",
+        "jsonName": "readLintsEnabled",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 36,
+        "name": "mcp_info_complete",
+        "jsonName": "mcpInfoComplete",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 37,
+        "name": "non_file_rules",
+        "jsonName": "nonFileRules",
+        "kind": "message",
+        "type": "agent.v1.CursorRule",
+        "repeated": true
+      },
+      {
+        "number": 38,
+        "name": "matched_installed_plugin",
+        "jsonName": "matchedInstalledPlugin",
+        "kind": "message",
+        "type": "agent.v1.MatchedInstalledPlugin",
+        "repeated": false
+      },
+      {
+        "number": 39,
+        "name": "rules_info_complete",
+        "jsonName": "rulesInfoComplete",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 40,
+        "name": "env_info_complete",
+        "jsonName": "envInfoComplete",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 41,
+        "name": "repository_info_complete",
+        "jsonName": "repositoryInfoComplete",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 42,
+        "name": "custom_subagents_info_complete",
+        "jsonName": "customSubagentsInfoComplete",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 43,
+        "name": "agent_skills_info_complete",
+        "jsonName": "agentSkillsInfoComplete",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 44,
+        "name": "mcp_file_system_info_complete",
+        "jsonName": "mcpFileSystemInfoComplete",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 45,
+        "name": "git_status_info_complete",
+        "jsonName": "gitStatusInfoComplete",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 46,
+        "name": "user_permissions_auto_run",
+        "jsonName": "userPermissionsAutoRun",
+        "kind": "message",
+        "type": "agent.v1.PermissionsAutoRunInstructions",
+        "repeated": false
+      },
+      {
+        "number": 47,
+        "name": "project_permissions_auto_run",
+        "jsonName": "projectPermissionsAutoRun",
+        "kind": "message",
+        "type": "agent.v1.PermissionsAutoRunInstructions",
+        "repeated": false
+      },
+      {
+        "number": 48,
+        "name": "admin_permissions_auto_run",
+        "jsonName": "adminPermissionsAutoRun",
+        "kind": "message",
+        "type": "agent.v1.PermissionsAutoRunInstructions",
+        "repeated": false
+      },
+      {
+        "number": 49,
+        "name": "disabled_team_rules",
+        "jsonName": "disabledTeamRules",
+        "kind": "scalar",
+        "repeated": true
+      },
+      {
+        "number": 50,
+        "name": "search_conversations_enabled",
+        "jsonName": "searchConversationsEnabled",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 51,
+        "name": "send_message_enabled",
+        "jsonName": "sendMessageEnabled",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 52,
+        "name": "admin_command_denylist",
+        "jsonName": "adminCommandDenylist",
+        "kind": "scalar",
+        "repeated": true
+      },
+      {
+        "number": 53,
+        "name": "system_prompt_override",
+        "jsonName": "systemPromptOverride",
+        "kind": "message",
+        "type": "agent.v1.SystemPromptSpec",
+        "repeated": false
+      }
+    ],
+    "agent.v1.RequestContextEnv": [
+      {
+        "number": 1,
+        "name": "os_version",
+        "jsonName": "osVersion",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 2,
+        "name": "workspace_paths",
+        "jsonName": "workspacePaths",
+        "kind": "scalar",
+        "repeated": true
+      },
+      {
+        "number": 3,
+        "name": "shell",
+        "jsonName": "shell",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 5,
+        "name": "sandbox_enabled",
+        "jsonName": "sandboxEnabled",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 7,
+        "name": "terminals_folder",
+        "jsonName": "terminalsFolder",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 8,
+        "name": "agent_shared_notes_folder",
+        "jsonName": "agentSharedNotesFolder",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 9,
+        "name": "agent_conversation_notes_folder",
+        "jsonName": "agentConversationNotesFolder",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 10,
+        "name": "time_zone",
+        "jsonName": "timeZone",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 11,
+        "name": "project_folder",
+        "jsonName": "projectFolder",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 12,
+        "name": "agent_transcripts_folder",
+        "jsonName": "agentTranscriptsFolder",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 13,
+        "name": "artifacts_folder",
+        "jsonName": "artifactsFolder",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 14,
+        "name": "sandbox_supported",
+        "jsonName": "sandboxSupported",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 16,
+        "name": "sandbox_network_has_defaults",
+        "jsonName": "sandboxNetworkHasDefaults",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 17,
+        "name": "sandbox_network_explicit_allowlist",
+        "jsonName": "sandboxNetworkExplicitAllowlist",
+        "kind": "scalar",
+        "repeated": true
+      },
+      {
+        "number": 18,
+        "name": "secret_redaction_enabled",
+        "jsonName": "secretRedactionEnabled",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 19,
+        "name": "computer_use_supported",
+        "jsonName": "computerUseSupported",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 20,
+        "name": "is_working_dir_home_dir",
+        "jsonName": "isWorkingDirHomeDir",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 21,
+        "name": "process_working_directory",
+        "jsonName": "processWorkingDirectory",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 22,
+        "name": "smart_mode_classifier_auto_mode_enabled",
+        "jsonName": "smartModeClassifierAutoModeEnabled",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 23,
+        "name": "dev_force_next_smart_mode_classifier_block_token",
+        "jsonName": "devForceNextSmartModeClassifierBlockToken",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 24,
+        "name": "dev_delay_next_smart_mode_classifier_token",
+        "jsonName": "devDelayNextSmartModeClassifierToken",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 25,
+        "name": "mounted_agent_stores",
+        "jsonName": "mountedAgentStores",
+        "kind": "message",
+        "type": "agent.v1.MountedAgentStore",
+        "repeated": true
+      },
+      {
+        "number": 26,
+        "name": "user_agent_store_web_context",
+        "jsonName": "userAgentStoreWebContext",
+        "kind": "message",
+        "type": "agent.v1.UserAgentStoreWebContext",
+        "repeated": false
+      }
+    ],
+    "agent.v1.SystemPromptSpec": [
+      {
+        "number": 1,
+        "name": "replace",
+        "jsonName": "replace",
+        "kind": "scalar",
+        "oneof": "spec",
+        "repeated": false
+      },
+      {
+        "number": 2,
+        "name": "append",
+        "jsonName": "append",
+        "kind": "scalar",
+        "oneof": "spec",
+        "repeated": false
+      }
+    ],
+    "agent.v1.ExecServerMessage": [
+      {
+        "number": 1,
+        "name": "id",
+        "jsonName": "id",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 15,
+        "name": "exec_id",
+        "jsonName": "execId",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 57,
+        "name": "machine_id",
+        "jsonName": "machineId",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 2,
+        "name": "shell_args",
+        "jsonName": "shellArgs",
+        "kind": "message",
+        "type": "agent.v1.ShellArgs",
+        "oneof": "message",
+        "repeated": false
+      },
+      {
+        "number": 3,
+        "name": "write_args",
+        "jsonName": "writeArgs",
+        "kind": "message",
+        "type": "agent.v1.WriteArgs",
+        "oneof": "message",
+        "repeated": false
+      },
+      {
+        "number": 4,
+        "name": "delete_args",
+        "jsonName": "deleteArgs",
+        "kind": "message",
+        "type": "agent.v1.DeleteArgs",
+        "oneof": "message",
+        "repeated": false
+      },
+      {
+        "number": 5,
+        "name": "grep_args",
+        "jsonName": "grepArgs",
+        "kind": "message",
+        "type": "agent.v1.GrepArgs",
+        "oneof": "message",
+        "repeated": false
+      },
+      {
+        "number": 7,
+        "name": "read_args",
+        "jsonName": "readArgs",
+        "kind": "message",
+        "type": "agent.v1.ReadArgs",
+        "oneof": "message",
+        "repeated": false
+      },
+      {
+        "number": 29,
+        "name": "redacted_read_args",
+        "jsonName": "redactedReadArgs",
+        "kind": "message",
+        "type": "agent.v1.ReadArgs",
+        "oneof": "message",
+        "repeated": false
+      },
+      {
+        "number": 8,
+        "name": "ls_args",
+        "jsonName": "lsArgs",
+        "kind": "message",
+        "type": "agent.v1.LsArgs",
+        "oneof": "message",
+        "repeated": false
+      },
+      {
+        "number": 9,
+        "name": "diagnostics_args",
+        "jsonName": "diagnosticsArgs",
+        "kind": "message",
+        "type": "agent.v1.DiagnosticsArgs",
+        "oneof": "message",
+        "repeated": false
+      },
+      {
+        "number": 10,
+        "name": "request_context_args",
+        "jsonName": "requestContextArgs",
+        "kind": "message",
+        "type": "agent.v1.RequestContextArgs",
+        "oneof": "message",
+        "repeated": false
+      },
+      {
+        "number": 11,
+        "name": "mcp_args",
+        "jsonName": "mcpArgs",
+        "kind": "message",
+        "type": "agent.v1.McpArgs",
+        "oneof": "message",
+        "repeated": false
+      },
+      {
+        "number": 14,
+        "name": "shell_stream_args",
+        "jsonName": "shellStreamArgs",
+        "kind": "message",
+        "type": "agent.v1.ShellArgs",
+        "oneof": "message",
+        "repeated": false
+      },
+      {
+        "number": 16,
+        "name": "background_shell_spawn_args",
+        "jsonName": "backgroundShellSpawnArgs",
+        "kind": "message",
+        "type": "agent.v1.BackgroundShellSpawnArgs",
+        "oneof": "message",
+        "repeated": false
+      },
+      {
+        "number": 17,
+        "name": "list_mcp_resources_exec_args",
+        "jsonName": "listMcpResourcesExecArgs",
+        "kind": "message",
+        "type": "agent.v1.ListMcpResourcesExecArgs",
+        "oneof": "message",
+        "repeated": false
+      },
+      {
+        "number": 18,
+        "name": "read_mcp_resource_exec_args",
+        "jsonName": "readMcpResourceExecArgs",
+        "kind": "message",
+        "type": "agent.v1.ReadMcpResourceExecArgs",
+        "oneof": "message",
+        "repeated": false
+      },
+      {
+        "number": 36,
+        "name": "mcp_state_exec_args",
+        "jsonName": "mcpStateExecArgs",
+        "kind": "message",
+        "type": "agent.v1.McpStateExecArgs",
+        "oneof": "message",
+        "repeated": false
+      },
+      {
+        "number": 20,
+        "name": "fetch_args",
+        "jsonName": "fetchArgs",
+        "kind": "message",
+        "type": "agent.v1.FetchArgs",
+        "oneof": "message",
+        "repeated": false
+      },
+      {
+        "number": 21,
+        "name": "record_screen_args",
+        "jsonName": "recordScreenArgs",
+        "kind": "message",
+        "type": "agent.v1.RecordScreenArgs",
+        "oneof": "message",
+        "repeated": false
+      },
+      {
+        "number": 22,
+        "name": "computer_use_args",
+        "jsonName": "computerUseArgs",
+        "kind": "message",
+        "type": "agent.v1.ComputerUseArgs",
+        "oneof": "message",
+        "repeated": false
+      },
+      {
+        "number": 23,
+        "name": "write_shell_stdin_args",
+        "jsonName": "writeShellStdinArgs",
+        "kind": "message",
+        "type": "agent.v1.WriteShellStdinArgs",
+        "oneof": "message",
+        "repeated": false
+      },
+      {
+        "number": 27,
+        "name": "execute_hook_args",
+        "jsonName": "executeHookArgs",
+        "kind": "message",
+        "type": "agent.v1.ExecuteHookArgs",
+        "oneof": "message",
+        "repeated": false
+      },
+      {
+        "number": 28,
+        "name": "subagent_args",
+        "jsonName": "subagentArgs",
+        "kind": "message",
+        "type": "agent.v1.SubagentArgs",
+        "oneof": "message",
+        "repeated": false
+      },
+      {
+        "number": 30,
+        "name": "force_background_shell_args",
+        "jsonName": "forceBackgroundShellArgs",
+        "kind": "message",
+        "type": "agent.v1.ForceBackgroundShellArgs",
+        "oneof": "message",
+        "repeated": false
+      },
+      {
+        "number": 31,
+        "name": "force_background_subagent_args",
+        "jsonName": "forceBackgroundSubagentArgs",
+        "kind": "message",
+        "type": "agent.v1.ForceBackgroundSubagentArgs",
+        "oneof": "message",
+        "repeated": false
+      },
+      {
+        "number": 37,
+        "name": "subagent_await_args",
+        "jsonName": "subagentAwaitArgs",
+        "kind": "message",
+        "type": "agent.v1.SubagentAwaitArgs",
+        "oneof": "message",
+        "repeated": false
+      },
+      {
+        "number": 38,
+        "name": "smart_mode_classifier_args",
+        "jsonName": "smartModeClassifierArgs",
+        "kind": "message",
+        "type": "agent.v1.SmartModeClassifierArgs",
+        "oneof": "message",
+        "repeated": false
+      },
+      {
+        "number": 40,
+        "name": "canvas_diagnostics_args",
+        "jsonName": "canvasDiagnosticsArgs",
+        "kind": "message",
+        "type": "agent.v1.CanvasDiagnosticsArgs",
+        "oneof": "message",
+        "repeated": false
+      },
+      {
+        "number": 41,
+        "name": "shell_allowlist_precheck_args",
+        "jsonName": "shellAllowlistPrecheckArgs",
+        "kind": "message",
+        "type": "agent.v1.ShellAllowlistPrecheckArgs",
+        "oneof": "message",
+        "repeated": false
+      },
+      {
+        "number": 42,
+        "name": "mcp_allowlist_precheck_args",
+        "jsonName": "mcpAllowlistPrecheckArgs",
+        "kind": "message",
+        "type": "agent.v1.McpAllowlistPrecheckArgs",
+        "oneof": "message",
+        "repeated": false
+      },
+      {
+        "number": 43,
+        "name": "web_fetch_allowlist_precheck_args",
+        "jsonName": "webFetchAllowlistPrecheckArgs",
+        "kind": "message",
+        "type": "agent.v1.WebFetchAllowlistPrecheckArgs",
+        "oneof": "message",
+        "repeated": false
+      },
+      {
+        "number": 44,
+        "name": "git_diff_request",
+        "jsonName": "gitDiffRequest",
+        "kind": "message",
+        "type": "aiserver.v1.GetDiffRequest",
+        "oneof": "message",
+        "repeated": false
+      },
+      {
+        "number": 45,
+        "name": "pi_read_args",
+        "jsonName": "piReadArgs",
+        "kind": "message",
+        "type": "agent.v1.PiReadExecArgs",
+        "oneof": "message",
+        "repeated": false
+      },
+      {
+        "number": 46,
+        "name": "pi_bash_args",
+        "jsonName": "piBashArgs",
+        "kind": "message",
+        "type": "agent.v1.PiBashExecArgs",
+        "oneof": "message",
+        "repeated": false
+      },
+      {
+        "number": 47,
+        "name": "pi_edit_args",
+        "jsonName": "piEditArgs",
+        "kind": "message",
+        "type": "agent.v1.PiEditExecArgs",
+        "oneof": "message",
+        "repeated": false
+      },
+      {
+        "number": 48,
+        "name": "pi_write_args",
+        "jsonName": "piWriteArgs",
+        "kind": "message",
+        "type": "agent.v1.PiWriteExecArgs",
+        "oneof": "message",
+        "repeated": false
+      },
+      {
+        "number": 49,
+        "name": "pi_grep_args",
+        "jsonName": "piGrepArgs",
+        "kind": "message",
+        "type": "agent.v1.PiGrepExecArgs",
+        "oneof": "message",
+        "repeated": false
+      },
+      {
+        "number": 50,
+        "name": "pi_find_args",
+        "jsonName": "piFindArgs",
+        "kind": "message",
+        "type": "agent.v1.PiFindExecArgs",
+        "oneof": "message",
+        "repeated": false
+      },
+      {
+        "number": 51,
+        "name": "pi_ls_args",
+        "jsonName": "piLsArgs",
+        "kind": "message",
+        "type": "agent.v1.PiLsExecArgs",
+        "oneof": "message",
+        "repeated": false
+      },
+      {
+        "number": 52,
+        "name": "mini_swe_agent_bash_args",
+        "jsonName": "miniSweAgentBashArgs",
+        "kind": "message",
+        "type": "agent.v1.ShellArgs",
+        "oneof": "message",
+        "repeated": false
+      },
+      {
+        "number": 53,
+        "name": "conversation_search_args",
+        "jsonName": "conversationSearchArgs",
+        "kind": "message",
+        "type": "agent.v1.ConversationSearchArgs",
+        "oneof": "message",
+        "repeated": false
+      },
+      {
+        "number": 54,
+        "name": "agent_store_conflict_args",
+        "jsonName": "agentStoreConflictArgs",
+        "kind": "message",
+        "type": "agent.v1.AgentStoreConflictArgs",
+        "oneof": "message",
+        "repeated": false
+      },
+      {
+        "number": 56,
+        "name": "adopt_args",
+        "jsonName": "adoptArgs",
+        "kind": "message",
+        "type": "agent.v1.AdoptArgs",
+        "oneof": "message",
+        "repeated": false
+      },
+      {
+        "number": 19,
+        "name": "span_context",
+        "jsonName": "spanContext",
+        "kind": "message",
+        "type": "agent.v1.SpanContext",
+        "repeated": false
+      },
+      {
+        "number": 55,
+        "name": "accept_hook_additional_contexts",
+        "jsonName": "acceptHookAdditionalContexts",
+        "kind": "scalar",
+        "repeated": false
+      }
+    ],
+    "agent.v1.InteractionQuery": [
+      {
+        "number": 1,
+        "name": "id",
+        "jsonName": "id",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 2,
+        "name": "web_search_request_query",
+        "jsonName": "webSearchRequestQuery",
+        "kind": "message",
+        "type": "agent.v1.WebSearchRequestQuery",
+        "oneof": "query",
+        "repeated": false
+      },
+      {
+        "number": 3,
+        "name": "ask_question_interaction_query",
+        "jsonName": "askQuestionInteractionQuery",
+        "kind": "message",
+        "type": "agent.v1.AskQuestionInteractionQuery",
+        "oneof": "query",
+        "repeated": false
+      },
+      {
+        "number": 4,
+        "name": "switch_mode_request_query",
+        "jsonName": "switchModeRequestQuery",
+        "kind": "message",
+        "type": "agent.v1.SwitchModeRequestQuery",
+        "oneof": "query",
+        "repeated": false
+      },
+      {
+        "number": 7,
+        "name": "create_plan_request_query",
+        "jsonName": "createPlanRequestQuery",
+        "kind": "message",
+        "type": "agent.v1.CreatePlanRequestQuery",
+        "oneof": "query",
+        "repeated": false
+      },
+      {
+        "number": 8,
+        "name": "setup_vm_environment_args",
+        "jsonName": "setupVmEnvironmentArgs",
+        "kind": "message",
+        "type": "agent.v1.SetupVmEnvironmentArgs",
+        "oneof": "query",
+        "repeated": false
+      },
+      {
+        "number": 9,
+        "name": "web_fetch_request_query",
+        "jsonName": "webFetchRequestQuery",
+        "kind": "message",
+        "type": "agent.v1.WebFetchRequestQuery",
+        "oneof": "query",
+        "repeated": false
+      },
+      {
+        "number": 10,
+        "name": "pr_management_request_query",
+        "jsonName": "prManagementRequestQuery",
+        "kind": "message",
+        "type": "agent.v1.PrManagementRequestQuery",
+        "oneof": "query",
+        "repeated": false
+      },
+      {
+        "number": 11,
+        "name": "mcp_auth_request_query",
+        "jsonName": "mcpAuthRequestQuery",
+        "kind": "message",
+        "type": "agent.v1.McpAuthRequestQuery",
+        "oneof": "query",
+        "repeated": false
+      },
+      {
+        "number": 12,
+        "name": "generate_image_request_query",
+        "jsonName": "generateImageRequestQuery",
+        "kind": "message",
+        "type": "agent.v1.GenerateImageRequestQuery",
+        "oneof": "query",
+        "repeated": false
+      },
+      {
+        "number": 13,
+        "name": "replace_env_args",
+        "jsonName": "replaceEnvArgs",
+        "kind": "message",
+        "type": "agent.v1.ReplaceEnvArgs",
+        "oneof": "query",
+        "repeated": false
+      },
+      {
+        "number": 14,
+        "name": "connect_scm_request_query",
+        "jsonName": "connectScmRequestQuery",
+        "kind": "message",
+        "type": "agent.v1.ConnectScmRequestQuery",
+        "oneof": "query",
+        "repeated": false
+      }
+    ],
+    "agent.v1.InteractionResponse": [
+      {
+        "number": 1,
+        "name": "id",
+        "jsonName": "id",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 2,
+        "name": "web_search_request_response",
+        "jsonName": "webSearchRequestResponse",
+        "kind": "message",
+        "type": "agent.v1.WebSearchRequestResponse",
+        "oneof": "result",
+        "repeated": false
+      },
+      {
+        "number": 3,
+        "name": "ask_question_interaction_response",
+        "jsonName": "askQuestionInteractionResponse",
+        "kind": "message",
+        "type": "agent.v1.AskQuestionInteractionResponse",
+        "oneof": "result",
+        "repeated": false
+      },
+      {
+        "number": 4,
+        "name": "switch_mode_request_response",
+        "jsonName": "switchModeRequestResponse",
+        "kind": "message",
+        "type": "agent.v1.SwitchModeRequestResponse",
+        "oneof": "result",
+        "repeated": false
+      },
+      {
+        "number": 7,
+        "name": "create_plan_request_response",
+        "jsonName": "createPlanRequestResponse",
+        "kind": "message",
+        "type": "agent.v1.CreatePlanRequestResponse",
+        "oneof": "result",
+        "repeated": false
+      },
+      {
+        "number": 8,
+        "name": "setup_vm_environment_result",
+        "jsonName": "setupVmEnvironmentResult",
+        "kind": "message",
+        "type": "agent.v1.SetupVmEnvironmentResult",
+        "oneof": "result",
+        "repeated": false
+      },
+      {
+        "number": 9,
+        "name": "web_fetch_request_response",
+        "jsonName": "webFetchRequestResponse",
+        "kind": "message",
+        "type": "agent.v1.WebFetchRequestResponse",
+        "oneof": "result",
+        "repeated": false
+      },
+      {
+        "number": 10,
+        "name": "pr_management_result",
+        "jsonName": "prManagementResult",
+        "kind": "message",
+        "type": "agent.v1.PrManagementResult",
+        "oneof": "result",
+        "repeated": false
+      },
+      {
+        "number": 11,
+        "name": "mcp_auth_request_response",
+        "jsonName": "mcpAuthRequestResponse",
+        "kind": "message",
+        "type": "agent.v1.McpAuthRequestResponse",
+        "oneof": "result",
+        "repeated": false
+      },
+      {
+        "number": 12,
+        "name": "generate_image_request_response",
+        "jsonName": "generateImageRequestResponse",
+        "kind": "message",
+        "type": "agent.v1.GenerateImageRequestResponse",
+        "oneof": "result",
+        "repeated": false
+      },
+      {
+        "number": 13,
+        "name": "replace_env_result",
+        "jsonName": "replaceEnvResult",
+        "kind": "message",
+        "type": "agent.v1.ReplaceEnvResult",
+        "oneof": "result",
+        "repeated": false
+      },
+      {
+        "number": 14,
+        "name": "connect_scm_request_response",
+        "jsonName": "connectScmRequestResponse",
+        "kind": "message",
+        "type": "agent.v1.ConnectScmRequestResponse",
+        "oneof": "result",
+        "repeated": false
+      }
+    ],
+    "agent.v1.ToolCall": [
+      {
+        "number": 1,
+        "name": "shell_tool_call",
+        "jsonName": "shellToolCall",
+        "kind": "message",
+        "type": "agent.v1.ShellToolCall",
+        "oneof": "tool",
+        "repeated": false
+      },
+      {
+        "number": 3,
+        "name": "delete_tool_call",
+        "jsonName": "deleteToolCall",
+        "kind": "message",
+        "type": "agent.v1.DeleteToolCall",
+        "oneof": "tool",
+        "repeated": false
+      },
+      {
+        "number": 4,
+        "name": "glob_tool_call",
+        "jsonName": "globToolCall",
+        "kind": "message",
+        "type": "agent.v1.GlobToolCall",
+        "oneof": "tool",
+        "repeated": false
+      },
+      {
+        "number": 5,
+        "name": "grep_tool_call",
+        "jsonName": "grepToolCall",
+        "kind": "message",
+        "type": "agent.v1.GrepToolCall",
+        "oneof": "tool",
+        "repeated": false
+      },
+      {
+        "number": 8,
+        "name": "read_tool_call",
+        "jsonName": "readToolCall",
+        "kind": "message",
+        "type": "agent.v1.ReadToolCall",
+        "oneof": "tool",
+        "repeated": false
+      },
+      {
+        "number": 9,
+        "name": "update_todos_tool_call",
+        "jsonName": "updateTodosToolCall",
+        "kind": "message",
+        "type": "agent.v1.UpdateTodosToolCall",
+        "oneof": "tool",
+        "repeated": false
+      },
+      {
+        "number": 10,
+        "name": "read_todos_tool_call",
+        "jsonName": "readTodosToolCall",
+        "kind": "message",
+        "type": "agent.v1.ReadTodosToolCall",
+        "oneof": "tool",
+        "repeated": false
+      },
+      {
+        "number": 12,
+        "name": "edit_tool_call",
+        "jsonName": "editToolCall",
+        "kind": "message",
+        "type": "agent.v1.EditToolCall",
+        "oneof": "tool",
+        "repeated": false
+      },
+      {
+        "number": 13,
+        "name": "ls_tool_call",
+        "jsonName": "lsToolCall",
+        "kind": "message",
+        "type": "agent.v1.LsToolCall",
+        "oneof": "tool",
+        "repeated": false
+      },
+      {
+        "number": 14,
+        "name": "read_lints_tool_call",
+        "jsonName": "readLintsToolCall",
+        "kind": "message",
+        "type": "agent.v1.ReadLintsToolCall",
+        "oneof": "tool",
+        "repeated": false
+      },
+      {
+        "number": 15,
+        "name": "mcp_tool_call",
+        "jsonName": "mcpToolCall",
+        "kind": "message",
+        "type": "agent.v1.McpToolCall",
+        "oneof": "tool",
+        "repeated": false
+      },
+      {
+        "number": 16,
+        "name": "sem_search_tool_call",
+        "jsonName": "semSearchToolCall",
+        "kind": "message",
+        "type": "agent.v1.SemSearchToolCall",
+        "oneof": "tool",
+        "repeated": false
+      },
+      {
+        "number": 17,
+        "name": "create_plan_tool_call",
+        "jsonName": "createPlanToolCall",
+        "kind": "message",
+        "type": "agent.v1.CreatePlanToolCall",
+        "oneof": "tool",
+        "repeated": false
+      },
+      {
+        "number": 18,
+        "name": "web_search_tool_call",
+        "jsonName": "webSearchToolCall",
+        "kind": "message",
+        "type": "agent.v1.WebSearchToolCall",
+        "oneof": "tool",
+        "repeated": false
+      },
+      {
+        "number": 19,
+        "name": "task_tool_call",
+        "jsonName": "taskToolCall",
+        "kind": "message",
+        "type": "agent.v1.TaskToolCall",
+        "oneof": "tool",
+        "repeated": false
+      },
+      {
+        "number": 20,
+        "name": "list_mcp_resources_tool_call",
+        "jsonName": "listMcpResourcesToolCall",
+        "kind": "message",
+        "type": "agent.v1.ListMcpResourcesToolCall",
+        "oneof": "tool",
+        "repeated": false
+      },
+      {
+        "number": 21,
+        "name": "read_mcp_resource_tool_call",
+        "jsonName": "readMcpResourceToolCall",
+        "kind": "message",
+        "type": "agent.v1.ReadMcpResourceToolCall",
+        "oneof": "tool",
+        "repeated": false
+      },
+      {
+        "number": 22,
+        "name": "apply_agent_diff_tool_call",
+        "jsonName": "applyAgentDiffToolCall",
+        "kind": "message",
+        "type": "agent.v1.ApplyAgentDiffToolCall",
+        "oneof": "tool",
+        "repeated": false
+      },
+      {
+        "number": 23,
+        "name": "ask_question_tool_call",
+        "jsonName": "askQuestionToolCall",
+        "kind": "message",
+        "type": "agent.v1.AskQuestionToolCall",
+        "oneof": "tool",
+        "repeated": false
+      },
+      {
+        "number": 24,
+        "name": "fetch_tool_call",
+        "jsonName": "fetchToolCall",
+        "kind": "message",
+        "type": "agent.v1.FetchToolCall",
+        "oneof": "tool",
+        "repeated": false
+      },
+      {
+        "number": 25,
+        "name": "switch_mode_tool_call",
+        "jsonName": "switchModeToolCall",
+        "kind": "message",
+        "type": "agent.v1.SwitchModeToolCall",
+        "oneof": "tool",
+        "repeated": false
+      },
+      {
+        "number": 28,
+        "name": "generate_image_tool_call",
+        "jsonName": "generateImageToolCall",
+        "kind": "message",
+        "type": "agent.v1.GenerateImageToolCall",
+        "oneof": "tool",
+        "repeated": false
+      },
+      {
+        "number": 29,
+        "name": "record_screen_tool_call",
+        "jsonName": "recordScreenToolCall",
+        "kind": "message",
+        "type": "agent.v1.RecordScreenToolCall",
+        "oneof": "tool",
+        "repeated": false
+      },
+      {
+        "number": 30,
+        "name": "computer_use_tool_call",
+        "jsonName": "computerUseToolCall",
+        "kind": "message",
+        "type": "agent.v1.ComputerUseToolCall",
+        "oneof": "tool",
+        "repeated": false
+      },
+      {
+        "number": 31,
+        "name": "write_shell_stdin_tool_call",
+        "jsonName": "writeShellStdinToolCall",
+        "kind": "message",
+        "type": "agent.v1.WriteShellStdinToolCall",
+        "oneof": "tool",
+        "repeated": false
+      },
+      {
+        "number": 32,
+        "name": "reflect_tool_call",
+        "jsonName": "reflectToolCall",
+        "kind": "message",
+        "type": "agent.v1.ReflectToolCall",
+        "oneof": "tool",
+        "repeated": false
+      },
+      {
+        "number": 33,
+        "name": "setup_vm_environment_tool_call",
+        "jsonName": "setupVmEnvironmentToolCall",
+        "kind": "message",
+        "type": "agent.v1.SetupVmEnvironmentToolCall",
+        "oneof": "tool",
+        "repeated": false
+      },
+      {
+        "number": 34,
+        "name": "truncated_tool_call",
+        "jsonName": "truncatedToolCall",
+        "kind": "message",
+        "type": "agent.v1.TruncatedToolCall",
+        "oneof": "tool",
+        "repeated": false
+      },
+      {
+        "number": 35,
+        "name": "start_grind_execution_tool_call",
+        "jsonName": "startGrindExecutionToolCall",
+        "kind": "message",
+        "type": "agent.v1.StartGrindExecutionToolCall",
+        "oneof": "tool",
+        "repeated": false
+      },
+      {
+        "number": 36,
+        "name": "start_grind_planning_tool_call",
+        "jsonName": "startGrindPlanningToolCall",
+        "kind": "message",
+        "type": "agent.v1.StartGrindPlanningToolCall",
+        "oneof": "tool",
+        "repeated": false
+      },
+      {
+        "number": 37,
+        "name": "web_fetch_tool_call",
+        "jsonName": "webFetchToolCall",
+        "kind": "message",
+        "type": "agent.v1.WebFetchToolCall",
+        "oneof": "tool",
+        "repeated": false
+      },
+      {
+        "number": 38,
+        "name": "report_bugfix_results_tool_call",
+        "jsonName": "reportBugfixResultsToolCall",
+        "kind": "message",
+        "type": "agent.v1.ReportBugfixResultsToolCall",
+        "oneof": "tool",
+        "repeated": false
+      },
+      {
+        "number": 39,
+        "name": "ai_attribution_tool_call",
+        "jsonName": "aiAttributionToolCall",
+        "kind": "message",
+        "type": "agent.v1.AiAttributionToolCall",
+        "oneof": "tool",
+        "repeated": false
+      },
+      {
+        "number": 40,
+        "name": "pr_management_tool_call",
+        "jsonName": "prManagementToolCall",
+        "kind": "message",
+        "type": "agent.v1.PrManagementToolCall",
+        "oneof": "tool",
+        "repeated": false
+      },
+      {
+        "number": 41,
+        "name": "mcp_auth_tool_call",
+        "jsonName": "mcpAuthToolCall",
+        "kind": "message",
+        "type": "agent.v1.McpAuthToolCall",
+        "oneof": "tool",
+        "repeated": false
+      },
+      {
+        "number": 42,
+        "name": "await_tool_call",
+        "jsonName": "awaitToolCall",
+        "kind": "message",
+        "type": "agent.v1.AwaitToolCall",
+        "oneof": "tool",
+        "repeated": false
+      },
+      {
+        "number": 43,
+        "name": "blame_by_file_path_tool_call",
+        "jsonName": "blameByFilePathToolCall",
+        "kind": "message",
+        "type": "agent.v1.BlameByFilePathToolCall",
+        "oneof": "tool",
+        "repeated": false
+      },
+      {
+        "number": 44,
+        "name": "get_mcp_tools_tool_call",
+        "jsonName": "getMcpToolsToolCall",
+        "kind": "message",
+        "type": "agent.v1.GetMcpToolsToolCall",
+        "oneof": "tool",
+        "repeated": false
+      },
+      {
+        "number": 45,
+        "name": "report_bug_tool_call",
+        "jsonName": "reportBugToolCall",
+        "kind": "message",
+        "type": "agent.v1.ReportBugToolCall",
+        "oneof": "tool",
+        "repeated": false
+      },
+      {
+        "number": 46,
+        "name": "set_active_branch_tool_call",
+        "jsonName": "setActiveBranchToolCall",
+        "kind": "message",
+        "type": "agent.v1.SetActiveBranchToolCall",
+        "oneof": "tool",
+        "repeated": false
+      },
+      {
+        "number": 48,
+        "name": "communicate_update_tool_call",
+        "jsonName": "communicateUpdateToolCall",
+        "kind": "message",
+        "type": "agent.v1.CommunicateUpdateToolCall",
+        "oneof": "tool",
+        "repeated": false
+      },
+      {
+        "number": 49,
+        "name": "send_final_summary_tool_call",
+        "jsonName": "sendFinalSummaryToolCall",
+        "kind": "message",
+        "type": "agent.v1.SendFinalSummaryToolCall",
+        "oneof": "tool",
+        "repeated": false
+      },
+      {
+        "number": 50,
+        "name": "update_pr_code_tour_tool_call",
+        "jsonName": "updatePrCodeTourToolCall",
+        "kind": "message",
+        "type": "agent.v1.UpdatePrCodeTourToolCall",
+        "oneof": "tool",
+        "repeated": false
+      },
+      {
+        "number": 51,
+        "name": "replace_env_tool_call",
+        "jsonName": "replaceEnvToolCall",
+        "kind": "message",
+        "type": "agent.v1.ReplaceEnvToolCall",
+        "oneof": "tool",
+        "repeated": false
+      },
+      {
+        "number": 52,
+        "name": "edit_pr_labels_tool_call",
+        "jsonName": "editPrLabelsToolCall",
+        "kind": "message",
+        "type": "agent.v1.EditPrLabelsToolCall",
+        "oneof": "tool",
+        "repeated": false
+      },
+      {
+        "number": 53,
+        "name": "record_ci_investigation_findings_tool_call",
+        "jsonName": "recordCiInvestigationFindingsToolCall",
+        "kind": "message",
+        "type": "agent.v1.RecordCiInvestigationFindingsToolCall",
+        "oneof": "tool",
+        "repeated": false
+      },
+      {
+        "number": 55,
+        "name": "send_message_tool_call",
+        "jsonName": "sendMessageToolCall",
+        "kind": "message",
+        "type": "agent.v1.SendMessageToolCall",
+        "oneof": "tool",
+        "repeated": false
+      },
+      {
+        "number": 56,
+        "name": "fetch_cloud_agent_data_tool_call",
+        "jsonName": "fetchCloudAgentDataToolCall",
+        "kind": "message",
+        "type": "agent.v1.FetchCloudAgentDataToolCall",
+        "oneof": "tool",
+        "repeated": false
+      },
+      {
+        "number": 58,
+        "name": "send_to_user_tool_call",
+        "jsonName": "sendToUserToolCall",
+        "kind": "message",
+        "type": "agent.v1.SendToUserToolCall",
+        "oneof": "tool",
+        "repeated": false
+      },
+      {
+        "number": 61,
+        "name": "pi_read_tool_call",
+        "jsonName": "piReadToolCall",
+        "kind": "message",
+        "type": "agent.v1.PiReadToolCall",
+        "oneof": "tool",
+        "repeated": false
+      },
+      {
+        "number": 62,
+        "name": "pi_bash_tool_call",
+        "jsonName": "piBashToolCall",
+        "kind": "message",
+        "type": "agent.v1.PiBashToolCall",
+        "oneof": "tool",
+        "repeated": false
+      },
+      {
+        "number": 63,
+        "name": "pi_edit_tool_call",
+        "jsonName": "piEditToolCall",
+        "kind": "message",
+        "type": "agent.v1.PiEditToolCall",
+        "oneof": "tool",
+        "repeated": false
+      },
+      {
+        "number": 64,
+        "name": "pi_write_tool_call",
+        "jsonName": "piWriteToolCall",
+        "kind": "message",
+        "type": "agent.v1.PiWriteToolCall",
+        "oneof": "tool",
+        "repeated": false
+      },
+      {
+        "number": 65,
+        "name": "pi_grep_tool_call",
+        "jsonName": "piGrepToolCall",
+        "kind": "message",
+        "type": "agent.v1.PiGrepToolCall",
+        "oneof": "tool",
+        "repeated": false
+      },
+      {
+        "number": 66,
+        "name": "pi_find_tool_call",
+        "jsonName": "piFindToolCall",
+        "kind": "message",
+        "type": "agent.v1.PiFindToolCall",
+        "oneof": "tool",
+        "repeated": false
+      },
+      {
+        "number": 67,
+        "name": "pi_ls_tool_call",
+        "jsonName": "piLsToolCall",
+        "kind": "message",
+        "type": "agent.v1.PiLsToolCall",
+        "oneof": "tool",
+        "repeated": false
+      },
+      {
+        "number": 68,
+        "name": "connect_scm_tool_call",
+        "jsonName": "connectScmToolCall",
+        "kind": "message",
+        "type": "agent.v1.ConnectScmToolCall",
+        "oneof": "tool",
+        "repeated": false
+      },
+      {
+        "number": 69,
+        "name": "search_conversations_tool_call",
+        "jsonName": "searchConversationsToolCall",
+        "kind": "message",
+        "type": "agent.v1.SearchConversationsToolCall",
+        "oneof": "tool",
+        "repeated": false
+      },
+      {
+        "number": 70,
+        "name": "create_goal_tool_call",
+        "jsonName": "createGoalToolCall",
+        "kind": "message",
+        "type": "agent.v1.CreateGoalToolCall",
+        "oneof": "tool",
+        "repeated": false
+      },
+      {
+        "number": 71,
+        "name": "update_goal_tool_call",
+        "jsonName": "updateGoalToolCall",
+        "kind": "message",
+        "type": "agent.v1.UpdateGoalToolCall",
+        "oneof": "tool",
+        "repeated": false
+      },
+      {
+        "number": 72,
+        "name": "adopt_tool_call",
+        "jsonName": "adoptToolCall",
+        "kind": "message",
+        "type": "agent.v1.AdoptToolCall",
+        "oneof": "tool",
+        "repeated": false
+      },
+      {
+        "number": 73,
+        "name": "get_agent_status_tool_call",
+        "jsonName": "getAgentStatusToolCall",
+        "kind": "message",
+        "type": "agent.v1.GetAgentStatusToolCall",
+        "oneof": "tool",
+        "repeated": false
+      },
+      {
+        "number": 74,
+        "name": "send_to_agent_tool_call",
+        "jsonName": "sendToAgentToolCall",
+        "kind": "message",
+        "type": "agent.v1.SendToAgentToolCall",
+        "oneof": "tool",
+        "repeated": false
+      },
+      {
+        "number": 75,
+        "name": "read_agent_transcript_tool_call",
+        "jsonName": "readAgentTranscriptToolCall",
+        "kind": "message",
+        "type": "agent.v1.ReadAgentTranscriptToolCall",
+        "oneof": "tool",
+        "repeated": false
+      },
+      {
+        "number": 76,
+        "name": "create_agent_tool_call",
+        "jsonName": "createAgentToolCall",
+        "kind": "message",
+        "type": "agent.v1.CreateAgentToolCall",
+        "oneof": "tool",
+        "repeated": false
+      },
+      {
+        "number": 77,
+        "name": "stop_agent_tool_call",
+        "jsonName": "stopAgentToolCall",
+        "kind": "message",
+        "type": "agent.v1.StopAgentToolCall",
+        "oneof": "tool",
+        "repeated": false
+      },
+      {
+        "number": 78,
+        "name": "get_pr_code_tour_tool_call",
+        "jsonName": "getPrCodeTourToolCall",
+        "kind": "message",
+        "type": "agent.v1.GetPrCodeTourToolCall",
+        "oneof": "tool",
+        "repeated": false
+      },
+      {
+        "number": 54,
+        "name": "hook_additional_contexts",
+        "jsonName": "hookAdditionalContexts",
+        "kind": "message",
+        "type": "agent.v1.HookAdditionalContext",
+        "repeated": true
+      },
+      {
+        "number": 57,
+        "name": "tool_call_id",
+        "jsonName": "toolCallId",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 59,
+        "name": "started_at_ms",
+        "jsonName": "startedAtMs",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 60,
+        "name": "completed_at_ms",
+        "jsonName": "completedAtMs",
+        "kind": "scalar",
+        "repeated": false
+      }
+    ],
+    "aiserver.v1.BidiRequestId": [
+      {
+        "number": 1,
+        "name": "request_id",
+        "jsonName": "requestId",
+        "kind": "scalar",
+        "repeated": false
+      }
+    ],
+    "aiserver.v1.BidiPollRequest": [
+      {
+        "number": 1,
+        "name": "request_id",
+        "jsonName": "requestId",
+        "kind": "message",
+        "type": "aiserver.v1.BidiRequestId",
+        "repeated": false
+      },
+      {
+        "number": 2,
+        "name": "start_request",
+        "jsonName": "startRequest",
+        "kind": "scalar",
+        "repeated": false
+      }
+    ],
+    "aiserver.v1.BidiAppendRequest": [
+      {
+        "number": 1,
+        "name": "data",
+        "jsonName": "data",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 2,
+        "name": "request_id",
+        "jsonName": "requestId",
+        "kind": "message",
+        "type": "aiserver.v1.BidiRequestId",
+        "repeated": false
+      },
+      {
+        "number": 3,
+        "name": "append_seqno",
+        "jsonName": "appendSeqno",
+        "kind": "scalar",
+        "repeated": false
+      },
+      {
+        "number": 4,
+        "name": "data_binary",
+        "jsonName": "dataBinary",
+        "kind": "scalar",
+        "repeated": false
+      }
+    ]
+  }
+}

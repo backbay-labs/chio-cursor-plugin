@@ -1,0 +1,58 @@
+
+> chio-cursor@0.3.0 test
+> node --experimental-strip-types --test ./test/*.test.ts ./test/*.test.mjs
+
+(node:75684) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/connor/Medica/backbay/standalone/chio-cursor-plugin/.worktrees/required-agent-integrations-20260909/test/hooks-config.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Users/connor/Medica/backbay/standalone/chio-cursor-plugin/.worktrees/required-agent-integrations-20260909/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ upgrades Chio hooks while preserving other providers and configuration (1.639917ms)
+✔ refuses unsupported or malformed existing configuration (0.167834ms)
+✔ preToolUse: no local allow when operator policy or kernel binary is missing (258.415042ms)
+✔ beforeReadFile: no local allow when operator policy or kernel binary is missing (236.9365ms)
+✔ beforeTabFileRead: no local allow when operator policy or kernel binary is missing (238.366917ms)
+✔ beforeShellExecution: no local allow when operator policy or kernel binary is missing (236.90725ms)
+✔ beforeMCPExecution: no local allow when operator policy or kernel binary is missing (230.362375ms)
+✔ missing tool, empty stdin and malformed JSON fail closed (262.072292ms)
+✔ post-write notifications are rejected instead of masquerading as prevention (88.626167ms)
+✔ tool and caller payload is preserved, MCP uses authoritative server-name field (1.299875ms)
+✔ template covers pre-action tool/read/Tab/shell/MCP events without matchers (0.95725ms)
+(node:75686) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/connor/Medica/backbay/standalone/chio-cursor-plugin/.worktrees/required-agent-integrations-20260909/test/patch.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Users/connor/Medica/backbay/standalone/chio-cursor-plugin/.worktrees/required-agent-integrations-20260909/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ denies write to forbidden_paths (9.500042ms)
+✔ denies write outside path_allowlist.write (2.396792ms)
+✔ allows write inside allowlist (1.785167ms)
+✔ denies on max_files overflow (2.381125ms)
+✔ deny on embedded AWS key even if path is allowed (1.90425ms)
+✔ glob matcher handles ** correctly (0.144875ms)
+✔ protected configuration rejects legacy, expired, mismatched and expansive authority (1.465541ms)
+✔ operator configuration and journal reject linked or unrelated files (11.293875ms)
+✔ actual macOS process boundary blocks operator reads, aliases, links, writes and unrelated network (960.499916ms)
+ℹ {"facts":{"scopedConfig":"allowed","operatorConfig":"EPERM","journalRead":"EPERM","journalWrite":"EPERM","dataVolumeAlias":"EPERM","symlinkEscape":"EPERM","controlWrite":"EPERM","aliasControlWrite":"EPERM","policyWrite":"EPERM","hardlink":"EPERM","privateStateWrite":"allowed","descendant":{"status":0,"stdout":"EPERM"},"unapprovedExecutable":"EPERM","network":{"allowed":200,"forbidden":"blocked"}},"independentNetworkObservers":{"allowed":1,"forbidden":0}}
+✔ protected prompt entry refuses before opening the selected host or operator configuration (142.010292ms)
+(node:75689) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/connor/Medica/backbay/standalone/chio-cursor-plugin/.worktrees/required-agent-integrations-20260909/test/secrets.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Users/connor/Medica/backbay/standalone/chio-cursor-plugin/.worktrees/required-agent-integrations-20260909/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ detects AWS access key id (1.923917ms)
+✔ detects GitHub PAT (ghp_ prefix) (0.428042ms)
+✔ detects Stripe live key (0.089167ms)
+✔ detects JWT-shaped tokens (0.079125ms)
+✔ detects PEM private key block (0.066125ms)
+✔ detects generic password literal with entropy (0.277667ms)
+✔ detects Google API key (0.067375ms)
+✔ detects Slack bot token (0.068459ms)
+✔ does not flag placeholder password values (0.070333ms)
+✔ does not flag low-entropy all-same-char value (0.358125ms)
+✔ empty string returns empty list (0.869125ms)
+✔ ordinary prose returns empty list (0.063875ms)
+ℹ tests 33
+ℹ suites 0
+ℹ pass 33
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1698.127209

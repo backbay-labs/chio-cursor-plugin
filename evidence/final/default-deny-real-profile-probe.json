@@ -1,0 +1,12 @@
+{
+  "scope": "actual retained Cursor discovery OS profile; operator code primitive probe, not model execution",
+  "state": "/private/var/folders/jy/95wms_mn265f0bpj_v6wc4zh0000gn/T/chio-cursor-protected-GtU9ht",
+  "policySha256": "51c535fcd13ded78eda33a984b361fde4043fd9a6dcda223372b6a445fdc714e",
+  "gatewaySha256": "177ec672d26f7dd4238a9b59196b7f43c31c4786211235e4ee6ed8503dbc1615",
+  "runtimeLockSha256": "1b213b23e97e5d11f2740b78f65d3528027eda940fa3e1ea96fe1516aa6ddcd0",
+  "kernelSource": "25d5717 aggregate preack",
+  "kernelBinarySha256": "d0b87623cb3dd227f79cd3178b32bb04e35b48ddcb9dab63c6598d79b8e13b66",
+  "exit": 0,
+  "stdout": "{\"ownScopedConfig\":{\"readable\":true,\"credentialSchema\":\"chio.mcp.session-credential.v1\"},\"operatorPreparation\":{\"readable\":false,\"error\":\"EPERM\"},\"operatorDataAlias\":{\"readable\":false,\"error\":\"EPERM\"},\"otherHostConfig\":{\"readable\":false,\"error\":\"EPERM\"}}\n",
+  "stderr": ""
+}

@@ -6,7 +6,6 @@ test/**
 tests/**
 **/*.ts
 node_modules/**
-!node_modules/@chio/bridge/**
 tsconfig*.json
 esbuild.config.*
 .gitignore
@@ -24,3 +23,9 @@ package-lock.json
 templates/**/.gitkeep
 chio.vsix
 **/*.map
+
+hooks-src/**
+evidence/**
+docs/**
+.worktrees/**
+vendor/**

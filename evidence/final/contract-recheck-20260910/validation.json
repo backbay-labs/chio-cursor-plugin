@@ -1,0 +1,10 @@
+{
+  "checkedAt": "2026-09-10T06:44:08.766272+00:00",
+  "publicSourceSnapshotsVerified": 8,
+  "hostCommandStreamsVerified": 8,
+  "authlessNegativeStreamsVerified": 2,
+  "freshDesignatedAuthentication": true,
+  "runtimeFilesMatched": 443,
+  "protocolInventoryIdentical": true,
+  "classification": "evidence consistency checks only; no I01-I08 gate acceptance"
+}

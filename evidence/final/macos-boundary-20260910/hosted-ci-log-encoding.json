@@ -1,0 +1,9 @@
+{
+  "method": "lossless gzip, mtime zero",
+  "source": "https://github.com/backbay-labs/chio-cursor-plugin/actions/runs/34447190158",
+  "originalFile": "hosted-ci.log",
+  "originalSha256": "1dcbb96a0f0761428a53d1779f5ae1f50d06a910ac82e84ff89c1c31bac78b31",
+  "originalBytes": 63466,
+  "encodedFile": "hosted-ci.log.gz",
+  "encodedSha256": "03880bd9b5e8f52a69db609d645cd766c8f585b61f2cd6f02832d90954bdf530"
+}

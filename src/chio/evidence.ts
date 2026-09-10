@@ -16,7 +16,7 @@ import * as fs from "node:fs/promises";
 import * as path from "node:path";
 import { execFile } from "node:child_process";
 import { promisify } from "node:util";
-import type { ArcReceipt } from "@chio/bridge";
+import type { ChioReceipt } from "@chio/bridge";
 import type { ChioClient } from "./client.ts";
 
 const exec = promisify(execFile);
@@ -94,13 +94,13 @@ export async function buildPrEvidence(opts: {
   return result;
 }
 
-function extractReceipts(doc: Record<string, unknown>): ArcReceipt[] {
+function extractReceipts(doc: Record<string, unknown>): ChioReceipt[] {
   // arc's `/v1/evidence/export` returns
   //   { bundle: { toolReceipts: [{ seq, receipt: {...} }, ...], ... } }
   // Older endpoints used flat shapes (`receipts`, `items`, ...). We
   // recursively harvest any nested array of receipt-shaped objects so
   // the plugin keeps working as the bundle evolves.
-  const out: ArcReceipt[] = [];
+  const out: ChioReceipt[] = [];
   const seen = new Set<string>();
   const walk = (node: unknown): void => {
     if (!node) return;
@@ -110,7 +110,7 @@ function extractReceipts(doc: Record<string, unknown>): ArcReceipt[] {
           const obj = e as Record<string, unknown>;
           // Wrapped form: { seq, receipt: {...} }
           if (obj.receipt && typeof obj.receipt === "object") {
-            const r = obj.receipt as ArcReceipt & { id?: string };
+            const r = obj.receipt as ChioReceipt & { id?: string };
             if (r.id && !seen.has(r.id)) {
               seen.add(r.id);
               out.push(r);
@@ -121,7 +121,7 @@ function extractReceipts(doc: Record<string, unknown>): ArcReceipt[] {
           if (typeof obj.id === "string" && (obj.signature || obj.kernel_key)) {
             if (!seen.has(obj.id)) {
               seen.add(obj.id);
-              out.push(e as ArcReceipt);
+              out.push(e as ChioReceipt);
             }
           }
         }

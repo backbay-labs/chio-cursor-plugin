@@ -1,0 +1,13 @@
+{
+  "hostVersion": "2026.09.08-6caf4ff",
+  "lockedFilesChecked": 443,
+  "mismatchedFiles": [],
+  "protocolInventoryIdentical": true,
+  "sdkVersion": "1.0.31",
+  "sdkArchiveSha256": "6316337f3bf154406d704f00c939031ebaa388031ebfcabde843f74452c02a03",
+  "sdkRegistrySha512Matches": true,
+  "sdkRegistrySha1Matches": true,
+  "sdkEntrySha256": "09d5da1fe1cbba8bcd5af937ddcf6967b6e48170bd52ae744fd0a4b98bcef945",
+  "sdkLocalExecutorChunkSha256": "6db49240bebc1ac114cbfa800810cd19a0b56316922c2219be5c4a72546dca84",
+  "guiVersion": "3.19.13"
+}

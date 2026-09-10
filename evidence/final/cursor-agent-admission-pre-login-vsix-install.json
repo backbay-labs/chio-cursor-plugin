@@ -1,0 +1,96 @@
+{
+  "kind": "isolated VSIX install/list/forced-reinstall/removal only; GUI activation and version migration unverified",
+  "artifact": "/tmp/chio-cursor-agent-admission-candidate-20260909/chio-cursor-0.3.0.vsix",
+  "sha256": "46229ac06dfc49eae7ac9abd7a8a0105da741335a7e2b58b7268906336c38c98",
+  "fixture": "/var/folders/jy/95wms_mn265f0bpj_v6wc4zh0000gn/T/chio-cursor-agent-admission-vsix-3zvw2ogm",
+  "normalProfileUsed": false,
+  "authenticatedRunPerformed": false,
+  "commands": [
+    {
+      "argv": [
+        "/Applications/Cursor.app/Contents/Resources/app/bin/cursor",
+        "--user-data-dir",
+        "/var/folders/jy/95wms_mn265f0bpj_v6wc4zh0000gn/T/chio-cursor-agent-admission-vsix-3zvw2ogm/data",
+        "--extensions-dir",
+        "/var/folders/jy/95wms_mn265f0bpj_v6wc4zh0000gn/T/chio-cursor-agent-admission-vsix-3zvw2ogm/extensions",
+        "--install-extension",
+        "/tmp/chio-cursor-agent-admission-candidate-20260909/chio-cursor-0.3.0.vsix"
+      ],
+      "exitCode": 0,
+      "stdout": "Installing extensions...\nExtension 'chio-cursor-0.3.0.vsix' was successfully installed.\n",
+      "stderr": "(node:81721) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.\n(Use `Cursor --trace-deprecation ...` to show where the warning was created)\n"
+    },
+    {
+      "argv": [
+        "/Applications/Cursor.app/Contents/Resources/app/bin/cursor",
+        "--user-data-dir",
+        "/var/folders/jy/95wms_mn265f0bpj_v6wc4zh0000gn/T/chio-cursor-agent-admission-vsix-3zvw2ogm/data",
+        "--extensions-dir",
+        "/var/folders/jy/95wms_mn265f0bpj_v6wc4zh0000gn/T/chio-cursor-agent-admission-vsix-3zvw2ogm/extensions",
+        "--list-extensions",
+        "--show-versions"
+      ],
+      "exitCode": 0,
+      "stdout": "chio.chio-cursor@0.3.0\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/Applications/Cursor.app/Contents/Resources/app/bin/cursor",
+        "--user-data-dir",
+        "/var/folders/jy/95wms_mn265f0bpj_v6wc4zh0000gn/T/chio-cursor-agent-admission-vsix-3zvw2ogm/data",
+        "--extensions-dir",
+        "/var/folders/jy/95wms_mn265f0bpj_v6wc4zh0000gn/T/chio-cursor-agent-admission-vsix-3zvw2ogm/extensions",
+        "--install-extension",
+        "/tmp/chio-cursor-agent-admission-candidate-20260909/chio-cursor-0.3.0.vsix",
+        "--force"
+      ],
+      "exitCode": 0,
+      "stdout": "Installing extensions...\nExtension 'chio-cursor-0.3.0.vsix' was successfully installed.\n",
+      "stderr": "(node:81746) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.\n(Use `Cursor --trace-deprecation ...` to show where the warning was created)\n"
+    },
+    {
+      "argv": [
+        "/Applications/Cursor.app/Contents/Resources/app/bin/cursor",
+        "--user-data-dir",
+        "/var/folders/jy/95wms_mn265f0bpj_v6wc4zh0000gn/T/chio-cursor-agent-admission-vsix-3zvw2ogm/data",
+        "--extensions-dir",
+        "/var/folders/jy/95wms_mn265f0bpj_v6wc4zh0000gn/T/chio-cursor-agent-admission-vsix-3zvw2ogm/extensions",
+        "--list-extensions",
+        "--show-versions"
+      ],
+      "exitCode": 0,
+      "stdout": "chio.chio-cursor@0.3.0\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/Applications/Cursor.app/Contents/Resources/app/bin/cursor",
+        "--user-data-dir",
+        "/var/folders/jy/95wms_mn265f0bpj_v6wc4zh0000gn/T/chio-cursor-agent-admission-vsix-3zvw2ogm/data",
+        "--extensions-dir",
+        "/var/folders/jy/95wms_mn265f0bpj_v6wc4zh0000gn/T/chio-cursor-agent-admission-vsix-3zvw2ogm/extensions",
+        "--uninstall-extension",
+        "chio.chio-cursor"
+      ],
+      "exitCode": 0,
+      "stdout": "Uninstalling chio.chio-cursor...\nExtension 'chio.chio-cursor' was successfully uninstalled!\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/Applications/Cursor.app/Contents/Resources/app/bin/cursor",
+        "--user-data-dir",
+        "/var/folders/jy/95wms_mn265f0bpj_v6wc4zh0000gn/T/chio-cursor-agent-admission-vsix-3zvw2ogm/data",
+        "--extensions-dir",
+        "/var/folders/jy/95wms_mn265f0bpj_v6wc4zh0000gn/T/chio-cursor-agent-admission-vsix-3zvw2ogm/extensions",
+        "--list-extensions",
+        "--show-versions"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "retainedArtifact": "/tmp/chio-cursor-agent-admission-candidate-20260909/chio-cursor-0.3.0.pre-login-record.vsix"
+}

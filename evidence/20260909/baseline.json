@@ -1,0 +1,52 @@
+{
+  "observed_at_utc": "2026-09-09T14:37:12.468602+00:00",
+  "host_gui": {
+    "version": "3.19.13",
+    "commit": "dd066f332fcea7382764400fde902f61920648d0",
+    "arch": "arm64"
+  },
+  "host_cli": {
+    "version": "2026.09.08-6caf4ff",
+    "archive_sha256": "9c456cc432adc476202a2b09c21a10944fdf484b3ca55dcbf939bbc8ce30dcbe",
+    "archive_removed_after_extraction": true,
+    "retained_host": "/tmp/chio-cursor-20260909/host"
+  },
+  "source_baseline": "2621009246ad94a4f8d42c2ca038a1027ba1f105",
+  "kernel": {
+    "path": "/usr/local/bin/chio",
+    "version": "chio-cli 0.1.0",
+    "sha256": "c8d7ee8dc4ffdbed4a864b5984f931164a2b320e1a3d914adcb61d0636c354c3"
+  },
+  "environment": {
+    "os": "macOS 26.4",
+    "build": "25E246",
+    "arch": "arm64",
+    "node": "v25.5.0"
+  },
+  "profile": "/tmp/chio-cursor-20260909/profile",
+  "workflow": {
+    "prompt": "Create a file named useful-work.txt containing chio cursor useful work, then read it and report the exact contents.",
+    "host_exit": 1,
+    "auth": "Authentication required",
+    "tool_execution": "not_reached"
+  },
+  "effect_observer": {
+    "positive_control_write_read_remove": true,
+    "useful_work_exists": false
+  },
+  "acceptance": {
+    "I01": "unresolved",
+    "I02": "unresolved",
+    "I03": "unresolved",
+    "I04": "unresolved",
+    "I05": "unresolved",
+    "I06": "unresolved",
+    "I07": "unresolved",
+    "I08": "unresolved"
+  },
+  "blockers": [
+    "designated Cursor authentication in isolated profile",
+    "enforced resource boundary",
+    "qualified compatible kernel, plugin and SDK delivery"
+  ]
+}

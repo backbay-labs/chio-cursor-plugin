@@ -1,0 +1,14 @@
+2026-09-09T15:22:17.774154Z  WARN chio_kernel::kernel: guard denied request_id=check-001 reason=guard denied the request: guard "guard-pipeline" error (fail-closed): guard denied the request: guard "path-allowlist" denied the request
+{
+  "params": {
+    "content": "export const answer = 42;",
+    "path": "src/example.ts"
+  },
+  "policy_hash": "cecf02cb93676684772b8bbe9739e0e48015f237efb6c3b9b5abc78d298776ef",
+  "policy_source_hash": "b7ffed1db607f6f64a28cc0b4f0db6cdf74ceb5ef4f6f7ff30cbace0301b28dc",
+  "reason": "guard denied the request: guard \"guard-pipeline\" error (fail-closed): guard denied the request: guard \"path-allowlist\" denied the request",
+  "receipt_id": "rcpt-01a086c3-3f2e-7aa1-9c62-f73bc5840969",
+  "server": "*",
+  "tool": "Write",
+  "verdict": "DENY"
+}

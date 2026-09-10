@@ -1,0 +1,29 @@
+
+> chio-cursor@0.3.0 pack:release
+> node scripts/pack-release.mjs /tmp/chio-cursor-agent-admission-candidate-20260909
+
+
+> chio-cursor@0.3.0 build
+> node esbuild.config.mjs
+
+
+  dist/extension.js      200.7kb
+  dist/extension.js.map  626.2kb
+
+⚡ Done in 41ms
+
+  dist/gateway.mjs  56.6kb
+
+⚡ Done in 7ms
+
+  dist/gateway-http.mjs  63.4kb
+
+⚡ Done in 6ms
+
+  dist/hooks/composer.mjs    393.5kb
+  dist/hooks/shell.mjs       393.5kb
+  dist/hooks/tool.mjs        393.5kb
+  dist/hooks/pretooluse.mjs  393.5kb
+
+⚡ Done in 23ms
+{"name":"chio-cursor","version":"0.3.0","artifact":"/tmp/chio-cursor-agent-admission-candidate-20260909/chio-cursor-0.3.0.tgz","sha256":"3bf370db52da7e5b6811ede6e74c5b3d197b96666b80e78c186d441feb4cde4a","bundled":["@chio/bridge"]}
