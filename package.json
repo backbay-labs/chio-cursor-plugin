@@ -7,7 +7,7 @@
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/bb-connor/chio-cursor-plugin.git"
+    "url": "https://github.com/backbay-labs/chio-cursor-plugin.git"
   },
   "engines": {
     "vscode": "^1.90.0",
