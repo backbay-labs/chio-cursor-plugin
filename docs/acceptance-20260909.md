@@ -99,7 +99,7 @@ Raw output: [authentication](../evidence/20260909/cli-auth-status.txt) and
 | Gate | State | Exact missing evidence |
 | --- | --- | --- |
 | I01 installation/version | Unresolved | Candidate packaged install/discovery/activation plus compatible accepted kernel/SDK combination |
-| I02 useful workflow | Blocked by host authentication | Designated Cursor API key or isolated-profile login, then actual write/read/test/MCP effects |
+| I02 useful workflow | Blocked by remote enforcement contract; isolated subscription login now verified | Upstream-enforced restriction of unsupported server actions; bounded relay and actual write/read/test/MCP effects |
 | I03 denial/bypass | Unresolved | Independent resource boundary; real host paths, descendants, delegation, network/config tampering |
 | I04 failure behavior | Unresolved | Authenticated missing/killed/malformed kernel cases; hook crash, timeout, omitted configuration; subsequent effect observer |
 | I05 authority | Unresolved | Capability identity/session/resource binding, expiration/revocation, aggregate budgets, pending/rejected approvals |
@@ -221,3 +221,42 @@ Upstream HTTP URL, headers and environment interpolation were rechecked against
 [official Cursor MCP documentation](https://cursor.com/docs/mcp). This contract
 does not establish the safety of AgentService hosted actions. Protected prompt
 mode still refuses before launch, and I01-I08 acceptance remains unresolved.
+
+## AgentService contract investigation
+
+The source review now covers the pinned generated protocol and actual Run
+construction. Its reproducible inventory is
+`evidence/final/cursor-protocol-inventory.json`; the interpretation and external
+dependency are recorded in `evidence/final/CURSOR-AGENT-SERVICE-CONTRACT.md`.
+The installed `index.js` SHA256 is
+`f7875cfc3bd084d5105c579f1dd21aa77561d72bc2a528cdb70219636186bc79`.
+
+The new parser validates only a fresh initial Run frame. It rejects alternate
+transports, unknown/duplicate protobuf fields, resume/history, cloud/web flags,
+credential overrides, and tool/prompt/model substitutions. There is no upstream
+forwarder, and the executable entry refuses `--prompt` before opening a host or
+operator configuration. The fixtures use the real generated message schemas;
+they are not live server or model evidence.
+
+The pinned-protocol suite passed 22 cases; the ordinary component suite passed
+33 cases; both had zero skips. Typecheck passed. Raw output is retained in
+`evidence/final/cursor-agent-admission-tests.txt`,
+`evidence/final/cursor-protocol-component-suite.txt` and
+`evidence/final/cursor-protocol-typecheck.txt`.
+
+No backend contract establishing that normal CLI Run cannot dispatch unsupported
+server-owned actions has been found. Schema presence does not prove that such an
+action is reachable, and absence of a local approval message does not by itself
+prove an exploitable path. Reachability and pre-effect prevention remain unknown.
+An authenticated session alone does not resolve this gap. Required next input is
+a Cursor-enforced capability/deployment contract covering the enumerated actions,
+followed by negative-control tests through the real host and independent effect
+observers. The current unaccepted candidate retains its closed execution gate.
+
+The designated isolated subscription login subsequently completed. A real
+`cursor-agent status` call confirmed authentication with exit code 0. The record
+`evidence/final/cursor-designated-auth-status.json` retains only that boolean and
+the command, omitting account identity and credentials. Native auth cache remains
+only in the operator-owned HOME; it was not copied into a guest or evidence.
+Historical not-logged-in observations above remain baseline facts, not the
+current blocker. No authenticated Run has been forwarded by this candidate.

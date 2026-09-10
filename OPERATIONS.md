@@ -1,7 +1,7 @@
 # Cursor candidate operations
 
 This is an unaccepted integration candidate. The acceptance record lists open
-resource-boundary and host-authentication requirements. Normal Cursor profiles
+resource-boundary and real-host execution requirements. Normal Cursor profiles
 must not be used as disposable acceptance fixtures.
 
 ## Prerequisites and installation qualification
@@ -131,8 +131,36 @@ and web-action fields. Forwarding that route unchanged would give an untrusted
 process a remote action path. A bounded relay must preserve real authenticated
 host behavior and establish prevention for hosted effects before protected model
 execution is enabled. No such authenticated contract has yet been qualified.
-Designated Cursor authentication is also still missing. This candidate therefore
+The designated isolated Cursor subscription login has now been verified. Its
+native credentials remain only in the operator-owned profile and are not copied
+into the guest. The server-action contract remains unresolved, so this candidate
 cannot satisfy useful-work acceptance yet and must not be published as accepted.
+
+Authentication alone will not open this gate. The pinned protocol includes
+message, agent-management, and PR-mutation variants without a corresponding
+client execution or approval handshake. Whether those variants are reachable
+from a normal CLI Run is unverified. An upstream-enforced capability restriction
+covering those routes is required; filtering a reported tool call after server
+dispatch is insufficient. Local Run Modes explicitly do not control Cloud Agent
+actions. See [Cursor Run Modes](https://cursor.com/docs/agent/security/run-modes).
+
+`bin/cursor-agent-admission.mjs` is an offline initial-frame validation component,
+not an authenticated relay. It rejects alternate RunSSE/RunPoll/BidiAppend routes,
+unknown or noncanonical protobuf fields, opaque history, credential overrides,
+cloud/web capability flags, and substituted tool descriptors. It binds the fresh
+request to an operator-selected identity, prompt, model, workspace and exact MCP
+inventory. It does not implement subsequent duplex traffic, real login, or server
+capability enforcement, and cannot enable `--prompt`. Reproduce its tests from a
+source checkout with the pinned public host archive:
+
+```sh
+CHIO_CURSOR_PROTOCOL_HOST_DIR=/absolute/extracted/host \
+  node --test test/protocol/agent-admission.test.mjs
+```
+
+Missing or changed host bytes cause a failure, not a passing skip. The loader
+reads the exact installed generated protobuf definitions without starting the
+CLI or modifying its archive. These fixtures establish parser behavior only.
 
 The launcher checks the exact CLI archive using `bin/cursor-runtime-lock.json`.
 An upgrade with changed runtime bytes requires an intentional lock update and

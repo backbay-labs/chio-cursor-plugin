@@ -1,0 +1,30 @@
+✔ pinned schema accepts a bounded fresh Chio descriptor fixture without forwarding any request (5.173959ms)
+✔ rejects cloud capability before admission (0.784417ms)
+✔ rejects send-to-user capability before admission (0.448042ms)
+✔ rejects new project before admission (0.442084ms)
+✔ rejects harness override before admission (0.484458ms)
+✔ rejects system prompt replacement before admission (0.517833ms)
+✔ rejects resume state before admission (0.477416ms)
+✔ rejects alternate model credentials before admission (0.415625ms)
+✔ rejects model substitution before admission (0.433042ms)
+✔ rejects shell action before admission (0.342792ms)
+✔ rejects stored history before admission (0.521042ms)
+✔ rejects opaque context parts before admission (0.461375ms)
+✔ rejects web search before admission (0.3335ms)
+✔ rejects web fetch before admission (0.333125ms)
+✔ rejects server messages before admission (0.296167ms)
+✔ rejects non-Chio MCP before admission (0.305667ms)
+✔ rejects MCP host identifier substitution before admission (0.3045ms)
+✔ rejects MCP schema substitution before admission (0.295458ms)
+✔ rejects prompt substitution before admission (0.481625ms)
+✔ rejects unknown and duplicate protobuf fields including nested unknowns (1.029333ms)
+✔ decodes fragmented identity/gzip frames and rejects partial, oversized, duplicate or alternate transport (2.033791ms)
+✔ structurally valid candidate cannot enable authenticated remote Run (0.375167ms)
+ℹ tests 22
+ℹ suites 0
+ℹ pass 22
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 423.934125

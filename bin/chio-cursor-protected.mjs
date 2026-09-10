@@ -8,6 +8,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { startGatewayHttp } from '../dist/gateway-http.mjs';
 import { allowedTools, buildSandboxPolicy, inspectJournal, pinnedRuntime, privateFile, runtimeLibraries, validateSessionConfig, within } from './protected-boundary.mjs';
+import { requireQualifiedRemoteRun } from './cursor-agent-admission.mjs';
 
 const quote = value => `'${value.replaceAll("'", "'\\''")}'`;
 
@@ -32,9 +33,9 @@ async function main() {
   if (!options['--agent'] || !options['--gateway-config']) throw new Error('--agent and --gateway-config are required');
   if (!!options['--probe'] === !!options['--prompt']) throw new Error('choose exactly one of --probe or --prompt');
   // The agent API is a streamed tool/runtime protocol, not a plain model API.
-  // Its cloud-action fields need a qualified operator relay before giving the
-  // untrusted process any authenticated route to that service.
-  if (options['--prompt']) throw new Error('Protected model execution remains blocked: designated Cursor authentication and a bounded AgentService relay require qualification; use --probe for kernel discovery');
+  // Its server-owned actions require an upstream prevention contract as well
+  // as a bounded relay before any authenticated route can be admitted.
+  if (options['--prompt']) requireQualifiedRemoteRun();
   const agent = await realpath(options['--agent']);
   const node = await realpath(process.execPath);
   const normalHome = await realpath(os.homedir());
