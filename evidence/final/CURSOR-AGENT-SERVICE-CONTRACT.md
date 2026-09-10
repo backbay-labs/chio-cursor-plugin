@@ -1,6 +1,7 @@
 # Cursor AgentService admission investigation
 
-Status: **UNRESOLVED**, not I02-I08 acceptance. Reviewed 2026-09-09.
+Status: **UNRESOLVED**, not I02-I08 acceptance. Reviewed 2026-09-09 and
+[rechecked 2026-09-10](contract-recheck-20260910/README.md).
 Confidence is high in the pinned wire-schema facts below, unknown in server-side
 reachability and enforcement. No authenticated Run was sent by this investigation.
 The designated login is managed separately by the program owner and was not changed.
@@ -133,3 +134,16 @@ work plus denial/negative controls using independent local and remote observers.
 If the upstream cannot provide a supported pre-effect restriction, this host
 cannot pass the required protected mode with the current AgentService surface.
 No acceptance gate is closed by this investigation.
+
+## Published SDK allowlist follow-up
+
+The 2026-09-10 recheck identified a concrete additional contract surface in
+`@cursor/sdk` 1.0.31: its documented local tool allowlist becomes the
+`x-cursor-agent-allowed-tools` header on the same AgentService Run. The
+complementary deny list becomes `x-cursor-agent-exclude-tools`. A supported
+server rejection rule for an attempted call outside that list would be useful
+evidence, but the published documentation describes tool offering rather than
+pre-dispatch rejection. The SDK also requires callers to reapply restrictions
+on resume, and subagents have separate toolsets. The recheck records exact
+archive identities and source excerpts without forwarding an authenticated Run.
+This discovery does not establish that a provider-only local runtime is present.

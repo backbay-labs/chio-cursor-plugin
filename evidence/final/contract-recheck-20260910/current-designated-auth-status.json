@@ -1,0 +1,16 @@
+{
+  "checkedAt": "2026-09-10T06:42:01.405190+00:00",
+  "command": [
+    "/tmp/chio-cursor-20260909/host/node",
+    "/tmp/chio-cursor-20260909/host/index.js",
+    "status",
+    "--format",
+    "json"
+  ],
+  "exitCode": 0,
+  "authenticated": true,
+  "scope": "status only; no Run sent",
+  "nativeCacheCopied": false,
+  "credentialValuesRetained": false,
+  "rawOutputOmitted": "native status may contain account identity"
+}

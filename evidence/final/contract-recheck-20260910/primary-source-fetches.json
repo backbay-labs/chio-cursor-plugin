@@ -1,0 +1,90 @@
+[
+  {
+    "url": "https://cursor.com/docs/cli/reference/parameters",
+    "finalUrl": "https://cursor.com/docs/cli/reference/parameters",
+    "status": 200,
+    "contentType": "text/html; charset=utf-8",
+    "checkedAt": "2026-09-10T06:37:30.416785+00:00",
+    "rawSha256": "e57d12309806dea1ffd955bdfe994fb48b0e47dc133db46a7504f123b980d79b",
+    "bytes": 393932,
+    "file": "parameters.raw.gz",
+    "fileSha256": "106431119f6db1e647a67bef4441b44cdb0e84b8c8ec05f232e9a6af4c38cfff"
+  },
+  {
+    "url": "https://cursor.com/docs/cli/reference/permissions",
+    "finalUrl": "https://cursor.com/docs/cli/reference/permissions",
+    "status": 200,
+    "contentType": "text/html; charset=utf-8",
+    "checkedAt": "2026-09-10T06:37:30.754813+00:00",
+    "rawSha256": "69f8204f9b0705db2a0a55847e6139d5848cc01ca420e4acec2d0c079f15335d",
+    "bytes": 273834,
+    "file": "permissions.raw.gz",
+    "fileSha256": "687ecc89e6fd8335ca8469bf30eee27b863651df3576e87e041c00e1c4c8269a"
+  },
+  {
+    "url": "https://cursor.com/docs/cli/reference/configuration",
+    "finalUrl": "https://cursor.com/docs/cli/reference/configuration",
+    "status": 200,
+    "contentType": "text/html; charset=utf-8",
+    "checkedAt": "2026-09-10T06:37:31.117089+00:00",
+    "rawSha256": "12cadf300076dcd1c8bf184967ade5bee5010f65e6ec8077631f56fbc059ce2e",
+    "bytes": 364919,
+    "file": "configuration.raw.gz",
+    "fileSha256": "d108d64da1521918e0960e0b03b879b869b60d5e7da860f2c69508df142430a4"
+  },
+  {
+    "url": "https://cursor.com/docs/agent/security/run-modes",
+    "finalUrl": "https://cursor.com/docs/agent/security/run-modes",
+    "status": 200,
+    "contentType": "text/html; charset=utf-8",
+    "checkedAt": "2026-09-10T06:37:31.562250+00:00",
+    "rawSha256": "acb810759f07f322c050bc49cfdc828e9fda483c8f8af2fc1c5d394fec0cff95",
+    "bytes": 426312,
+    "file": "run-modes.raw.gz",
+    "fileSha256": "55d055231a3930c9d7e7cb2baa29adb1e297c2b2015dbb56d5c12db6170e6b45"
+  },
+  {
+    "url": "https://cursor.com/docs/enterprise",
+    "finalUrl": "https://cursor.com/docs/enterprise",
+    "status": 200,
+    "contentType": "text/html; charset=utf-8",
+    "checkedAt": "2026-09-10T06:37:31.976568+00:00",
+    "rawSha256": "a3e83b94eec297f95181b865f3018afe839e7c2b35c945c28767f3ab93797fc8",
+    "bytes": 384074,
+    "file": "enterprise.raw.gz",
+    "fileSha256": "7c3116c4cbbd593ed1f8fea4ddcb92fd9784702ea2355d08c81a473041599269"
+  },
+  {
+    "url": "https://cursor.com/docs/enterprise/model-and-integration-management",
+    "finalUrl": "https://cursor.com/docs/enterprise/model-and-integration-management",
+    "status": 200,
+    "contentType": "text/html; charset=utf-8",
+    "checkedAt": "2026-09-10T06:37:32.416147+00:00",
+    "rawSha256": "ccea6462c2607dc96af73b7f8b08972859d22077913869814161c6a3829c7300",
+    "bytes": 364125,
+    "file": "model-integration-management.raw.gz",
+    "fileSha256": "e322c7f533ed92a933f3b084da5886db55c627e953e0dc1df1b0b039d1c7bd27"
+  },
+  {
+    "url": "https://cursor.com/docs/sdk/typescript",
+    "finalUrl": "https://cursor.com/docs/sdk/typescript",
+    "status": 200,
+    "contentType": "text/html; charset=utf-8",
+    "checkedAt": "2026-09-10T06:37:33.094238+00:00",
+    "rawSha256": "0c6e399d3b1ea351ba81d1405975a13916c4658032fe10a3dc033e22a1dd9a73",
+    "bytes": 2209884,
+    "file": "sdk-typescript.raw.gz",
+    "fileSha256": "c6693a1fa5a11ce8161fc1475ea882be6b925575bdde9718d45948dff086dbe0"
+  },
+  {
+    "url": "https://cursor.com/install",
+    "finalUrl": "https://cursor.com/install",
+    "status": 200,
+    "contentType": "text/plain",
+    "checkedAt": "2026-09-10T06:37:33.361871+00:00",
+    "rawSha256": "8513e9f949576d7ced2a2a582252626cc86235437c2749bf93c886f1d5fdb203",
+    "bytes": 5668,
+    "file": "installer.raw.gz",
+    "fileSha256": "cc1d02f900fa8f0f3327855dd68ab783fb39abc01521e03d501dc1653ea1855c"
+  }
+]

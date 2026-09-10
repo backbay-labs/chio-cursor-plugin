@@ -1,0 +1,21 @@
+{
+  "checkedAt": "2026-09-10T06:37:11.093704+00:00",
+  "command": [
+    "/usr/bin/sandbox-exec",
+    "-p",
+    "(version 1)(allow default)(deny network*)",
+    "/tmp/chio-cursor-20260909/host/node",
+    "/tmp/chio-cursor-20260909/host/index.js",
+    "--authless",
+    "--base-url",
+    "http://127.0.0.1:9/v1",
+    "--print",
+    "--trust",
+    "Say local-mode-probe without using tools."
+  ],
+  "exit": 2,
+  "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderrSha256": "28460dbd2e3547ce11503535adb09953cecdf21d0e229f5917fbe1c57643a2cb",
+  "isolation": "fresh profile; no credentials; all network denied; unused loopback endpoint",
+  "classification": "installed-entrypoint availability negative control, not kernel or host I01-I08 acceptance"
+}

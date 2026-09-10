@@ -1,9 +1,23 @@
-# Final Cursor candidate audit
+# Cursor candidate audit and current blocker
 
 Cursor remains **NOT ACCEPTED**. Confidence: high in the observations below;
-full authenticated host enforcement remains unknown. The missing input is a
-designated Cursor API key for the isolated launcher. The root program already
-has that input request pending. No normal-profile credentials were reused.
+full authenticated host enforcement remains unknown. The designated isolated
+Cursor subscription login has completed, as recorded in
+`cursor-designated-auth-status.json` and the fresh
+`contract-recheck-20260910/current-designated-auth-status.json`. Another login
+is not the resolving input.
+The current blocker is the absence of a verified pre-dispatch restriction for
+unsupported server-owned messaging, agent management and PR mutations. The
+[2026-09-10 contract recheck](contract-recheck-20260910/README.md) reconfirmed the
+installed host and examined the published Cursor SDK allowlist. No authenticated
+Run has been forwarded, and no I02-I08 acceptance is inferred.
+
+## Historical candidate artifact observations
+
+The source, kernel and artifact identities below describe the earlier retained
+candidate audit. They do not identify the integration program's current kernel
+release candidate or establish present host acceptance. Historical failed login
+output is preserved as an observation from that earlier run.
 
 Source chain: `b61c42e` (source repairs), `8390851` (self-contained dependency
 packaging), `baca0bc` (shipped baseline acceptance record and evidence).
@@ -49,10 +63,10 @@ hook and policy. The final VSIX is reinstalled in the isolated profile for
 continuation. The disposable workspace retains only the operator's original
 hook until initialization is run again. No normal Cursor configuration was edited.
 
-| Gate | Final candidate observation / unresolved work |
+| Gate | Retained observations and current unresolved work |
 | --- | --- |
 | I01 | Exact artifacts installed/discovered; packaged extension activation and real gateway discovery observed. Protected session qualification remains incomplete |
-| I02 | Blocked: designated Cursor authentication absent; no useful model-driven effect |
+| I02 | Blocked by unverified server-action prevention; designated isolated login is verified, but no protected useful model workflow has run |
 | I03 | Real host alternate-tool/descendant/delegation/config/network denials unresolved. OS component probes deny normal-home marker and direct Docker socket access |
 | I04 | Real host kernel/plugin failure, omission, crash, timeout, malformed response cases unresolved |
 | I05 | Real host expiry/revocation/identity/scope/budget/approval cases unresolved |

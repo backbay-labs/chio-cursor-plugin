@@ -1,0 +1,65 @@
+{
+  "checkedAt": "2026-09-10T06:36:06.237433+00:00",
+  "isolation": "fresh unauthenticated profile; sandbox denies all network; help/version only",
+  "hostIndexSha256": "f7875cfc3bd084d5105c579f1dd21aa77561d72bc2a528cdb70219636186bc79",
+  "results": [
+    {
+      "case": "help",
+      "command": [
+        "/usr/bin/sandbox-exec",
+        "-p",
+        "(version 1)(allow default)(deny network*)",
+        "/tmp/chio-cursor-20260909/host/node",
+        "/tmp/chio-cursor-20260909/host/index.js",
+        "--help"
+      ],
+      "exit": 0,
+      "stdoutSha256": "be0388f7e15063e8c147ea5759e789a7f2ac87f95727dd596e1d8253e32b378b",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "case": "version",
+      "command": [
+        "/usr/bin/sandbox-exec",
+        "-p",
+        "(version 1)(allow default)(deny network*)",
+        "/tmp/chio-cursor-20260909/host/node",
+        "/tmp/chio-cursor-20260909/host/index.js",
+        "--version"
+      ],
+      "exit": 0,
+      "stdoutSha256": "e9457b182edaf40d38b59cc0573a3b07c798383a6f53d88c83270f3d376ab31c",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "case": "run-help",
+      "command": [
+        "/usr/bin/sandbox-exec",
+        "-p",
+        "(version 1)(allow default)(deny network*)",
+        "/tmp/chio-cursor-20260909/host/node",
+        "/tmp/chio-cursor-20260909/host/index.js",
+        "run",
+        "--help"
+      ],
+      "exit": 0,
+      "stdoutSha256": "be0388f7e15063e8c147ea5759e789a7f2ac87f95727dd596e1d8253e32b378b",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "case": "permissions-help",
+      "command": [
+        "/usr/bin/sandbox-exec",
+        "-p",
+        "(version 1)(allow default)(deny network*)",
+        "/tmp/chio-cursor-20260909/host/node",
+        "/tmp/chio-cursor-20260909/host/index.js",
+        "permissions",
+        "--help"
+      ],
+      "exit": 0,
+      "stdoutSha256": "be0388f7e15063e8c147ea5759e789a7f2ac87f95727dd596e1d8253e32b378b",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

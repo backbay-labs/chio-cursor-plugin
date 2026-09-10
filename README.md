@@ -3,9 +3,12 @@
 This integration is an **unaccepted candidate** for the six-host Chio program.
 The current branch repairs pre-action policy checks and installation packaging.
 A restricted macOS CLI launcher adds a default-deny process boundary and kernel
-tool discovery. Protected model execution is disabled pending designated
-authentication and qualification of a bounded Cursor AgentService relay. Do not use
-its status indicator or hook responses as proof that protected effects are mediated.
+tool discovery. The designated isolated Cursor subscription is authenticated.
+Protected model execution remains disabled because prevention of unsupported
+server-owned messaging, agent management and PR mutations is unverified. A
+Cursor-enforced restriction and a qualified bounded AgentService relay are still
+required. Do not use its status indicator or hook responses as proof that
+protected effects are mediated.
 
 The VS Code extension provides commands and receipt inspection. Cursor executes
 separate hook processes before native tools, reads, shell commands, and MCP calls.
@@ -65,11 +68,12 @@ of tool names and policy fields must be qualified for each supported workflow.
 
 See the authoritative [Cursor hooks contract](https://cursor.com/docs/hooks) and
 [CLI configuration](https://cursor.com/docs/cli/reference/configuration). Real host
-hook invocation and effect prevention remain unresolved without an authenticated
-isolated Cursor profile and the required resource isolation.
+hook invocation and effect prevention remain unresolved. Authentication has been
+verified; the missing server-action enforcement boundary is recorded in the
+[contract recheck](evidence/final/contract-recheck-20260910/README.md).
 
 The current probe keeps the Chio bridge, kernel credential and durable journal
 in its parent process. Cursor sees a single HTTP MCP endpoint with an ephemeral
 token. Its actual CLI discovers the four filesystem tools in this mode.
-Authenticated model work remains disabled pending the isolated credentials and
-bounded hosted-protocol qualification described in OPERATIONS.md.
+Authenticated model work remains disabled pending the server-action restriction
+and bounded hosted-protocol qualification described in OPERATIONS.md.

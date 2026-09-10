@@ -1,0 +1,64 @@
+{
+  "classification": "source inspection only; no provider or server execution proof",
+  "sdkVersion": "1.0.31",
+  "sdkArchiveSha256": "6316337f3bf154406d704f00c939031ebaa388031ebfcabde843f74452c02a03",
+  "sourceUrl": "https://registry.npmjs.org/@cursor/sdk/-/sdk-1.0.31.tgz",
+  "excerpts": [
+    {
+      "label": "CLI entry invokes main without a localAgentRuntime",
+      "sourceFile": "/tmp/chio-cursor-20260909/host/index.js",
+      "sourceSha256": "f7875cfc3bd084d5105c579f1dd21aa77561d72bc2a528cdb70219636186bc79",
+      "characterOffset": 2371539,
+      "excerpt": "\"./src/main.tsx\"(e,t,n){\"use strict\";n.a(e,(async(e,t)=>{try{n(\"./src/persistence/persistent-entry.ts\");var r=n(\"./src/index.tsx\"),s=e([r]);(0,(r=(s.then?(await s)():s)[0]).w)(),t()}catch(e){t(e)}}))},\"./src/mcp/approval.tsx\"(e,t,n){\"use strict\";n.a(e,(async(e,r)=>{try{n.d(t,{Cz:()=>b,J9:()=>C,Ny:()=>y,Vh:()=>g}"
+    },
+    {
+      "label": "CLI requires injected local runtime for authless mode",
+      "sourceFile": "/tmp/chio-cursor-20260909/host/index.js",
+      "sourceSha256": "f7875cfc3bd084d5105c579f1dd21aa77561d72bc2a528cdb70219636186bc79",
+      "characterOffset": 2040725,
+      "excerpt": "const r=Ee.opts();(r.insecure||k.Cu)&&(process.env.NODE_TLS_REJECT_UNAUTHORIZED=\"0\"),!0===r.authless&&void 0===t&&((0,I.p2)(\"Error: --authless can only be used with agent-cli-local\\n\"),process.exit(2));try{(0,ee.qM)({apiUrl:\"string\"==typeof r.endpoint?r.endpoint:void 0,websiteUrl:\"string\"==typeof r."
+    },
+    {
+      "label": "SDK raw tool names and exact request header names",
+      "sourceFile": "/tmp/chio-cursor-contract-recheck-20260910/sdk/package/dist/esm/index.js",
+      "sourceSha256": "09d5da1fe1cbba8bcd5af937ddcf6967b6e48170bd52ae744fd0a4b98bcef945",
+      "characterOffset": 890726,
+      "excerpt": "\"./src/agent/tools-option.ts\"(e,t,n){n.d(t,{$$:()=>o,TX:()=>c,VJ:()=>i,db:()=>d});var r=n(\"../proto/dist/generated/agent/v1/agent_pb.js\"),s=n(\"./src/agent/errors.ts\");const o=\"x-cursor-agent-allowed-tools\",i=\"x-cursor-agent-exclude-tools\",a={shell:[\"shell_tool_call\",\"write_shell_stdin_tool_call\"],mcp:[\"mcp_tool_call\",\"get_mcp_tools_tool_call\",\"list_mcp_resources_tool_call\",\"read_mcp_resource_tool_call\",\"mcp_auth_tool_call\"]};let l,u;function m(){var e,t;if(void 0===l){l=new Map,u=[];for(const n of r.Dm.fields.list()){if(\"tool\"!==(null===(e=n.oneof)||void 0===e?void 0:e.localName))continue;const r=n.localName.replace(/ToolCall$/,\"\"),s=null!==(t=a[r])&&void 0!==t?t:[n.name];l.set(r,s),l.set(n.name,[n.name]),l.set(n.localName,[n.name]),u.push(r)}u.sort()}return l}function c(e){return p(e,\"tools\")}function d(e){return p(e,\"disallowedTools\")}function p(e,t){if(void 0===e)return;const n=m(),r=new Set,o=[];for(const t of e){const e=n.get(t.trim());if(void 0!==e)for(const t of e)r.add(t);else o.push(t)}if(o.length>0)throw new s.j1(`Unknown tool name(s) in \\`${t}\\`: ${o.join(\", \")}. Valid tool names: ${(m(),null!=u?u:[]).join(\", \")}.`,{isRetryable:!1});return[...r]}},\"./src/agent/transport.ts\"(e,t,n){n.d(t,{cf:()=>s});const r=e=>{return t=void 0,r=void 0,o=function*(){if(void 0!==globalThis.Deno){const{createConnectTransport:t}=yield Promise.resolve().then(n.bind(n,\"@connectrpc/connect-web\"));return t({baseUrl:e.baseUrl,interceptors:e.interceptors})}const{createSafeConnectTransport:t}=yield Promise.all([n.e(401),n.e(988)]).then(n.bind(n,\"./src/agent/safe-connect-transport.ts\"));return t({baseUrl:e.baseUrl,httpVersion:"
+    },
+    {
+      "label": "SDK local executor instantiates AgentService client",
+      "sourceFile": "/tmp/chio-cursor-contract-recheck-20260910/sdk/package/dist/esm/357.js",
+      "sourceSha256": "6db49240bebc1ac114cbfa800810cd19a0b56316922c2219be5c4a72546dca84",
+      "characterOffset": 12402,
+      "excerpt": "if(fe!==t.apiKey||!me){yield Promise.all([(0,D.ly)(t.apiKey),(0,D.mU)(t.apiKey)]);const e=(0,D.KU)(t.apiKey),r=(0,R.createClient)(b.N,e),n=(0,g.ht)(r,{injectTraceHeaders:!0});me=new l.PW(n),fe=t.apiKey}const L=(0,D.Vh)(me,(()=>{const e=(0,D.KU)(t.apiKey),r=(0,R.createClient)(b.N,e),n=(0,g.ht)(r,{injectTraceHeaders:!0}),o=new l.PW(n);return me=o,fe=t.apiKey,o})),$=new v.O({agentClient:L,getResources:e=>H(this,[e],void 0,(function*({agentId:e}){let r=A.get(e);return r||(r=yield he.createSessionRuntime({sessionId:e,mcpServersOverride:P,extraMcp"
+    },
+    {
+      "label": "SDK local executor resolves AgentService descriptor",
+      "sourceFile": "/tmp/chio-cursor-contract-recheck-20260910/sdk/package/dist/esm/357.js",
+      "sourceSha256": "6db49240bebc1ac114cbfa800810cd19a0b56316922c2219be5c4a72546dca84",
+      "characterOffset": 3388,
+      "excerpt": "erated/agent/v1/agent_pb.js\"),b=r(\"../proto/dist/generated/agent/v1/agent_service_connect.js\"),S=r(\"../proto/dist/generated/agent/v1/ask_question_tool_pb.js\"),k=r(\"../proto/d"
+    },
+    {
+      "label": "SDK allowlist and deny list become headers on run options",
+      "sourceFile": "/tmp/chio-cursor-contract-recheck-20260910/sdk/package/dist/esm/357.js",
+      "sourceSha256": "6db49240bebc1ac114cbfa800810cd19a0b56316922c2219be5c4a72546dca84",
+      "characterOffset": 13562,
+      "excerpt": "Z=Object.assign(Object.assign({},void 0!==t.allowedTools?{[U.$$]:t.allowedTools.join(\",\")}:{}),void 0!==t.disallowedTools&&t.disallowedTools.length>0?{[U.VJ]:t.disallowedTools.join(\",\")}:{}),Q=(0,v.Bq)(S,N,{agentClient:L,interactionListener:F,resources:s,blobStore:p,initialState:f,conversationId:_,mcpTools:I,blobEncryptionKey:t.blobEncryptionKey,runOptions:Object.assign(Object.assign({generationUUID:t.requestId,requestedModel:m,enableAgentRetries:!1!==n.enableAgentRetries},Object.keys(Z).length>0?{headers:Z}:{}),void 0!==t.systemPrompt?{customSystemPrompt:t.systemPrompt}:{}),hooks:K,nextAction(e,t){return H(this,void 0,void 0,(function*(){const e=yield $.waitForBackgroundCompletions(_,t);return e.length>0?G(e):void 0}))},onCheckpoint(e){return H(this,void 0,void 0,(function*(){var r;f=e,Y.writeFromState(S,e),yield null===(r=t.onCheckpoint)||void 0===r?void 0:r.call(t,e)}))}}),X=Q.done.finally((()=>H(this,voi"
+    },
+    {
+      "label": "SDK Run construction carries same remote capability fields",
+      "sourceFile": "/tmp/chio-cursor-contract-recheck-20260910/sdk/package/dist/esm/357.js",
+      "sourceSha256": "6db49240bebc1ac114cbfa800810cd19a0b56316922c2219be5c4a72546dca84",
+      "characterOffset": 74533,
+      "excerpt": "De=new c.Mp({conversationState:ue(t),action:r,modelDetails:o,requestedModel:T.requestedModel,clientLlmGatewayCredential:Me,mcpTools:new v.Or({mcpTools:ke}),conversationGroupId:T.conversationGroupId,conversationId:T.conversationId,agentSessionId:T.agentSessionId,mcpFileSystemOptions:T.mcpFileSystemOptions,customSystemPrompt:T.customSystemPrompt,harness:T.harness,computerUseCoordinateMode:T.computerUseCoordinateMode,suggestNextPrompt:T.suggestNextPrompt,subagentTypeName:T.subagentTypeName,excludeWorkspaceContext:T.excludeWorkspaceContext,devRawModelSlug:T.devRawModelSlug,selectedSubagentModels:T.selectedSubagentModels,subagentModelOverrides:null!==(q=T.subagentModelOverrides)&&void 0!==q?q:[],selectedSubagentModelDetails:T.selectedSubagentModelsLegacy,clientSupportsInlineImages:T.clientSupportsInlineImages,clientSupportsPreviewCard:T.clientSupportsPreviewCard,startedAsNewProject:T.startedAsNewProject,firstProjectOnboarding:T.firstProjectOnboarding,clientSupportsSendToUser:T.clientSupportsSendToUser,clientSupportsPromptContextUsageRpc:T.clientSupportsPromptContextUsageRpc,clientSupportsRoutedModelUpdate:T.clientSupportsRoutedModelUpdate,canCreateCloudSubagents:T.canCreateCloudSubagents,suppressSubagentProgressUpdateTool:T.suppressSubagentProgressUpdateTool,runId:A});if(we=me.write(new m.KS({message:{case:\"runRequest\",value:De}})),te.canceled){const t={ctxCanceled:e.canceled,softCancel:te.canceled};throw ee(\"post_write_cancel\",t),ye[Symbol.dispose](),new I(\"User aborted request\")}const Ne=Object.assign(Object.assign(Object.assign({\"x-reques"
+    },
+    {
+      "label": "SDK dispatch uses configured headers on AgentService Run",
+      "sourceFile": "/tmp/chio-cursor-contract-recheck-20260910/sdk/package/dist/esm/357.js",
+      "sourceSha256": "6db49240bebc1ac114cbfa800810cd19a0b56316922c2219be5c4a72546dca84",
+      "characterOffset": 76973,
+      "excerpt": "const Fe=this.client.run(he.ctx,fe,{signal:ie.signal,headers:Ne,onHeader:T.onHeader,onNetworkStarted:()=>{void 0===pe&&(pe=performance.now())}}),Le=performance.now(),$e=e=>{var t,r;he&&(he.span.setAttribute(\"ha"
+    }
+  ]
+}

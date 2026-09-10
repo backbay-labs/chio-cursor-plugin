@@ -260,3 +260,21 @@ the command, omitting account identity and credentials. Native auth cache remain
 only in the operator-owned HOME; it was not copied into a guest or evidence.
 Historical not-logged-in observations above remain baseline facts, not the
 current blocker. No authenticated Run has been forwarded by this candidate.
+
+## Contract recheck on 2026-09-10
+
+The [fresh recheck](../evidence/final/contract-recheck-20260910/README.md) found
+that the public installer still selects CLI `2026.09.08-6caf4ff`; all 443 locked
+host files matched, and the generated protocol inventory was unchanged. A
+network-denied, credential-free invocation rejected the hidden `--authless`
+option because this entrypoint has no `agent-cli-local` runtime. This is an
+entrypoint availability check, not useful work or an enforcement pass.
+
+Published `@cursor/sdk` 1.0.31 documents local `tools` and `disallowedTools`
+options. Its implementation still invokes `agent.v1.AgentService/Run` and sends
+the filters as `x-cursor-agent-allowed-tools` and
+`x-cursor-agent-exclude-tools` headers. The documented promise concerns which
+tools are offered to the model; pre-dispatch rejection of unsupported
+server-owned calls is still unverified. No production runtime or candidate
+archive was changed, and no I01-I08 gate was closed. The designated Cursor
+subscription remains authenticated; credentials are not the current blocker.
