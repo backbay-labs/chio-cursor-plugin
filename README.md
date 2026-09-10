@@ -1,7 +1,7 @@
 <p align="center">
   <picture>
-    <source media="(max-width: 600px)" srcset="docs/assets/readme-hero-mobile.svg" />
-    <img src="docs/assets/readme-hero.svg" alt="Chio for Cursor: workspace policy checks and receipt inspection" width="960" />
+    <source media="(max-width: 600px)" srcset="docs/assets/readme-hero-mobile.png" />
+    <img src="docs/assets/readme-hero.png" alt="Chio for Cursor: workspace policy checks and receipt inspection" width="960" />
   </picture>
 </p>
 
